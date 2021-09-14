@@ -1,9 +1,10 @@
+import React from "react";
 import ReactDOM from "react-dom";
-function App(){
-  return(
-    <>
-      oi
-    </>
-  );
-}
-ReactDOM.render(<App/>, document.querySelector(".root"));
+
+import App from "./App.js";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>, document.getElementById("root")
+);
