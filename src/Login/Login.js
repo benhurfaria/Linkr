@@ -9,30 +9,33 @@ import { login } from '../services/api/Api'
 import { LoggedUser } from '../services/contexts/LoggedUser';
 
 export default function Login() {
-    const {setLoggedUser} = useContext(LoggedUser);
+    const { setLoggedUser } = useContext(LoggedUser);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [disabled, setDisabled] = useState(false);
     const history = useHistory();
 
     function SendLoginData() {
+
         setDisabled(true);
-        if (email === '' || password === '' ) {
+        if (email === '' || password === '') {
             alert('Preencha todos os campos do login');
             setDisabled(false);
-        }else{
-            const body={
+        } else {
+            const body = {
                 email,
                 password
             };
             const promise = login(body, setDisabled);
-            promise.then(res =>{
+            promise.then(res => {
                 setDisabled(false);
-                const user = { id:res.data.user.id,
-                               username:res.data.user.username,
-                               email:res.data.user.email,
-                               avatar:res.data.user.avatar,
-                               token:res.data.token };
+                const user = {
+                    id: res.data.user.id,
+                    username: res.data.user.username,
+                    email: res.data.user.email,
+                    avatar: res.data.user.avatar,
+                    token: res.data.token
+                };
                 setLoggedUser(user);
                 history.push('/timeline');
             })
@@ -51,7 +54,7 @@ export default function Login() {
                 <Form >
                     <Input type='email' placeholder=' e-mail' value={email} onChange={e => setEmail(e.target.value)}></Input>
                     <Input type='password' placeholder=' password' value={password} onChange={e => setPassword(e.target.value)}></Input>
-                    <Button type='button' disabled={disabled} onClick={SendLoginData}>Sign Up</Button>
+                    <Button type='button' disabled={disabled} onClick={SendLoginData}>Login</Button>
                 </Form>
                 <Link to='/signup'>
                     <BackToSignUp>First time? Create an account!</BackToSignUp>
