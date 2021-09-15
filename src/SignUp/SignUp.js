@@ -23,22 +23,29 @@ export default function SignUp() {
         if (email === '' || password === '' || username === '' || pictureUrl === '') {
             alert('Preencha todos os campos do cadastro');
         }
-        const body = {
-            email,
-            password,
-            username,
-            pictureUrl
-        }
-        const promise = signUp(body, setDisabled)
-        promise.then(res => {
+        if(password.length < 6){
+            alert("Senha muito pequena, a senha deve ter pelo menos 6 caracteres")
             setDisabled(false)
-            setSignedUser({ id:res.data.user.id,
-                              username:res.data.user.username,
-                              email:res.data.user.email,
-                              avatar:res.data.user.avatar,
-                              token:res.data.token });
-            history.push('/')
-        })
+        }else{
+            const body = {
+                email,
+                password,
+                username,
+                pictureUrl
+            }
+            const promise = signUp(body, setDisabled)
+            promise.then(res => {
+                setDisabled(false)
+                setSignedUser({ id:res.data.user.id,
+                                  username:res.data.user.username,
+                                  email:res.data.user.email,
+                                  avatar:res.data.user.avatar,
+                                  token:res.data.token });
+                history.push('/')
+            })
+        }
+        
+       
     }
 
 
