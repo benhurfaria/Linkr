@@ -17,7 +17,7 @@ export default function App() {
         <BrowserRouter>
             <Switch>
                 <SignedUser.Provider value={{ signedUser, setSignedUser }}>
-                    <LoggedUser.Provider >
+                    <LoggedUser.Provider  value='teste'>
                         <Route exact path="/">
 
                             <h1> path "/" </h1>
