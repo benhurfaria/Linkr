@@ -10,6 +10,13 @@ const PageTitle = styled.div`
     padding-left: 200px;
     padding-bottom: 400px;
     box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.25);
+    @media (max-width: 640px){
+        width: 100vw;
+        height: 26vh;
+        padding-bottom: 20px;
+        padding-left: 0;
+        align-items: center;
+    }
 
 
 `
@@ -17,16 +24,25 @@ const H1 = styled.h1`
     font-family: 'Passion One', cursive;
     font-size: 150px;
     color: #ffffff;
+    @media (max-width: 640px){
+        font-size: 76px;
+    }
 `
 const H2 = styled.h2`
     font-family: 'Oswald', sans-serif;
     font-size: 60px;
     color: #ffffff;
+    @media (max-width: 640px){
+        font-size: 23px;
+    }
 `
 const SignUpPage = styled.div`
     display: flex;
     width: 100vw;
     height: 100vh;
+    @media(max-width: 640px){
+       flex-direction: column;
+    }
 `
 const SignUpForm = styled.div` 
     width: 33vw;
@@ -36,6 +52,13 @@ const SignUpForm = styled.div`
     justify-content: center;
     align-items: center;
     padding-bottom: 200px;
+    @media (max-width: 640px){
+        width: 100vw;
+        height: 74vh;
+        padding-bottom: 0;
+        justify-content: flex-start; 
+        padding-top: 20px;
+    }
 `
 const Form = styled.form`
     display: flex;
@@ -45,15 +68,28 @@ const Form = styled.form`
     width: 100%;
     padding: 0 30px 0 60px;
     margin-bottom: 20px;
+    @media (max-width: 640px){
+        margin-bottom: 0;
+        padding: 0 0 0 0;
+        justify-content: flex-start;
+    }
 `
 const Input = styled.input`
-    margin-bottom: 10PX;
-    height: 45PX;
+    margin-bottom: 10px;
+    height: 45px;
     width: 100%;
     border-radius: 4px;
     border: none;
     ::placeholder{
         font-size: 27px;
+    }
+    @media (max-width: 640px){
+        margin-bottom: 10px;
+        height: 45px;
+        width: 80%;
+        ::placeholder{
+            font-size: 20px;
+        }
     }
 `
 const Button = styled.button`
@@ -64,11 +100,15 @@ const Button = styled.button`
     background-color: #1877F2;
     color: #ffffff;
     font-size: 27px;
+    margin-bottom: 10px;
     :hover{
         cursor: pointer;
     }
     :disabled{
         filter: brightness(0.4);
+    }
+    @media (max-width: 640px){
+        width: 80%;
     }
 
 `

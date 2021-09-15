@@ -2,7 +2,7 @@ import {
     H1, H2, PageTitle, SignUpPage,
     BackToLogin, Button,
     Input, Form, SignUpForm
-} from './SignUpStyle'
+} from './style_SignUp'
 import { Link, useHistory } from "react-router-dom";
 import { useState, useContext} from 'react';
 import {SignedUser} from '../services/contexts/SignedUser'
