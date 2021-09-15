@@ -1,4 +1,4 @@
-import { style_NewPost } from "./style_NewPost.js";
+
 
 import { NewPostFrame } from "./style_NewPost.js";
 import oldManMeme from "../assets/images/oldman_meme.png";

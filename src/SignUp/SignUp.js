@@ -10,7 +10,7 @@ import { signUp } from '../services/api/Api';
 
 
 export default function SignUp() {
-    const {signedUser, setSignedUser} = useContext(SignedUser);
+    const {setSignedUser} = useContext(SignedUser);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');

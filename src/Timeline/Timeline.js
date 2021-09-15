@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import { IoIosArrowDown /*, IoIosArrowUp*/ } from "react-icons/io";
 
-import LoggedUser from "../services/contexts/LoggedUser.js";
+
 
 import NewPost from "./NewPost.js";
 
