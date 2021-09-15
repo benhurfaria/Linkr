@@ -36,11 +36,12 @@ export default function SignUp() {
             const promise = signUp(body, setDisabled)
             promise.then(res => {
                 setDisabled(false)
-                setSignedUser({ id:res.data.user.id,
-                                  username:res.data.user.username,
-                                  email:res.data.user.email,
-                                  avatar:res.data.user.avatar,
-                                  token:res.data.token });
+                const user = { id:res.data.user.id,
+                               username:res.data.user.username,
+                               email:res.data.user.email,
+                               avatar:res.data.user.avatar,
+                               token:res.data.token }
+                setSignedUser(user);
                 history.push('/')
             })
         }
