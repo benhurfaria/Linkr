@@ -67,6 +67,9 @@ const Button = styled.button`
     :hover{
         cursor: pointer;
     }
+    :disabled{
+        filter: brightness(0.4);
+    }
 
 `
 const BackToLogin = styled.div`
