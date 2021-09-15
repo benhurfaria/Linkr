@@ -1,7 +1,8 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import React, {useState} from "react";
+import React from "react";
 
-//import context from "./.....";
+import LoggedUser from "./services/contexts/LoggedUser.js";
+import Timeline from "./Timeline/Timeline.js";
 
 import './shared/styles/reset.css';
 import './shared/styles/index.css';
@@ -11,20 +12,20 @@ export default function App() {
   return (
     <BrowserRouter>
       <Switch>
-        {/* <context.Provider value={{ ..., ....}} > */}
+        <LoggedUser.Provider>
           <Route exact path="/">
             <h1> path "/" </h1>
           </Route>
 
-          <Route exact path="/01">
-            <h2> path "/01" </h2>
+          <Route exact path="/timeline">
+            <Timeline />
           </Route>
 
           <Route exact path="/02">
             <h3> path "/02" </h3>
           </Route>
 
-        {/* </context.Provider> */}
+        </LoggedUser.Provider>
       </Switch>
     </BrowserRouter>
   );
