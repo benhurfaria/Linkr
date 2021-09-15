@@ -1,11 +1,10 @@
+import React from "react";
 import ReactDOM from "react-dom";
-function App(){
-  return(
-    <>
-      oi
-    </>
-  );
-}
-ReactDOM.render(<App/>, document.querySelector(".root"));
 
-//20210914_1126_push-test-tarcisio
+import App from "./App.js";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>, document.getElementById("root")
+);
