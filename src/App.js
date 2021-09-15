@@ -1,23 +1,35 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import React, { useState } from "react";
-import { LoggedUser } from './services/contexts/LoggedUser'
 
+import { SignedUser } from "./services/contexts/SignedUser.js";
 import './shared/styles/reset.css';
 import './shared/styles/index.css';
-import Login from "./Login/Login";
+import SignUp from "./SignUp/SignUp.js";
 
 
 export default function App() {
-    const [loggedUser, setLoggedUser] = useState({});
+    const [signedUser, setSignedUser] = useState({})
     return (
+
+
+
+
+
+
+
+
+
+
+
+
+        
         <BrowserRouter>
             <Switch>
-                <LoggedUser.Provider value={{loggedUser, setLoggedUser}}>
-                    <Route path='/'>
-                        <Login />
-                        {console.log(loggedUser)}
+                <SignedUser.Provider value={{ signedUser, setSignedUser }}>
+                    <Route path='/signup' exact>
+                        <SignUp></SignUp>
                     </Route>
-                </LoggedUser.Provider>
+                </SignedUser.Provider>
             </Switch>
         </BrowserRouter>
     );
