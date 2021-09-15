@@ -1,5 +1,5 @@
-import { NewPostFrame, NewPostForm, NewPostURL, NewPostComment } from "./style_NewPost.js";
-import { UserAvatar } from "./style_Timeline.js";
+import { NewPostFrame, NewPostForm, NewPostURL, NewPostComment } from "./NewPost_style.js";
+import { UserAvatar } from "./Timeline_style.js";
 import oldManMeme from "../assets/images/oldman_meme.png";
 
 

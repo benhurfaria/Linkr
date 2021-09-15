@@ -5,7 +5,7 @@ import LoggedUser from "../services/contexts/LoggedUser.js";
 
 import NewPost from "./NewPost.js";
 
-import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts, PostsList, Posts, TrendingWords } from "./style_Timeline.js";
+import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts, PostsList, Posts, TrendingWords } from "./Timeline_style.js";
 import oldManMeme from "../assets/images/oldman_meme.png";
 
 
