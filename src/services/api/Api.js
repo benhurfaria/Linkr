@@ -22,4 +22,4 @@ function login(body, setDisabled) {
 
 
 
-export { login }
+export { login, getHashtagPosts }
