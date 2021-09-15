@@ -17,8 +17,6 @@ const PageTitle = styled.div`
         padding-left: 0;
         align-items: center;
     }
-
-
 `
 const H1 = styled.h1`
     font-family: 'Passion One', cursive;
@@ -36,7 +34,7 @@ const H2 = styled.h2`
         font-size: 23px;
     }
 `
-const SignUpPage = styled.div`
+const LoginPage = styled.div`
     display: flex;
     width: 100vw;
     height: 100vh;
@@ -44,7 +42,7 @@ const SignUpPage = styled.div`
        flex-direction: column;
     }
 `
-const SignUpForm = styled.div` 
+const LoginForm = styled.div` 
     width: 33vw;
     height: 100vh;
     display: flex ;
@@ -110,9 +108,8 @@ const Button = styled.button`
     @media (max-width: 640px){
         width: 80%;
     }
-
 `
-const BackToLogin = styled.div`
+const BackToSignUp = styled.div`
     font-family: 'Lato', sans-serif;
     color: #ffffff;
     font: 20px;
@@ -123,4 +120,4 @@ const BackToLogin = styled.div`
     }
 `
 
-export {H1, H2, PageTitle, SignUpPage, BackToLogin, Button, Input, Form, SignUpForm}
+export {H1, H2, PageTitle, LoginPage, BackToSignUp, Button, Input, Form, LoginForm}
