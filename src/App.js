@@ -1,23 +1,36 @@
-import styled from 'styled-components';
-import './App.css'
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React from "react";
 
-export default function App(){
-    return(
-        <>
-          <PageTitle>
-            <H1>linkr</H1>
-          </PageTitle>
-        </>
-      );
+import LoggedUser from "./services/contexts/LoggedUser.js";
+import Timeline from "./Timeline/Timeline.js";
+
+import './shared/styles/reset.css';
+import './shared/styles/index.css';
+import SignUp from "./SignUp/SignUp.js";
+
+export default function App() {
+
+    return (
+        <BrowserRouter>
+            <Switch>
+                <LoggedUser.Provider>
+                    <Route exact path="/">
+                        <h1> path "/" </h1>
+                    </Route>
+                    <Route path='/signup' exact>
+                        <SignUp></SignUp>
+                    </Route>
+                    <Route exact path="/timeline">
+                        <Timeline />
+                    </Route>
+
+
+                    <Route exact path="/02">
+                        <h3> path "/02" </h3>
+                    </Route>
+
+                </LoggedUser.Provider>
+            </Switch>
+        </BrowserRouter>
+    );
 }
-
-const PageTitle = styled.div`
-    background-color: #151515;
-    width: 66%;
-    height: 100vh;
-`
-const H1 = styled.h1`
-    color: #ffffff;
-    font-family: 'Passion One', cursive;
-    font-size: 106px;
-`
