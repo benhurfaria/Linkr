@@ -1,25 +1,27 @@
-import { style_NewPost } from "./style_NewPost.js";
-
-import { NewPostFrame } from "./style_NewPost.js";
+import { NewPostFrame, NewPostForm, NewPostURL, NewPostComment } from "./style_NewPost.js";
+import { UserAvatar } from "./style_Timeline.js";
 import oldManMeme from "../assets/images/oldman_meme.png";
 
 
 export default function NewPost() {
 
+    const testComment =
+    `Muito irado esse link falando de #javascript
+outra linha \n mais uma \ntexto grande sentenças longas e compridas`;
+
     return (
         <NewPostFrame>
-                <img src={oldManMeme} alt="old man meme" />
+            <UserAvatar src={oldManMeme} alt="old man meme" />
 
-                <form>
-                    <h2> O que você tem pra favoritar hoje?</h2>
+            <NewPostForm>
+                <h2> O que você tem pra favoritar hoje?</h2>
 
-                    <input type="url" placeholder="http://..." />
-                    <input type="text" placeholder="Muito irado...." />
-                    <button>
-                        Publicar
-                    </button>
-                </form>
+                <NewPostURL type="url" placeholder="http://..." />
+                <NewPostComment type="text" value={testComment} />
 
-            </NewPostFrame>
+                <button> Publicar </button>
+            </NewPostForm>
+
+        </NewPostFrame>
     );
 }

@@ -63,14 +63,19 @@ const ContainerHeader = styled.div`
 
 const ContainerPosts = styled.div`
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
 `;
 
 const PostsList = styled.ul`
     width: 611px;
-    height: 800px;
+    height: 1200px;
     margin: 0 auto auto 0;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 `;
 
 const Posts = styled.li`
@@ -80,6 +85,7 @@ const Posts = styled.li`
     margin: 8px auto 8px 0;
     color: yellow;
     border: 2px dotted orange;
+    border-radius: 16px;
 `;
 
 const TrendingWords = styled.div`
