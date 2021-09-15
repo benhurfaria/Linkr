@@ -47,7 +47,6 @@ const MainContainer = styled.div`
     margin: 125px auto auto auto;
     display: flex;
     flex-direction: column;
-
     border: 2px dashed yellow;
 `;
 
@@ -66,26 +65,6 @@ const ContainerPosts = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
-`;
-
-const PostsList = styled.ul`
-    width: 611px;
-    height: 1200px;
-    margin: 0 auto auto 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-`;
-
-const Posts = styled.li`
-    width: 611px;
-    height: 276px;
-    background-color: #171717;
-    margin: 8px auto 8px 0;
-    color: yellow;
-    border: 2px dotted orange;
-    border-radius: 16px;
 `;
 
 const TrendingWords = styled.div`
@@ -96,4 +75,4 @@ const TrendingWords = styled.div`
     color: #FFFFFF;
 `;
 
-export {TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts, PostsList, Posts, TrendingWords};
+export {TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts, TrendingWords};

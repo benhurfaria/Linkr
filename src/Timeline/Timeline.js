@@ -3,9 +3,10 @@ import { IoIosArrowDown /*, IoIosArrowUp*/ } from "react-icons/io";
 
 import LoggedUser from "../services/contexts/LoggedUser.js";
 
-import NewPost from "./NewPost.js";
+import PostsList from "./PostsList.js";
 
-import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts, PostsList, Posts, TrendingWords } from "./Timeline_style.js";
+
+import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts, TrendingWords } from "./Timeline_style.js";
 import oldManMeme from "../assets/images/oldman_meme.png";
 
 
@@ -30,15 +31,8 @@ export default function Timeline() {
                 </ContainerHeader>
 
                 <ContainerPosts>
-                    <PostsList>
-                        <NewPost />
-                        
-                        <Posts>00</Posts>
-                        
-                        <Posts>01</Posts>
-
-                        <Posts>02</Posts>
-                    </PostsList>
+                    
+                    <PostsList />
 
                     <TrendingWords>
                         <h2> trending </h2>

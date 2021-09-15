@@ -67,5 +67,10 @@ const NewPostComment = styled.textarea`
     width: 100%;
 `;
 
+const PostLeftPanel = styled.div`
+    display: flex;
+    flex-direction: column;    
+`;
 
-export {NewPostFrame, NewPostForm, NewPostURL, NewPostComment}
+
+export {NewPostFrame, NewPostForm, NewPostURL, NewPostComment, PostLeftPanel}
