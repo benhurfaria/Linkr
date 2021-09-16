@@ -54,25 +54,37 @@ const PostPreview = styled.div`
     display: flex;
     border: 1px solid #4D4D4D;
     border-radius: 11px;
+    overflow: hidden;
     & img {
+        margin-left: 4px;
+        object-fit: contain;
         width: 154px;
-        
     }
 `;
 
 const PreviewInfo = styled.div`
+    width: 350px;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    padding: 24px 0 24px 20px;
+    word-wrap: wrap;
     & h1 {
-        color: orange;
+        font-size: 16px;
+        line-height: 19px;
+        color: #CECECE;
     }
     & h2 {
-        color: crimson;
+        font-size: 11px;
+        line-height: 13px;
+        color: #9B9595;
     }
     & h3 {
-        color: lightblue;
+        font-size: 11px;
+        line-height: 13px;
+        color: #CECECE;
     }
 `;
-
 
 export {AllPostsList, Posts, Post, PostContent, PostPreview, PreviewInfo}

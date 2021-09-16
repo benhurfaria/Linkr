@@ -27,7 +27,8 @@ export default function SinglePost({ userPost }) {
                         <h3>{link}</h3>
 
                     </PreviewInfo>
-                    {linkImage === null ? <></> : <img src={linkImage} alt="post preview miniature"/>}
+                    {
+                    ((linkImage === null) || (linkImage === "")) ? <></> : <img src={linkImage} alt="post preview miniature"/>}
 
                 </PostPreview>
             </PostContent>
