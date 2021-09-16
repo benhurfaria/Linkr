@@ -12,12 +12,14 @@ export default function NewPost() {
     const {userPostsArray, setUserPostsArray} = useContext(ContextPost);
     const { loggedUser } = useContext(LoggedUser);
     
+    const token = loggedUser.token;
+
     const config = {
         headers:{
-            Authorization: `Bearer ${loggedUser.token}`
+            Authorization: `Bearer ${token}`
         }
     };
-   
+   console.log(config);
     function Postagem(event){
         event.preventDefault();
         const body = {

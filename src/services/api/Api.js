@@ -15,25 +15,25 @@ function signUp(body, setDisabled) {
 }
 
 function mandarPost(body, config, setUrlLink, setTexto, setStatus2, setUserPostsArray, userPostsArray){
-    axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/posts", body, config)
+    axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts", body, config)
             .then(res =>{
+
                 setUrlLink("");
                 setTexto("");
                 setStatus2({disable:"", cor: "", status: "Publicar"});
                 setUserPostsArray([res.data.post, ...userPostsArray]);
             })
             .catch(err =>{
+                console.log(body);
+                console.log(config);
+
                 alert("Houve um erro ao publicar seu link");
                 setUrlLink("");
                 setTexto("");
                 setStatus2({disable:"", cor: "", status: "Publicar"});
             });
     
-}
-
-
-
-;
+};
 
 function login(body, setDisabled) {
     const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/sign-in', body);
