@@ -23,7 +23,7 @@ const loggedUserInfo = {
 
 export default function Timeline() {
     const [userPostsArray, setUserPostsArray] = useState([]);
-    const [postsLoaded, setPostsLoaded] = useState();
+    //const [postsLoaded, setPostsLoaded] = useState();
 
     useEffect(() => {
         const requestConfig = {

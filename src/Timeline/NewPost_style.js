@@ -68,10 +68,23 @@ const NewPostComment = styled.textarea`
 `;
 
 const PostLeftPanel = styled.div`
+    height: 125px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    
+    color: #FFFFFF;
+    & img {
+        margin-bottom: 19px;
+    }
+    & h1 {
+        font-size: 20px;
+    }
+    & h2 {
+        margin: 4px auto 0 auto;    
+        font-size: 11px;
+        line-height: 13px;
+    }
 `;
 
 

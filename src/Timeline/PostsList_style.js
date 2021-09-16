@@ -60,6 +60,9 @@ const PostPreview = styled.div`
         object-fit: contain;
         width: 154px;
     }
+    & span {    /*from ReactHashTag*/
+        color: #FFFFFF;
+    }
 `;
 
 const PreviewInfo = styled.div`

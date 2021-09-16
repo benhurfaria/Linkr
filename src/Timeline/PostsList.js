@@ -1,5 +1,6 @@
 import NewPost from "./NewPost.js";
 
+
 import { AllPostsList, Posts } from "./PostsList_style.js"
 
 import SinglePost from "./SinglePost.js";
