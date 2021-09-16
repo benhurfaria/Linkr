@@ -23,7 +23,7 @@ const loggedUserInfo = {
 
 export default function Timeline() {
     const [userPostsArray, setUserPostsArray] = useState([]);
-    //const [postsLoaded, setPostsLoaded] = useState();
+    const [postsLoaded, setPostsLoaded] = useState(false);
 
     useEffect(() => {
         const requestConfig = {
@@ -37,7 +37,10 @@ export default function Timeline() {
         userPostsPromise.catch((error) => alert(error.message));
     }, []);
 
-
+    if(userPostsArray ) {
+        setPostsLoaded(true);            
+    }
+    console.log("postsLoaded?", postsLoaded);
     console.log("posts from user:", userPostsArray);
 
     return (

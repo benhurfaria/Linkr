@@ -61,6 +61,7 @@ const PostPreview = styled.div`
         width: 154px;
     }
     & span {    /*from ReactHashTag*/
+        font-weight: bold;
         color: #FFFFFF;
     }
 `;

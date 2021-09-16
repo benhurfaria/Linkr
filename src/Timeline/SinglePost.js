@@ -33,7 +33,7 @@ export default function SinglePost({ userPost }) {
                         ((linkImage === null) || (linkImage === "")) ? <></> : <img src={linkImage} alt="post preview miniature" />}
 
                 </PostPreview>
-            {/*</ReactHashtag>*/}
+            {/* </ReactHashtag> */}
             </PostContent>
 
         </Post>
