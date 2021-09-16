@@ -59,10 +59,10 @@ export default function SignUp() {
             </PageTitle>
             <SignUpForm>
                 <Form >
-                    <Input type='email' placeholder=' e-mail' value={email} onChange={e => setEmail(e.target.value)}></Input>
-                    <Input type='password' placeholder=' password' value={password} onChange={e => setPassword(e.target.value)}></Input>
-                    <Input type='text' placeholder=' username' value={username} onChange={e => setUsername(e.target.value)}></Input>
-                    <Input type='text' placeholder=' picture url' value={pictureUrl} onChange={e => setPictureUrl(e.target.value)}></Input>
+                    <Input type='email' placeholder=' e-mail' value={email} onChange={e => setEmail(e.target.value)} disabled={disabled}></Input>
+                    <Input type='password' placeholder=' password' value={password} onChange={e => setPassword(e.target.value)} disabled={disabled}></Input>
+                    <Input type='text' placeholder=' username' value={username} onChange={e => setUsername(e.target.value)} disabled={disabled}></Input>
+                    <Input type='text' placeholder=' picture url' value={pictureUrl} onChange={e => setPictureUrl(e.target.value)} disabled={disabled}></Input>
                     <Button type='button' disabled={disabled} onClick={SendSignUpData}>Sign Up</Button>
                 </Form>
                 <Link to='/'>

@@ -52,8 +52,8 @@ export default function Login() {
             </PageTitle>
             <LoginForm>
                 <Form >
-                    <Input type='email' placeholder=' e-mail' value={email} onChange={e => setEmail(e.target.value)}></Input>
-                    <Input type='password' placeholder=' password' value={password} onChange={e => setPassword(e.target.value)}></Input>
+                    <Input type='email' placeholder=' e-mail' value={email} onChange={e => setEmail(e.target.value)} disabled={disabled}></Input>
+                    <Input type='password' placeholder=' password' value={password} onChange={e => setPassword(e.target.value)} disabled={disabled}></Input>
                     <Button type='button' disabled={disabled} onClick={SendLoginData}>Login</Button>
                 </Form>
                 <Link to='/signup'>
