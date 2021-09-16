@@ -6,7 +6,7 @@ font-family: 'Oswald', sans-serif;
 font-family: 'Lato', sans-serif;
 */
 
-const TimelineHeader = styled.div`
+/*const TimelineHeader = styled.div`
     width: 100%;
     height: 72px;
     position: fixed;
@@ -34,7 +34,7 @@ const DropdownMenu = styled.div`
     align-items: center;
     justify-content: space-between;
     font-size: 35px;
-`;
+`;*/
 
 const UserAvatar = styled.img`
     width: 53px;
@@ -67,12 +67,20 @@ const ContainerPosts = styled.div`
     justify-content: space-between;
 `;
 
-const TrendingWords = styled.div`
+/*const TrendingWords = styled.div`
     width: 301px;
     height: 406px;
     margin: 0 0 auto auto;
     background-color: #171717;
     color: #FFFFFF;
-`;
+`;*/
 
-export {TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts, TrendingWords};
+export {
+    //TimelineHeader, 
+    //DropdownMenu, 
+    UserAvatar, 
+    MainContainer, 
+    ContainerHeader, 
+    ContainerPosts, 
+    //TrendingWords
+};

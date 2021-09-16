@@ -3,22 +3,21 @@ import { UserAvatar } from "./Timeline_style.js";
 import { useState, useContext } from "react";
 import { mandarPost } from '../services/api/Api';
 import { ContextPost } from "../services/contexts/ContextPost.js";
+import { LoggedUser } from "../services/contexts/LoggedUser.js";
 
 export default function NewPost() {
     const [urlLink, setUrlLink] = useState("");
     const [texto, setTexto] = useState("");
-    const [status, setStatus] = useState("Publicar");
-    const [cor, setCor] = useState("");
-    const [disable, setDisable] = useState("");
+    const [status2, setStatus2] = useState({disable: "", cor: "", status: "Publicar"});
     const {userPostsArray, setUserPostsArray} = useContext(ContextPost);
-    
+    const { loggedUser } = useContext(LoggedUser);
     
     const config = {
         headers:{
-            Authorization: `Bearer 1b939c76-c0bc-48ae-979c-d1f020d74be6`
+            Authorization: `Bearer ${loggedUser.token}`
         }
     };
-
+   
     function Postagem(event){
         event.preventDefault();
         const body = {
@@ -27,11 +26,12 @@ export default function NewPost() {
         };
         if(urlLink === "") return alert("preencha o link");
         
-        if(status === "Publicar"){
-            setStatus("Publicando...");
+        if(status2.status === "Publicar"){
+            /*setStatus("Publicando...");
             setCor("desabilitar");
-            setDisable("unable");
-            mandarPost(body, config, setUrlLink, setTexto, setStatus, setCor, setDisable, setUserPostsArray, userPostsArray);
+            setDisable("unable");*/
+            setStatus2({disable: "unable", cor: "desabilitar", status:"Publicando..."});
+            mandarPost(body, config, setUrlLink, setTexto, setStatus2, setUserPostsArray, userPostsArray);
         }
         
     }
@@ -44,10 +44,10 @@ export default function NewPost() {
             <NewPostForm onSubmit={Postagem}>
                 <h2> O que você tem pra favoritar hoje?</h2>
 
-                <NewPostURL required type="url" placeholder="http://..." value={urlLink} onChange={e => setUrlLink(e.target.value)} disabled = {`${disable}`}/>
-                <NewPostComment type="text" placeholder="Comente aqui sobre sua publicação" value={texto} onChange={e => setTexto(e.target.value)} disabled={`${disable}`}/>
+                <NewPostURL required type="url" placeholder="http://..." value={urlLink} onChange={e => setUrlLink(e.target.value)} disabled = {`${status2.disable}`}/>
+                <NewPostComment type="text" placeholder="Comente aqui sobre sua publicação" value={texto} onChange={e => setTexto(e.target.value)} disabled={`${status2.disable}`}/>
 
-                <button className={`${cor}`} type="submit" > {status} </button>
+                <button className={`${status2.cor}`} type="submit" > {status2.status} </button>
             </NewPostForm>
         </NewPostFrame>
     );
