@@ -14,6 +14,7 @@ function signUp(body, setDisabled) {
     })
     return promise
 }
+
 function mandarPost(body, config, setUrlLink, setTexto, setStatus, setCor, setDisable, setUserPostsArray, userPostsArray){
     axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/posts", body, config)
             .then(res =>{
@@ -34,4 +35,26 @@ function mandarPost(body, config, setUrlLink, setTexto, setStatus, setCor, setDi
             });
     
 }
-export { signUp, mandarPost }
+
+
+function login(body, setDisabled) {
+    const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/sign-in', body);
+    promise.catch(err => {
+        setDisabled(false)
+        if (err.response.status === 401) {
+
+            alert('Usuário/senha incorretos');
+        }
+        if (err.response.status === 400) {
+            alert('Dados inseridos são invalídos!');
+
+        }
+        if (err.response.status === 403) {
+            alert("Usuario não encontrado!");
+        }
+    })
+    return promise;
+}
+
+
+export { signUp, login, mandarPost }
