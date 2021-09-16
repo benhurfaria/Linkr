@@ -8,11 +8,12 @@ import {Sharp, SharpList} from './style_Hashtags'
 export default function Hashtags() {
     const [hashtags, setHashtags]= useState([])
     const { loggedUser } = useContext(LoggedUser)
-    
+    const token = loggedUser.token
     useEffect(() => {
+        
         const config = {
             headers: {
-                Authorization: `Bearer ${loggedUser.token}`
+                Authorization: `Bearer ${token}`
             }
         }
         const promise = getHashtag(config);
