@@ -20,7 +20,7 @@ export default function Hashtags() {
         promise.then(res => {
             setHashtags(res.data.hashtags)
         })
-    }, [token])
+    }, [])
 
     return (
         
