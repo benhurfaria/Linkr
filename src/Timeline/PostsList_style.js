@@ -23,13 +23,7 @@ const Post = styled.li`
     margin: 8px auto 8px 0;
     color: yellow;
     border-radius: 16px;
-    border: dotted yellow;
     font-family: 'Lato', sans-serif;
-    & h6 {
-        font-size: 54px;
-        color: yellow;
-        background-color: blue;
-    }
 `;
 
 const PostContent = styled.div `
@@ -46,15 +40,23 @@ const PostContent = styled.div `
         line-height: 23px;
         color: #FFFFFF;       
     }
+    & h2 {
+        font-size: 17px;
+        font-weight: 400;
+        line-height: 20px;
+        color: #B7B7B7;
+    }
 `;
 
 const PostPreview = styled.div`
     width: 100%;
     height: 155px;
     display: flex;
-    background-color: gray;
+    border: 1px solid #4D4D4D;
+    border-radius: 11px;
     & img {
-        height: 101%;
+        width: 154px;
+        
     }
 `;
 

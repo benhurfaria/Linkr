@@ -47,7 +47,6 @@ const MainContainer = styled.div`
     margin: 125px auto auto auto;
     display: flex;
     flex-direction: column;
-    border: 2px dashed yellow;
 `;
 
 const ContainerHeader = styled.div`

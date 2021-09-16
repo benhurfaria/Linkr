@@ -7,7 +7,6 @@ import PostsList from "./PostsList.js";
 
 import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts, TrendingWords } from "./Timeline_style.js";
 
-
 // { email: "ruffles@mail.com", password: "potato" };
 
 const USERS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/users/";
@@ -23,7 +22,8 @@ const loggedUserInfo = {
 };
 
 export default function Timeline() {
-    const [userPostsArray, setUserPostsArray] = useState([""]);
+    const [userPostsArray, setUserPostsArray] = useState([]);
+    const [postsLoaded, setPostsLoaded] = useState();
 
     useEffect(() => {
         const requestConfig = {
