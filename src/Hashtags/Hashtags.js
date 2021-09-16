@@ -8,7 +8,8 @@ import {Sharp, SharpList} from './style_Hashtags'
 export default function Hashtags() {
     const [hashtags, setHashtags]= useState([])
     const { loggedUser } = useContext(LoggedUser)
-    const token = loggedUser.token
+    //const token = loggedUser.token
+    const token = '1b939c76-c0bc-48ae-979c-d1f020d74be6'
     useEffect(() => {
         
         const config = {
@@ -20,7 +21,7 @@ export default function Hashtags() {
         promise.then(res => {
             setHashtags(res.data.hashtags)
         })
-    }, [])
+    }, [token])
 
     return (
         
