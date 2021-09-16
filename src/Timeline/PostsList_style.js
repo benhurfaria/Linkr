@@ -25,6 +25,11 @@ const Post = styled.li`
     border-radius: 16px;
     border: dotted yellow;
     font-family: 'Lato', sans-serif;
+    & h6 {
+        font-size: 54px;
+        color: yellow;
+        background-color: blue;
+    }
 `;
 
 const PostContent = styled.div `

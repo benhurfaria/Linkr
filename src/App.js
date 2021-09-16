@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import React, {useState} from "react";
 
-import LoggedUser from "./services/contexts/LoggedUser.js";
+//import LoggedUser from "./services/contexts/LoggedUser.js";
 import Timeline from "./Timeline/Timeline.js";
 
 import './shared/styles/reset.css';
@@ -13,7 +13,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <LoggedUser.Provider /*value={{loggedUserInfo, setLoggedUserInfo}}*/>
+        {/* <LoggedUser.Provider value={{loggedUserInfo, setLoggedUserInfo}}> */}
           <Route exact path="/">
             <h1> path "/" </h1>
           </Route>
@@ -26,7 +26,7 @@ export default function App() {
             <h3> path "/02" </h3>
           </Route>
 
-        </LoggedUser.Provider>
+        {/* </LoggedUser.Provider> */}
       </Switch>
     </BrowserRouter>
   );

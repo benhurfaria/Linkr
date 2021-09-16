@@ -1,25 +1,32 @@
 import NewPost from "./NewPost.js";
 import { PostLeftPanel } from "./NewPost_style.js";
-import { AllPostsList, Posts, Post, PostContent, PostPreview, PreviewInfo} from "./PostsList_style.js"
+import { AllPostsList, Posts, Post, PostContent, PostPreview, PreviewInfo } from "./PostsList_style.js"
 
 import { UserAvatar } from "./Timeline_style.js";
-import oldManMeme from "../assets/images/oldman_meme.png";
 import { IoIosHeart } from "react-icons/io";
 
 import logo_react from "../assets/images/preview_react.png";
 
+import Postagem from "./Postagem.js";
 
-
-export default function PostsList() {
+export default function PostsList({ avatar, userPostsArray }) {
 
     return (
         <AllPostsList>
             <NewPost />
 
-            <Posts>
+            <Posts userPostsArray={userPostsArray}>
+                {userPostsArray.map( (userPost) => 
+                        <Postagem props={userPost} />)}
+                        
+
+
+
+
+
                 <Post>
                     <PostLeftPanel>
-                        <UserAvatar src={oldManMeme} />
+                        <UserAvatar src={avatar} />
                         <IoIosHeart />
                         <h1>Likes</h1>
                     </PostLeftPanel>
@@ -39,14 +46,6 @@ export default function PostsList() {
 
                         </PostPreview>
                     </PostContent>
-
-                </Post>
-
-                <Post>
-
-                </Post>
-
-                <Post>
 
                 </Post>
             </Posts>
