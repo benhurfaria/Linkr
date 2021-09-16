@@ -6,49 +6,43 @@ import { IoIosArrowDown } from "react-icons/io";
 import PostsList from "./PostsList.js";
 
 import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts, TrendingWords } from "./Timeline_style.js";
+import { ContextPost } from '../services/contexts/ContextPost.js';
 
+const USERS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/users/";
 
-const SIGNIN_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/sign-in";
-const mockUserSignIn = { email: "ruffles@mail.com", password: "potato" };
+const loggedUserInfo = {
+    token: "1b939c76-c0bc-48ae-979c-d1f020d74be6",
+    user: {
+        id: 529,
+        email: "ruffles@mail.com",
+        username: "ramiro",
+        avatar: "https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/users/529/avatar"
+    }
+};
+
 
 
 export default function Timeline() {
-    const [loggedUserInfo, setLoggedUserInfo] = useState(
-        { token: "", user: { id: -1, email: "", username: "", avatar: "" } });
-    
-    const [userPostsURL, setUserPostsURL] = useState("");
-
-    const [userPostsArray, setUserPostsArray] = useState([]);
-    
-    function updateUserInfo(received) {
-        setLoggedUserInfo(received.data);
-        setUserPostsURL(`https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/users/${loggedUserInfo.user.id}/posts`);
-    }
+    const [userPostsArray, setUserPostsArray] = useState([""]);
 
     useEffect(() => {
-        const userInfoPromise = axios.post(SIGNIN_URL, mockUserSignIn);
-        userInfoPromise.then(updateUserInfo);
-        userInfoPromise.catch((error) => alert(error));
-
-        console.log("end of getUserInfo");
-    }, []);
-
-    useEffect(() => {
-        const userPostPromise = axios.post(userPostsURL, {Authorization: `Bearer ${loggedUserInfo.token}`});
-
-        userPostPromise.then((response) => setUserPostsArray([...userPostsArray, response.data]));
+        const requestConfig = {
+            headers: {Authorization: `Bearer ${loggedUserInfo.token}`}
+        };
         
-        userPostPromise.catch(alert);
+        const USER_POSTS_URL = USERS_URL + `${loggedUserInfo.user.id}/posts`;
+
+        const userPostsPromise = axios.get(USER_POSTS_URL, requestConfig);
+        userPostsPromise.then((response) => {setUserPostsArray(response.data.posts)});
+        userPostsPromise.catch((error) => alert(error.message));
     }, []);
     
  
-    console.log("after login user info:", loggedUserInfo);
-    console.log("USER_ID:" + loggedUserInfo.user.id);
-    console.log("posts from user:" )
+    
 
 
     return (
-        <>
+        <ContextPost.Provider value={{userPostsArray, setUserPostsArray}}>
             <TimelineHeader>
                 <h1>linkr</h1>
 
@@ -79,6 +73,6 @@ export default function Timeline() {
                 </ContainerPosts>
 
             </MainContainer>
-        </>
+        </ContextPost.Provider>
     );
 }

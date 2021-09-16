@@ -14,5 +14,24 @@ function signUp(body, setDisabled) {
     })
     return promise
 }
-
-export { signUp }
+function mandarPost(body, config, setUrlLink, setTexto, setStatus, setCor, setDisable, setUserPostsArray, userPostsArray){
+    axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/posts", body, config)
+            .then(res =>{
+                setUrlLink("");
+                setTexto("");
+                setStatus("Publicar");
+                setCor("");
+                setDisable("");
+                setUserPostsArray([res.data.post, ...userPostsArray]);
+            })
+            .catch(err =>{
+                alert("Houve um erro ao publicar seu link");
+                setUrlLink("");
+                setTexto("");
+                setStatus("Publicar");
+                setCor("");
+                setDisable("");
+            });
+    
+}
+export { signUp, mandarPost }
