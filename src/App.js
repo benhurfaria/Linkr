@@ -12,6 +12,8 @@ import './shared/styles/index.css';
 import SignUp from "./SignUp/SignUp.js";
 import { LoggedUser } from './services/contexts/LoggedUser'
 import Login from "./Login/Login";
+import Hashtags from "./Hashtags/Hashtags.js";
+
 
 
 
@@ -31,8 +33,11 @@ export default function App() {
                             <Timeline />
                         </Route>
                         <Route path='/signup' exact>
-                            <SignUp></SignUp>
+                            <SignUp/>
                         </Route>
+                       <Route path='/timeline'>
+                            <Hashtags/>
+                       </Route>
                     </Switch>
                 </BrowserRouter>
             </LoggedUser.Provider>
