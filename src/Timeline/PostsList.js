@@ -8,7 +8,7 @@ import SinglePost from "./SinglePost.js";
 export default function PostsList({ avatar, userPostsArray }) {
     return (
         <AllPostsList>
-            <NewPost />
+            <NewPost avatar={avatar}/>
 
             <Posts userPostsArray={userPostsArray}>
                 {userPostsArray.map((userPost) =>
