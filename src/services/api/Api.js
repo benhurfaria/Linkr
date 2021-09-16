@@ -1,7 +1,7 @@
 import axios from "axios";
 
 function signUp(body, setDisabled) {
-    const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/sign-up", body);
+    const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/sign-up", body);
     promise.catch(err => {
         setDisabled(false)
         if (err.response.status === 403) {
@@ -16,7 +16,7 @@ function signUp(body, setDisabled) {
 }
 
 function login(body, setDisabled) {
-    const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/sign-in', body);
+    const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/sign-in', body);
     promise.catch(err => {
         setDisabled(false)
         if (err.response.status === 401) {
@@ -35,7 +35,7 @@ function login(body, setDisabled) {
 }
 
 function getHashtag( config){
-    const promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/hashtags/trending", config);
+    const promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/hashtags/trending", config);
     return promise;
 }
 
