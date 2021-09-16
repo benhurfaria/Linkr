@@ -5,7 +5,7 @@ import {
 } from './style_Login';
 import { Link, useHistory } from "react-router-dom";
 import { useState, useContext } from 'react';
-import  login  from '../services/api/Api'
+import { login } from '../services/api/Api'
 import { LoggedUser } from '../services/contexts/LoggedUser';
 
 export default function Login() {

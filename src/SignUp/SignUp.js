@@ -6,7 +6,7 @@ import {
 import { Link, useHistory } from "react-router-dom";
 import { useState, useContext} from 'react';
 import {SignedUser} from '../services/contexts/SignedUser'
-import  signUp  from '../services/api/Api';
+import { signUp } from '../services/api/Api';
 
 
 export default function SignUp() {
