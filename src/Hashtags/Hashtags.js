@@ -20,13 +20,13 @@ export default function Hashtags() {
         promise.then(res => {
             setHashtags(res.data.hashtags)
         })
-    }, [])
+    }, [token])
 
     return (
         
             <SharpList>
-                  {hashtags.map(hashtag => <Link to={`/hashtag/${hashtag.name}`} >
-                                                        <Sharp># {hashtag.name}</Sharp>
+                  {hashtags.map((hashtag, index) => <Link to={`/hashtag/${hashtag.name}`} key={index}>
+                                                        <Sharp key={hashtag.id}># {hashtag.name}</Sharp>
                                                    </Link>)}  
             </SharpList>
         

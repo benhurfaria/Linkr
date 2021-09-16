@@ -37,7 +37,7 @@ export default function Login() {
                     token: res.data.token
                 };
                 setLoggedUser(user);
-                history.push('/hashtag');
+                history.push('/timeline');
             })
         }
 

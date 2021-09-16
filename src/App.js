@@ -22,8 +22,9 @@ export default function App() {
                             <Login />
                         </Route>
                         <Route path='/signup' exact>
-                            <SignUp></SignUp>
+                            <SignUp/>
                         </Route>
+                       
                     </Switch>
                 </BrowserRouter>
             </LoggedUser.Provider>
