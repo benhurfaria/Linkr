@@ -1,16 +1,16 @@
-import { useEffect , useState, useContext} from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { getHashtag } from "../services/api/Api";
 import { LoggedUser } from "../services/contexts/LoggedUser";
-import {Sharp, SharpList} from './style_Hashtags'
+import { Sharp, SharpList, TrendingTitle, Border, Trending } from './style_Hashtags'
 
 export default function Hashtags() {
-    const [hashtags, setHashtags]= useState([])
+    const [hashtags, setHashtags] = useState([])
     const { loggedUser } = useContext(LoggedUser)
     const token = loggedUser.token
     useEffect(() => {
-        
+
         const config = {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -23,13 +23,15 @@ export default function Hashtags() {
     }, [token])
 
     return (
-        
+        < Trending >
+            <TrendingTitle>trending</TrendingTitle>
+            <Border></Border>
             <SharpList>
-                  {hashtags.map((hashtag, index) => <Link to={`/hashtag/${hashtag.name}`} key={index}>
-                                                        <Sharp key={hashtag.id}># {hashtag.name}</Sharp>
-                                                   </Link>)}  
+                {hashtags.map((hashtag, index) => <Link to={`/hashtag/${hashtag.name}`} key={index}>
+                    <Sharp key={hashtag.id}># {hashtag.name}</Sharp>
+                </Link>)}
             </SharpList>
-        
+        </ Trending >
     );
 }
 
