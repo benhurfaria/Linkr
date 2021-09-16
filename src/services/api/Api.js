@@ -41,4 +41,4 @@ function getHashtag( config){
     return promise;
 }
 
-export { signUp, login, getHashtag }
+export default { signUp, login, getHashtag }

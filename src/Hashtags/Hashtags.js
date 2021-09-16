@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react/cjs/react.development";
-import { getHashtag } from "../services/api/Api";
+import  getHashtag  from "../services/api/Api";
 import { LoggedUser } from "../services/contexts/LoggedUser";
 import {Sharp, SharpList} from './style_Hashtags'
 
