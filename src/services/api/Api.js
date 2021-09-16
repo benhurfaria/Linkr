@@ -34,5 +34,9 @@ function login(body, setDisabled) {
     return promise;
 }
 
+function getHashtag( config){
+    const promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/hashtags/trending", config);
+    return promise;
+}
 
-export { signUp, login }
+export { signUp, login, getHashtag }

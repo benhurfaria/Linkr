@@ -7,6 +7,7 @@ import './shared/styles/index.css';
 import SignUp from "./SignUp/SignUp.js";
 import { LoggedUser } from './services/contexts/LoggedUser'
 import Login from "./Login/Login";
+import Hashtags from "./Hashtags/Hashtags.js";
 
 
 export default function App() {
@@ -19,7 +20,6 @@ export default function App() {
                     <Switch>
                         <Route path='/' exact>
                             <Login />
-                            {console.log(loggedUser)}
                         </Route>
                         <Route path='/signup' exact>
                             <SignUp></SignUp>
