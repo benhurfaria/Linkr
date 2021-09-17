@@ -24,8 +24,6 @@ function mandarPost(body, config, setUrlLink, setTexto, setStatus2, setUserPosts
                 setUserPostsArray([res.data.post, ...userPostsArray]);
             })
             .catch(err =>{
-                console.log(body);
-                console.log(config);
 
                 alert("Houve um erro ao publicar seu link");
                 setUrlLink("");

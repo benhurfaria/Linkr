@@ -19,7 +19,7 @@ export default function NewPost() {
             Authorization: `Bearer ${token}`
         }
     };
-   console.log(config);
+   
     function Postagem(event){
         event.preventDefault();
         const body = {
