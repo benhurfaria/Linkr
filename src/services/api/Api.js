@@ -13,7 +13,26 @@ function signUp(body, setDisabled) {
     })
     return promise;
 }
-;
+
+function mandarPost(body, config, setUrlLink, setTexto, setStatus2, setUserPostsArray, userPostsArray){
+    axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts", body, config)
+            .then(res =>{
+
+                setUrlLink("");
+                setTexto("");
+                setStatus2({disable:"", cor: "", status: "Publicar"});
+                setUserPostsArray([res.data.post, ...userPostsArray]);
+            })
+            .catch(err =>{
+
+                alert("Houve um erro ao publicar seu link");
+                setUrlLink("");
+                setTexto("");
+                setStatus2({disable:"", cor: "", status: "Publicar"});
+            });
+    
+};
+
 function login(body, setDisabled) {
     const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/sign-in', body);
     promise.catch(err => {
@@ -36,4 +55,7 @@ function getHashtag( config){
     return promise;
 };
 
-export { signUp, login, getHashtag }
+
+
+export { signUp, login, getHashtag, mandarPost }
+

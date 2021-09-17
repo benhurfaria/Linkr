@@ -5,7 +5,10 @@ import { IoIosArrowDown } from "react-icons/io";
 
 import { LoggedUser } from '../services/contexts/LoggedUser';
 import PostsList from "./PostsList/PostsList.js";
-import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts} from "./Timeline_style.js";
+import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts } from "./Timeline_style.js";
+import Hashtags from '../Hashtags/Hashtags'
+
+import { ContextPost } from '../services/contexts/ContextPost.js';
 
 // { email: "ruffles@mail.com", password: "potato" };
 
@@ -15,9 +18,9 @@ export default function Timeline() {
     const { loggedUser } = useContext(LoggedUser);
     const [allPostsArray, setAllPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
-
+    
     function updatePostsArray(response) {
-        if (response.data.posts.length < 1 ) {
+        if (response.data.posts.length < 1) {
             alert("Nenhum post encontrado");
             return;
         }
@@ -37,25 +40,22 @@ export default function Timeline() {
 
     return (
         <>
-            <TimelineHeader>
-                <h1>linkr</h1>
+            <ContextPost.Provider value={{ allPostsArray, setAllPostsArray }}>
+                <TimelineHeader>
+                    <h1>linkr</h1>
 
-                <DropdownMenu>
-                    <IoIosArrowDown />
-                    <UserAvatar src={loggedUser.avatar} />
-                </DropdownMenu>
-            </TimelineHeader>
-
-            <MainContainer>
-                <ContainerHeader>
-                    <h1>timeline</h1>
-                </ContainerHeader>
-
-                <ContainerPosts>
-                    <PostsList showList={postsLoaded} avatar={loggedUser.avatar} allPostsArray={allPostsArray} />
-                </ContainerPosts>
-
-            </MainContainer>
+                    <DropdownMenu>
+                        <IoIosArrowDown />
+                        <UserAvatar src={loggedUser.avatar} />
+                    </DropdownMenu>
+                </TimelineHeader>
+                <MainContainer>
+                    <ContainerPosts>
+                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} allPostsArray={allPostsArray} />
+                        <Hashtags />
+                    </ContainerPosts>
+                </MainContainer>
+            </ContextPost.Provider>
         </>
     );
 }

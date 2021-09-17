@@ -75,13 +75,16 @@ const Form = styled.form`
     }
 `
 const Input = styled.input`
+    font-family: 'Oswald', sans-serif;
     margin-bottom: 10px;
     height: 45px;
     width: 100%;
     border-radius: 4px;
     border: none;
+    font-size: 27px;
     ::placeholder{
         font-size: 27px;
+        font-family: 'Oswald', sans-serif;
     }
     @media (max-width: 640px){
         margin-bottom: 10px;
@@ -93,6 +96,7 @@ const Input = styled.input`
     }
 `
 const Button = styled.button`
+    font-family: 'Oswald', sans-serif;
     width: 100%;
     height: 45px;
     border-radius: 4px;

@@ -53,6 +53,9 @@ const NewPostForm = styled.form`
         font-weight: bold;
         line-height: 17px;
     }
+    .desabilitar{
+        background-color: #52B6FF;
+    }
 `;
 
 const NewPostURL = styled.input`

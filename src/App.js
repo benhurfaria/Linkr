@@ -21,16 +21,16 @@ export default function App() {
                         <Route path='/' exact>
                             <Login />
                         </Route>
-                        <Route path='/signup' exact>
-                            <SignUp/>
-                        </Route>
-                       <Route path='/timeline'>
+                        <Route exact path="/timeline">
                             <Timeline />
-                            
-                       </Route>
+                        </Route>
+                        <Route path='/signup' exact>
+                            <SignUp />
+                        </Route>
                     </Switch>
                 </BrowserRouter>
             </LoggedUser.Provider>
         </SignedUser.Provider>
     );
 }
+

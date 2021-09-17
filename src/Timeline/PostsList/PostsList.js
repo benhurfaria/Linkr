@@ -1,7 +1,7 @@
 import NewPost from "./NewPost/NewPost.js";
 
 import { AllPostsList, Posts, StillLoading } from "./PostsList_style.js"
-import Hashtags from "../../Hashtags/Hashtags.js";
+
 import SinglePost from "./SinglePost.js";
 
 export default function PostsList({ showList, avatar, allPostsArray }) {
@@ -22,7 +22,6 @@ export default function PostsList({ showList, avatar, allPostsArray }) {
                     }
                 </Posts>
             </AllPostsList>
-            <Hashtags />
         </>
     );
 }
