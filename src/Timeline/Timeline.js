@@ -9,21 +9,19 @@ import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeade
 
 // { email: "ruffles@mail.com", password: "potato" };
 
-const USERS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/";
+const POSTS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/";
 
 export default function Timeline() {
     const { loggedUser } = useContext(LoggedUser);
-    const [userPostsArray, setUserPostsArray] = useState([]);
+    const [allPostsArray, setAllPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
-
-    console.log("CONTEXTO:", loggedUser);
 
     function updatePostsArray(response) {
         if (response.data.posts.length < 1 ) {
             alert("Nenhum post encontrado");
             return;
         }
-        setUserPostsArray(response.data.posts);
+        setAllPostsArray(response.data.posts);
         setPostsLoaded(true);
     };
 
@@ -32,14 +30,12 @@ export default function Timeline() {
             headers: { Authorization: `Bearer ${loggedUser.token}` }
         };
 
-        const USER_POSTS_URL = USERS_URL + `${loggedUser.id}/posts`;
-
-        const userPostsPromise = axios.get(USER_POSTS_URL, requestConfig);
-        userPostsPromise.then(updatePostsArray);
-        userPostsPromise.catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
+        const allPostsPromise = axios.get(POSTS_URL, requestConfig);
+        allPostsPromise.then(updatePostsArray);
+        allPostsPromise.catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
     }, [loggedUser]);
 
-    console.log("posts from user:", userPostsArray);
+    console.log("all posts:", allPostsArray);
 
     return (
         <>
@@ -58,7 +54,7 @@ export default function Timeline() {
                 </ContainerHeader>
 
                 <ContainerPosts>
-                    <PostsList showList={postsLoaded} avatar={loggedUser.avatar} userPostsArray={userPostsArray} />
+                    <PostsList showList={postsLoaded} avatar={loggedUser.avatar} allPostsArray={allPostsArray} />
                 </ContainerPosts>
 
             </MainContainer>

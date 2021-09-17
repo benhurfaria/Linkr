@@ -52,7 +52,9 @@ const PostContent = styled.div `
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    & h1 {
+
+    & a,h1 {
+        text-decoration: none;
         font-size: 19px;
         font-weight: 400;
         line-height: 23px;
