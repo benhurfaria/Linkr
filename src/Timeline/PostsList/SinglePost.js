@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-
+import { Link, useHistory } from "react-router-dom";
 import { UserAvatar } from "../Timeline_style.js";
 import { PostLeftPanel } from "./NewPost/NewPost_style.js";
 import { Post, PostContent, PostPreview, PreviewInfo, ThumbPreview } from "./PostsList_style.js";
@@ -9,6 +8,13 @@ import { IoIosHeart } from "react-icons/io";
 
 export default function SinglePost({ post }) {
     const { id, likes, text, link, linkTitle, linkDescription, linkImage, user } = post;
+    
+    const history = useHistory();
+
+    function goToHashtag(hashtag) {
+        const filteredHashtag = hashtag.substring(1);
+        history.push("/hashtag/" + filteredHashtag);
+    }
 
     return (
         <Post key={id}>
@@ -21,7 +27,10 @@ export default function SinglePost({ post }) {
             </PostLeftPanel>
             <PostContent>
                 <Link to={`/user/${user.id}`} >{user.username}</Link>
-                <h2><ReactHashtag onHashtagClick={val => alert(val)}> e com texto normal dentro? #vai? {text} </ReactHashtag> </h2>
+
+                <h2><ReactHashtag onHashtagClick={goToHashtag}>
+                    {text}
+                </ReactHashtag></h2>
 
                 <PostPreview>
                     <PreviewInfo>
@@ -47,6 +56,6 @@ export default function SinglePost({ post }) {
 
             </PostContent>
 
-        </Post>
+        </Post >
     );
 };
