@@ -4,10 +4,11 @@ const Sharp = styled.li`
     font-family: 'Lato', sans-serif;
     color: #ffffff;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 18px;
     
 `
 const SharpList = styled.ul`
