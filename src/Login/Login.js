@@ -15,8 +15,8 @@ export default function Login() {
     const [disabled, setDisabled] = useState(false);
     const history = useHistory();
 
-    function SendLoginData() {
-
+    function SendLoginData(e) {
+        e.preventDefault();
         setDisabled(true);
         if (email === '' || password === '') {
             alert('Preencha todos os campos do login');
@@ -51,10 +51,10 @@ export default function Login() {
                     the best links on the web</H2>
             </PageTitle>
             <LoginForm>
-                <Form >
+                <Form onSubmit={SendLoginData}>
                     <Input type='email' placeholder=' e-mail' value={email} onChange={e => setEmail(e.target.value)} disabled={disabled}></Input>
                     <Input type='password' placeholder=' password' value={password} onChange={e => setPassword(e.target.value)} disabled={disabled}></Input>
-                    <Button type='button' disabled={disabled} onClick={SendLoginData}>Login</Button>
+                    <Button type='submit' disabled={disabled} >Login</Button>
                 </Form>
                 <Link to='/signup'>
                     <BackToSignUp>First time? Create an account!</BackToSignUp>

@@ -5,6 +5,10 @@ const Sharp = styled.li`
     color: #ffffff;
     font-weight: 700;
     margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
 `
 const SharpList = styled.ul`
     padding: 0 0 0 10px;
