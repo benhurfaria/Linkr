@@ -73,12 +73,15 @@ const Form = styled.form`
     }
 `
 const Input = styled.input`
+font-family: 'Oswald', sans-serif;
     margin-bottom: 10px;
     height: 45px;
     width: 100%;
     border-radius: 4px;
     border: none;
+    font-size: 27px;
     ::placeholder{
+        font-family: 'Oswald', sans-serif;
         font-size: 27px;
     }
     @media (max-width: 640px){
@@ -91,6 +94,7 @@ const Input = styled.input`
     }
 `
 const Button = styled.button`
+font-family: 'Oswald', sans-serif;
     width: 100%;
     height: 45px;
     border-radius: 4px;
@@ -120,4 +124,4 @@ const BackToSignUp = styled.div`
     }
 `
 
-export {H1, H2, PageTitle, LoginPage, BackToSignUp, Button, Input, Form, LoginForm}
+export { H1, H2, PageTitle, LoginPage, BackToSignUp, Button, Input, Form, LoginForm }

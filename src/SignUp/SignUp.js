@@ -17,7 +17,8 @@ export default function SignUp() {
     const [pictureUrl, setPictureUrl] = useState('');
     const [disabled, setDisabled] = useState(false);
     const history = useHistory();
-    function SendSignUpData() {
+    function SendSignUpData(e) {
+        e.preventDefault();
         setDisabled(true);
 
         if (email === '' || password === '' || username === '' || pictureUrl === '') {
@@ -58,15 +59,15 @@ export default function SignUp() {
                     the best links on the web</H2>
             </PageTitle>
             <SignUpForm>
-                <Form >
+                <Form onSubmit={SendSignUpData}>
                     <Input type='email' placeholder=' e-mail' value={email} onChange={e => setEmail(e.target.value)} disabled={disabled}></Input>
                     <Input type='password' placeholder=' password' value={password} onChange={e => setPassword(e.target.value)} disabled={disabled}></Input>
                     <Input type='text' placeholder=' username' value={username} onChange={e => setUsername(e.target.value)} disabled={disabled}></Input>
                     <Input type='text' placeholder=' picture url' value={pictureUrl} onChange={e => setPictureUrl(e.target.value)} disabled={disabled}></Input>
-                    <Button type='button' disabled={disabled} onClick={SendSignUpData}>Sign Up</Button>
+                    <Button type='button' disabled={disabled} >Sign Up</Button>
                 </Form>
                 <Link to='/'>
-                    <BackToLogin>Switch back tp log in</BackToLogin>
+                    <BackToLogin>Switch back to log in</BackToLogin>
                 </Link>
             </SignUpForm>
         </SignUpPage>
