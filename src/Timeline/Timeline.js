@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { LoggedUser } from '../services/contexts/LoggedUser';
 
 import React, { useState, useEffect, useContext } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
-import PostsList from "./PostsList.js";
+import { LoggedUser } from '../services/contexts/LoggedUser';
+import PostsList from "./PostsList/PostsList.js";
 import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts} from "./Timeline_style.js";
 
 // { email: "ruffles@mail.com", password: "potato" };
@@ -34,8 +34,6 @@ export default function Timeline() {
         allPostsPromise.then(updatePostsArray);
         allPostsPromise.catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
     }, [loggedUser]);
-
-    console.log("all posts:", allPostsArray);
 
     return (
         <>

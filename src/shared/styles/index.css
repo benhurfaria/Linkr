@@ -12,3 +12,8 @@ body {
     margin: auto;
     background-color: #333333;
 }
+
+span {    /*from ReactHashTag*/
+    font-weight: bold;
+    color: #FFFFFF;
+}

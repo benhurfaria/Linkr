@@ -1,5 +1,5 @@
 import { NewPostFrame, NewPostForm, NewPostURL, NewPostComment, PostLeftPanel } from "./NewPost_style.js";
-import { UserAvatar } from "./Timeline_style.js";
+import { UserAvatar } from "../../Timeline_style.js";
 
 export default function NewPost(avatar) {
 

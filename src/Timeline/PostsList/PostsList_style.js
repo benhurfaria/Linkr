@@ -56,19 +56,30 @@ const PostContent = styled.div `
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-
+    
     & a,h1 {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
         text-decoration: none;
         font-size: 19px;
         font-weight: 400;
         line-height: 23px;
-        color: #FFFFFF;       
+        color: #FFFFFF;        
+    }
+    & a {
+        -webkit-line-clamp: 2;
     }
     & h2 {
         font-size: 17px;
         font-weight: 400;
         line-height: 20px;
         color: #B7B7B7;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
     }
 `;
 
