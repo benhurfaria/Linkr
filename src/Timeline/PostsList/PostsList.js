@@ -4,7 +4,7 @@ import { AllPostsList, Posts, StillLoading } from "./PostsList_style.js"
 
 import SinglePost from "./SinglePost.js";
 
-export default function PostsList({ showList, avatar, allPostsArray }) {
+export default function PostsList({ showList, avatar, postsArray }) {
     if (showList === false) {
         return (
             <AllPostsList>
@@ -16,8 +16,8 @@ export default function PostsList({ showList, avatar, allPostsArray }) {
         <>
             <AllPostsList>
                 <NewPost avatar={avatar} />
-                <Posts allPostsArray={allPostsArray}>
-                    {allPostsArray.map((post) =>
+                <Posts postsArray={postsArray}>
+                    {postsArray.map((post) =>
                         <SinglePost post={post} />)
                     }
                 </Posts>

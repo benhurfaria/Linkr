@@ -1,25 +1,22 @@
-import axios from 'axios';
+import axios from "axios";
 
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 
 import { LoggedUser } from '../services/contexts/LoggedUser';
-import PostsList from "./PostsList/PostsList.js";
-import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerPosts } from "./Timeline_style.js";
+import PostsList from "../Timeline/PostsList/PostsList.js";
+import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerPosts } from "../Timeline/Timeline_style.js";
 import Hashtags from '../Hashtags/Hashtags'
 
 import { ContextPost } from '../services/contexts/ContextPost.js';
 
-// { email: "ruffles@mail.com", password: "potato" };
+const USERPOSTS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/";
 
-const POSTS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/";
-
-export default function Timeline() {
+export default function MyPosts() {
     const { loggedUser } = useContext(LoggedUser);
     const [postsArray, setPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
-    
+
     function updatePostsArray(response) {
         if (response.data.posts.length < 1) {
             alert("Nenhum post encontrado");
@@ -31,25 +28,26 @@ export default function Timeline() {
 
     useEffect(() => {
         const requestConfig = {
-            headers: { Authorization: `Bearer ${loggedUser.token}` }
+            headers: {
+                Authorization: `Bearer ${loggedUser.token}`
+            }
         };
 
-        const allPostsPromise = axios.get(POSTS_URL, requestConfig);
-        allPostsPromise.then(updatePostsArray);
-        allPostsPromise.catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
+        const appendedURL = USERPOSTS_URL + `${loggedUser.id}/posts`;
+
+        const userPostsPromise = axios.get(appendedURL, requestConfig);
+        userPostsPromise.then(updatePostsArray);
+        userPostsPromise.catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
     }, [loggedUser]);
 
     return (
-        <>
-            <ContextPost.Provider value={{ postsArray, setPostsArray }}>
+        <ContextPost.Provider value={{ postsArray, setPostsArray }}>
                 <TimelineHeader>
                     <h1>linkr</h1>
 
                     <DropdownMenu>
                         <IoIosArrowDown />
-                        <Link to="/my-posts">
                         <UserAvatar src={loggedUser.avatar} />
-                        </Link>
                     </DropdownMenu>
                 </TimelineHeader>
                 <MainContainer>
@@ -59,6 +57,5 @@ export default function Timeline() {
                     </ContainerPosts>
                 </MainContainer>
             </ContextPost.Provider>
-        </>
     );
 }

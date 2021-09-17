@@ -8,6 +8,7 @@ import SignUp from "./SignUp/SignUp.js";
 import { LoggedUser } from './services/contexts/LoggedUser'
 import Login from "./Login/Login";
 import Timeline from "./Timeline/Timeline.js";
+import MyPosts from "./MyPosts/MyPosts.js";
 
 
 export default function App() {
@@ -26,6 +27,9 @@ export default function App() {
                         </Route>
                         <Route path='/signup' exact>
                             <SignUp />
+                        </Route>
+                        <Route exact path='/my-posts'>
+                            <MyPosts />
                         </Route>
                     </Switch>
                 </BrowserRouter>
