@@ -4,6 +4,7 @@ import PostsList from "./PostsList.js";
 import { MainContainer, ContainerPosts } from "./Timeline_style.js";
 import { ContextPost } from '../services/contexts/ContextPost.js';
 import Hashtags from '../Hashtags/Hashtags'
+import Likes from "../Likes/Likes.js";
 
 export default function Timeline() {
     const [userPostsArray, setUserPostsArray] = useState([""]);
@@ -13,7 +14,8 @@ export default function Timeline() {
             <MainContainer>
                 <ContainerPosts>
                     <PostsList />
-                   <Hashtags />
+                    <Hashtags />
+                    <Likes />
                 </ContainerPosts>
             </MainContainer>
         </ContextPost.Provider>
