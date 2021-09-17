@@ -1,5 +1,10 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+
 import React, { useState } from "react";
+
+
+import Timeline from "./Timeline/Timeline.js";
+
 
 import { SignedUser } from "./services/contexts/SignedUser.js";
 import './shared/styles/reset.css';
@@ -8,6 +13,8 @@ import SignUp from "./SignUp/SignUp.js";
 import { LoggedUser } from './services/contexts/LoggedUser'
 import Login from "./Login/Login";
 import Hashtags from "./Hashtags/Hashtags.js";
+
+
 
 
 
@@ -22,6 +29,9 @@ export default function App() {
                         <Route path='/' exact>
                             <Login />
                         </Route>
+                        <Route exact path="/timeline">
+                            <Timeline />
+                        </Route>
                         <Route path='/signup' exact>
                             <SignUp/>
                         </Route>
@@ -34,3 +44,5 @@ export default function App() {
         </SignedUser.Provider>
     );
 }
+
+          
