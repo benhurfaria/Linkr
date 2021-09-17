@@ -67,7 +67,7 @@ export default function SignUp() {
                     <Button type='button' disabled={disabled} >Sign Up</Button>
                 </Form>
                 <Link to='/'>
-                    <BackToLogin>Switch back tp log in</BackToLogin>
+                    <BackToLogin>Switch back to log in</BackToLogin>
                 </Link>
             </SignUpForm>
         </SignUpPage>
