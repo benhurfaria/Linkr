@@ -62,16 +62,7 @@ const ContainerHeader = styled.div`
 const ContainerPosts = styled.div`
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+        
 `;
 
-const TrendingWords = styled.div`
-    width: 301px;
-    height: 406px;
-    margin: 0 0 auto auto;
-    background-color: #171717;
-    color: #FFFFFF;
-`;
-
-export {TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts, TrendingWords};
+export {TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts};

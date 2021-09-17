@@ -1,44 +1,44 @@
 import axios from 'axios';
+import { LoggedUser } from '../services/contexts/LoggedUser';
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
 import PostsList from "./PostsList.js";
-import Hashtags from "../Hashtags/Hashtags.js";
-import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts, TrendingWords } from "./Timeline_style.js";
+import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts} from "./Timeline_style.js";
 
 // { email: "ruffles@mail.com", password: "potato" };
 
-const USERS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/users/";
-
-const loggedUserInfo = {
-    token: "1b939c76-c0bc-48ae-979c-d1f020d74be6",
-    user: {
-        id: 529,
-        email: "ruffles@mail.com",
-        username: "ramiro",
-        avatar: "https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/users/529/avatar"
-    }
-};
+const USERS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/";
 
 export default function Timeline() {
+    const { loggedUser } = useContext(LoggedUser);
     const [userPostsArray, setUserPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
 
+    console.log("CONTEXTO:", loggedUser);
+
+    function updatePostsArray(response) {
+        if (response.data.posts.length < 1 ) {
+            alert("Nenhum post encontrado");
+            return;
+        }
+        setUserPostsArray(response.data.posts);
+        setPostsLoaded(true);
+    };
+
     useEffect(() => {
         const requestConfig = {
-            headers: {Authorization: `Bearer ${loggedUserInfo.token}`}
+            headers: { Authorization: `Bearer ${loggedUser.token}` }
         };
-        
-        const USER_POSTS_URL = USERS_URL + `${loggedUserInfo.user.id}/posts`;
+
+        const USER_POSTS_URL = USERS_URL + `${loggedUser.id}/posts`;
 
         const userPostsPromise = axios.get(USER_POSTS_URL, requestConfig);
-        userPostsPromise.then((response) => {setUserPostsArray(response.data.posts); setPostsLoaded(true);});
-        userPostsPromise.catch((error) => alert(error.message));
-    }, []);
+        userPostsPromise.then(updatePostsArray);
+        userPostsPromise.catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
+    }, [loggedUser]);
 
-   
-    console.log("postsLoaded?", postsLoaded);
     console.log("posts from user:", userPostsArray);
 
     return (
@@ -48,7 +48,7 @@ export default function Timeline() {
 
                 <DropdownMenu>
                     <IoIosArrowDown />
-                    <UserAvatar src={loggedUserInfo.user.avatar} />
+                    <UserAvatar src={loggedUser.avatar} />
                 </DropdownMenu>
             </TimelineHeader>
 
@@ -58,13 +58,7 @@ export default function Timeline() {
                 </ContainerHeader>
 
                 <ContainerPosts>
-                    <PostsList showList={postsLoaded} avatar={loggedUserInfo.user.avatar} userPostsArray={userPostsArray}/>
-                    
-                    
-                    <Hashtags/>
-                    <TrendingWords>
-                        - excluir -
-                    </TrendingWords>
+                    <PostsList showList={postsLoaded} avatar={loggedUser.avatar} userPostsArray={userPostsArray} />
                 </ContainerPosts>
 
             </MainContainer>
