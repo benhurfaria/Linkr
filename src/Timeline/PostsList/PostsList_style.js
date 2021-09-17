@@ -56,13 +56,9 @@ const PostContent = styled.div `
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    
+               
     & a,h1 {
-        display: -webkit-box;
-        overflow: hidden;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        text-decoration: none;
+        max-width: 100%;        text-decoration: none;
         font-size: 19px;
         font-weight: 400;
         line-height: 23px;
@@ -72,15 +68,16 @@ const PostContent = styled.div `
         -webkit-line-clamp: 2;
     }
     & h2 {
-        font-size: 17px;
-        font-weight: 400;
-        line-height: 20px;
-        color: #B7B7B7;
+        max-width: 100%;
         display: -webkit-box;
         overflow: hidden;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
-    }
+        font-size: 17px;
+        font-weight: 400;
+        line-height: 20px;
+        color: #B7B7B7;
+        }
 `;
 
 const PostPreview = styled.div`
@@ -97,20 +94,24 @@ const PreviewInfo = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    padding: 24px 0 24px 20px;
+    justify-content: center;
+    padding-left: 20px;
     word-wrap: wrap;
     & h1 {
+
         font-size: 16px;
         line-height: 19px;
         color: #CECECE;
+        
     }
     & h2 {
+        margin: 14px auto;
         font-size: 11px;
         line-height: 13px;
         color: #9B9595;
     }
     & h3 {
+        
         font-size: 11px;
         line-height: 13px;
         color: #CECECE;
@@ -118,6 +119,7 @@ const PreviewInfo = styled.div`
 `;
 
 const ThumbPreview = styled.div`
+    margin-left: 14px;
     width: 154px;
     & img {
         width: 100%;
