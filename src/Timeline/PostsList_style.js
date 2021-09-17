@@ -75,11 +75,7 @@ const PostPreview = styled.div`
     border: 1px solid #4D4D4D;
     border-radius: 11px;
     overflow: hidden;
-    & img {
-        margin-left: 4px;
-        object-fit: contain;
-        width: 154px;
-    }
+   
     & span {    /*from ReactHashTag*/
         font-weight: bold;
         color: #FFFFFF;
@@ -111,4 +107,12 @@ const PreviewInfo = styled.div`
     }
 `;
 
-export {AllPostsList, Posts, StillLoading, Post, PostContent, PostPreview, PreviewInfo}
+const ThumbPreview = styled.div`
+    width: 154px;
+    & img {
+        width: 100%;
+        height: 100%;
+    }
+`;
+
+export {AllPostsList, Posts, StillLoading, Post, PostContent, PostPreview, PreviewInfo, ThumbPreview}

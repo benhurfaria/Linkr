@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { UserAvatar } from "./Timeline_style.js";
 import { PostLeftPanel } from "./NewPost_style.js";
-import { Post, PostContent, PostPreview, PreviewInfo } from "./PostsList_style.js";
+import { Post, PostContent, PostPreview, PreviewInfo, ThumbPreview, Thumbnail} from "./PostsList_style.js";
 
 
-import ReactHashtag from "react-hashtag";
+//import ReactHashtag from "react-hashtag";
 import { IoIosHeart } from "react-icons/io";
-import reactDom from "react-dom";
+//import reactDom from "react-dom";
 
 export default function SinglePost({ post }) {
     console.log(">>>>>>>>", post);
@@ -36,8 +36,9 @@ export default function SinglePost({ post }) {
                         <h3>{link}</h3>
 
                     </PreviewInfo>
-                    {
-                        ((linkImage === null) || (linkImage === "")) ? <></> : <img src={linkImage} alt="post preview miniature" />}
+                    <ThumbPreview thumbURL={linkImage}>
+                        <img src={linkImage} alt="thumbnail" />
+                    </ThumbPreview>
 
                 </PostPreview>
                 {/* </ReactHashtag> */}
