@@ -58,19 +58,13 @@ export default function Timeline() {
                 </ContainerHeader>
 
                 <ContainerPosts>
-
-                    <PostsList avatar={loggedUserInfo.user.avatar} userPostsArray={userPostsArray}/>
-
-                    <TrendingWords>
-                        <h2> trending </h2>
-                        <ul>
-                            <li># hashtag 1</li>
-                            <li># hashtag 2</li>
-                            <li># hashtag 3</li>
-                            <li># hashtag 4</li>
-                        </ul>
-                    </TrendingWords>
+                    <PostsList showList={postsLoaded} avatar={loggedUserInfo.user.avatar} userPostsArray={userPostsArray}/>
+                    
+                    
                     <Hashtags/>
+                    <TrendingWords>
+                        - excluir -
+                    </TrendingWords>
                 </ContainerPosts>
 
             </MainContainer>

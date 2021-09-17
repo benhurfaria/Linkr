@@ -5,13 +5,13 @@ import { Post, PostContent, PostPreview, PreviewInfo } from "./PostsList_style.j
 
 import ReactHashtag from "react-hashtag";
 import { IoIosHeart } from "react-icons/io";
+import reactDom from "react-dom";
 
 export default function SinglePost({ userPost }) {
     const { id, likes, text, link, linkTitle, linkDescription, linkImage, user } = userPost;
 
     return (
         <Post key={id}>
-            {console.log(userPost)}
             <PostLeftPanel>
                 <UserAvatar src={user.avatar} />
                 <h1><IoIosHeart /></h1>
@@ -40,5 +40,3 @@ export default function SinglePost({ userPost }) {
         </Post>
     );
 };
-
-

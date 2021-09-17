@@ -12,6 +12,15 @@ const Posts = styled.ul`
     margin: 0 auto auto 0;
 `;
 
+const StillLoading = styled.div`
+    width: 611px;
+    height: 1200px;
+    margin: 0 auto auto 0;
+    background-color: blue;
+    font-size: 49px;
+    color: yellow;
+`
+
 const Post = styled.li`
     width: 611px;
     height: 276px;
@@ -91,4 +100,4 @@ const PreviewInfo = styled.div`
     }
 `;
 
-export {AllPostsList, Posts, Post, PostContent, PostPreview, PreviewInfo}
+export {AllPostsList, Posts, StillLoading, Post, PostContent, PostPreview, PreviewInfo}
