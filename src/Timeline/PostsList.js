@@ -9,10 +9,6 @@ export default function PostsList() {
     return (
         <AllPostsList>
             <NewPost />
-
-            
         </AllPostsList>
-
-
     );
 }

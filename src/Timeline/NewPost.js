@@ -29,9 +29,6 @@ export default function NewPost() {
         if(urlLink === "") return alert("preencha o link");
         
         if(status2.status === "Publicar"){
-            /*setStatus("Publicando...");
-            setCor("desabilitar");
-            setDisable("unable");*/
             setStatus2({disable: "unable", cor: "desabilitar", status:"Publicando..."});
             mandarPost(body, config, setUrlLink, setTexto, setStatus2, setUserPostsArray, userPostsArray);
         }

@@ -16,18 +16,10 @@ export default function Timeline() {
     
     return (
         <ContextPost.Provider value={{userPostsArray, setUserPostsArray}}>
-            
-
             <MainContainer>
-                
-
                 <ContainerPosts>
-
                     <PostsList />
-
-                    
                 </ContainerPosts>
-
             </MainContainer>
         </ContextPost.Provider>
     );
