@@ -37,7 +37,11 @@ export default function SinglePost({ post }) {
 
                     </PreviewInfo>
                     <ThumbPreview thumbURL={linkImage}>
-                        <img src={linkImage} alt="thumbnail" />
+                        {linkImage ? 
+                            <img src={linkImage} alt="thumbnail" />
+                            :
+                            <></>
+                        }
                     </ThumbPreview>
 
                 </PostPreview>

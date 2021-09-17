@@ -109,9 +109,14 @@ const PreviewInfo = styled.div`
 
 const ThumbPreview = styled.div`
     width: 154px;
-    & img {
+    object-fit: fill;
+        & img {
         width: 100%;
         height: 100%;
+        object-fit: fill;
+        //object-fit: cover;
+
+        
     }
 `;
 
