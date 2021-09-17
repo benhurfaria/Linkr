@@ -9,6 +9,10 @@ const Posts = styled.ul`
     width: 611px;
     height: 1200px;
     margin: 0 auto auto 0;
+    & span {    /*from ReactHashTag*/
+    font-weight: bold;
+    color: #FFFFFF;
+    }
 `;
 
 const StillLoading = styled.div`
@@ -75,11 +79,6 @@ const PostPreview = styled.div`
     border: 1px solid #4D4D4D;
     border-radius: 11px;
     overflow: hidden;
-   
-    & span {    /*from ReactHashTag*/
-        font-weight: bold;
-        color: #FFFFFF;
-    }
 `;
 
 const PreviewInfo = styled.div`
@@ -109,15 +108,12 @@ const PreviewInfo = styled.div`
 
 const ThumbPreview = styled.div`
     width: 154px;
-    object-fit: fill;
-        & img {
+    & img {
         width: 100%;
         height: 100%;
-        object-fit: fill;
-        //object-fit: cover;
-
-        
+        object-fit: cover;        
     }
 `;
+
 
 export {AllPostsList, Posts, StillLoading, Post, PostContent, PostPreview, PreviewInfo, ThumbPreview}

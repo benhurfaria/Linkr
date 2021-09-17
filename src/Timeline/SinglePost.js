@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { UserAvatar } from "./Timeline_style.js";
 import { PostLeftPanel } from "./NewPost_style.js";
-import { Post, PostContent, PostPreview, PreviewInfo, ThumbPreview, Thumbnail} from "./PostsList_style.js";
+import { Post, PostContent, PostPreview, PreviewInfo, ThumbPreview} from "./PostsList_style.js";
 
 
-//import ReactHashtag from "react-hashtag";
+import Hashtag from "react-hashtag";
 import { IoIosHeart } from "react-icons/io";
 //import reactDom from "react-dom";
 
@@ -22,30 +22,30 @@ export default function SinglePost({ post }) {
                 <h2> {likes.length} Likes</h2>
             </PostLeftPanel>
             <PostContent>
-                {/* <ReactHashtag> */}
+                <Hashtag>
+                    <Link to={`/user/${user.id}`} >{user.username}</Link>
 
-                <Link to={`/user/${user.id}`} >{user.username}</Link>
+                    <h2>{text}</h2>
+                    <PostPreview>
+                        <PreviewInfo>
+                            <h1> {linkTitle}</h1>
 
-                <h2>{text}</h2>
-                <PostPreview>
-                    <PreviewInfo>
-                        <h1> {linkTitle}</h1>
+                            <h2>{linkDescription}</h2>
 
-                        <h2>{linkDescription}</h2>
+                            <h3>{link}</h3>
 
-                        <h3>{link}</h3>
+                        </PreviewInfo>
+                        <ThumbPreview >
+                            {
+                                linkImage ?
+                                    <img src={linkImage} alt="thumbnail" />
+                                    :
+                                    <></>
+                            }
+                        </ThumbPreview>
 
-                    </PreviewInfo>
-                    <ThumbPreview thumbURL={linkImage}>
-                        {linkImage ? 
-                            <img src={linkImage} alt="thumbnail" />
-                            :
-                            <></>
-                        }
-                    </ThumbPreview>
-
-                </PostPreview>
-                {/* </ReactHashtag> */}
+                    </PostPreview>
+                </Hashtag>
             </PostContent>
 
         </Post>
