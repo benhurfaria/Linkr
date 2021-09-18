@@ -23,13 +23,14 @@ export default function App() {
                             <Login />
                         </Route>
                         <Route exact path="/timeline">
-                            <Timeline />
+                            <Timeline showNewPostCard={true}/>
                         </Route>
                         <Route path='/signup' exact>
                             <SignUp />
                         </Route>
                         <Route exact path='/my-posts'>
-                            <MyPosts />
+                            {/* //<MyPosts /> */}
+                            <Timeline showNewPostCard={false}/>
                         </Route>
                     </Switch>
                 </BrowserRouter>

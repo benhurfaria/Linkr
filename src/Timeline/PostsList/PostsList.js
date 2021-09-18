@@ -1,10 +1,10 @@
-import NewPost from "./NewPost/NewPost.js";
+import NewPost from "../NewPost/NewPost.js";
 
 import { AllPostsList, Posts, StillLoading } from "./PostsList_style.js"
 
 import SinglePost from "./SinglePost.js";
 
-export default function PostsList({ showList, avatar, postsArray }) {
+export default function PostsList({ showList, avatar, postsArray, showNewPostCard }) {
     if (showList === false) {
         return (
             <AllPostsList>
@@ -12,16 +12,34 @@ export default function PostsList({ showList, avatar, postsArray }) {
             </AllPostsList>
         );
     }
-    return (
-        <>
-            <AllPostsList>
-                <NewPost avatar={avatar} />
-                <Posts postsArray={postsArray}>
-                    {postsArray.map((post) =>
-                        <SinglePost post={post} />)
-                    }
-                </Posts>
-            </AllPostsList>
-        </>
-    );
+    else {
+        if (showNewPostCard === false) {
+            return (
+                <>
+                    <AllPostsList>
+                        <Posts postsArray={postsArray}>
+                            {postsArray.map((post) =>
+                                <SinglePost post={post} />)
+                            }
+                        </Posts>
+                    </AllPostsList>
+                </>
+            );
+        }
+        else {
+
+            return (
+                <>
+                    <AllPostsList>
+                        <NewPost avatar={avatar} />
+                        <Posts postsArray={postsArray}>
+                            {postsArray.map((post) =>
+                                <SinglePost post={post} />)
+                            }
+                        </Posts>
+                    </AllPostsList>
+                </>
+            );
+        }
+    }
 }
