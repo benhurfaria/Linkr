@@ -4,7 +4,10 @@ import { AllPostsList, Posts, StillLoading } from "./PostsList_style.js"
 
 import SinglePost from "./SinglePost.js";
 
-export default function PostsList({ showList, avatar, postsArray, showNewPostCard }) {
+
+export default function PostsList({ showList, avatar, postsArray, render }) {
+    
+        
     if (showList === false) {
         return (
             <AllPostsList>
@@ -13,28 +16,27 @@ export default function PostsList({ showList, avatar, postsArray, showNewPostCar
         );
     }
     else {
-        if (showNewPostCard === false) {
+        if (render === "my posts") {
             return (
                 <>
                     <AllPostsList>
                         <Posts postsArray={postsArray}>
                             {postsArray.map((post) =>
-                                <SinglePost post={post} />)
+                                <SinglePost post={post} key={post.id} />)
                             }
                         </Posts>
                     </AllPostsList>
                 </>
             );
         }
-        else {
-
+        if (render === "timeline") {
             return (
                 <>
                     <AllPostsList>
                         <NewPost avatar={avatar} />
                         <Posts postsArray={postsArray}>
                             {postsArray.map((post) =>
-                                <SinglePost post={post} />)
+                                <SinglePost post={post} key={post.id} />)
                             }
                         </Posts>
                     </AllPostsList>

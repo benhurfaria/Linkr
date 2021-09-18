@@ -4,7 +4,7 @@ import { IoIosArrowDown } from "react-icons/io";
 
 import PostsList from "./PostsList/PostsList.js";
 import Hashtags from '../Hashtags/Hashtags'
-import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerPosts } from "./Timeline_style.js";
+import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts } from "./Timeline_style.js";
 
 import { LoggedUser } from '../services/contexts/LoggedUser.js';
 import { ContextPost } from '../services/contexts/ContextPost.js';
@@ -13,7 +13,7 @@ import { getAllPosts, getUserPosts } from "../services/api/Api.js";
 // { email: "ruffles@mail.com", password: "potato" };
 
 
-export default function Timeline({ showNewPostCard }) {
+export default function Timeline({subType}) {
     const { loggedUser } = useContext(LoggedUser);
     const [postsArray, setPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
@@ -35,18 +35,18 @@ export default function Timeline({ showNewPostCard }) {
             }
         };
 
-        if (showNewPostCard === false) {
+        if (subType === "my posts") {
             getUserPosts(requestConfig, loggedUser.id)
                 .then(updatePostsArray)
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
 
-        if (showNewPostCard === true) {
+        if (subType === "timeline") {
             getAllPosts(requestConfig)
                 .then(updatePostsArray)
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
-        }        
-    }, [loggedUser, showNewPostCard]);
+        }
+    }, [loggedUser, subType]);
 
     return (
         <>
@@ -62,8 +62,11 @@ export default function Timeline({ showNewPostCard }) {
                     </DropdownMenu>
                 </TimelineHeader>
                 <MainContainer>
+                    <ContainerHeader>
+                        <h1>{`${subType}`}</h1>
+                    </ContainerHeader>
                     <ContainerPosts>
-                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} showNewPostCard={showNewPostCard} />
+                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} />
                         <Hashtags />
                     </ContainerPosts>
                 </MainContainer>
