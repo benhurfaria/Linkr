@@ -9,7 +9,7 @@ export default function NewPost() {
     const [urlLink, setUrlLink] = useState("");
     const [texto, setTexto] = useState("");
     const [status2, setStatus2] = useState({disable: "", cor: "", status: "Publicar"});
-    const {userPostsArray, setUserPostsArray} = useContext(ContextPost);
+    const {allPostsArray, setAllPostsArray} = useContext(ContextPost);
     const { loggedUser } = useContext(LoggedUser);
     
     const token = loggedUser.token;
@@ -30,7 +30,7 @@ export default function NewPost() {
         
         if(status2.status === "Publicar"){
             setStatus2({disable: "unable", cor: "desabilitar", status:"Publicando..."});
-            mandarPost(body, config, setUrlLink, setTexto, setStatus2, setUserPostsArray, userPostsArray);
+            mandarPost(body, config, setUrlLink, setTexto, setStatus2, setAllPostsArray, allPostsArray);
         }
         
     }

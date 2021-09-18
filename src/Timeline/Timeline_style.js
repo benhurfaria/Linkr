@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-/*
-font-family: 'Passion One', cursive;
-font-family: 'Oswald', sans-serif;
-font-family: 'Lato', sans-serif;
-*/
 
 const TimelineHeader = styled.div`
     width: 100%;

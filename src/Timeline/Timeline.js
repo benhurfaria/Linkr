@@ -1,17 +1,15 @@
 import axios from 'axios';
 
 import React, { useState, useEffect, useContext } from "react";
-import { IoIosArrowDown } from "react-icons/io";
 
 import { LoggedUser } from '../services/contexts/LoggedUser';
 import PostsList from "./PostsList/PostsList.js";
-import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerPosts } from "./Timeline_style.js";
+import { MainContainer, ContainerPosts } from "./Timeline_style.js";
 import Hashtags from '../Hashtags/Hashtags'
 import Topbar from "../Topbar/Topbar.js";
 
 import { ContextPost } from '../services/contexts/ContextPost.js';
 
-// { email: "ruffles@mail.com", password: "potato" };
 
 const POSTS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/";
 

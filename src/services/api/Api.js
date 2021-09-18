@@ -14,14 +14,14 @@ function signUp(body, setDisabled) {
     return promise;
 }
 
-function mandarPost(body, config, setUrlLink, setTexto, setStatus2, setUserPostsArray, userPostsArray){
+function mandarPost(body, config, setUrlLink, setTexto, setStatus2, setAllPostsArray, allPostsArray){
     axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts", body, config)
             .then(res =>{
 
                 setUrlLink("");
                 setTexto("");
                 setStatus2({disable:"", cor: "", status: "Publicar"});
-                setUserPostsArray([res.data.post, ...userPostsArray]);
+                setAllPostsArray([res.data.post, ...allPostsArray]);
             })
             .catch(err =>{
 

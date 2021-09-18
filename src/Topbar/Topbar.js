@@ -1,13 +1,13 @@
 import {Top, DropdownMenu, UserAvatar, SideBar} from './style_topbar';
 import { LoggedUser } from "../services/contexts/LoggedUser";
 import { useContext, useState} from "react";
-import { IoIosArrowDown, IoIosArrowUp, IoLogoWindows } from "react-icons/io";
-import { Link, useHistory } from "react-router-dom";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 export default function Topbar(){
     const { loggedUser } = useContext(LoggedUser)
     const [seta, setSeta] = useState(false);
-    const history = useHistory();
+    
     
     function alteraSeta(){
         if(seta === false){

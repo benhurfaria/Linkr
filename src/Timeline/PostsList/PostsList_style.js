@@ -9,7 +9,7 @@ const Posts = styled.ul`
     width: 611px;
     height: 1200px;
     margin: 0 auto auto 0;
-    & span {    /*from ReactHashTag*/
+    & span {    
     font-weight: bold;
     color: #FFFFFF;
     }

@@ -9,7 +9,7 @@ import { login } from '../services/api/Api'
 import { LoggedUser } from '../services/contexts/LoggedUser';
 
 export default function Login() {
-    const {loggedUser, setLoggedUser } = useContext(LoggedUser);
+    const { setLoggedUser } = useContext(LoggedUser);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [disabled, setDisabled] = useState(false);
