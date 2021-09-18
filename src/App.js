@@ -34,6 +34,12 @@ export default function App() {
                         <Route path='/signup' exact>
                             <SignUp />
                         </Route>
+                        <Route path="/my-post" exact>
+
+                        </Route>
+                        <Route path="/my-likes" exact>
+                            
+                        </Route>
                     </Switch>
                 </BrowserRouter>
             </LoggedUser.Provider>
