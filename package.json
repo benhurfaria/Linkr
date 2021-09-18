@@ -9,6 +9,7 @@
     "axios": "^0.21.4",
     "react": "^16.0.2",
     "react-dom": "^16.0.2",
+    "react-hashtag": "^2.1.2",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
@@ -16,6 +17,7 @@
     "styled-components": "^5.3.1",
     "web-vitals": "^1.1.2"
   },
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
