@@ -55,18 +55,18 @@ function getHashtag( config){
     return promise;
 };
 
-function giveLike(postId, config){
+function giveLike(postId, config, body){
     
-    //const Url = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${postId}/like`;
-    const promise = axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${postId}/like`, config);
+    const Url = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${postId}/like`;
+    const promise = axios.post(Url,body, config);
     return promise;
 };
 
-function dislike(postId, config){
+function dislike(postId, config, body){
    
     const Url = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${postId}/dislike`;
-    console.log(Url)
-    const promise = axios.post(Url, config);
+   
+    const promise = axios.post(Url, body, config);
     return promise;
 };
 

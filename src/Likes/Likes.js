@@ -8,77 +8,107 @@ import { giveLike, dislike } from '../services/api/Api';
 
 
 export default function Likes() {
+
     const [liked, setLiked] = useState(false)
     const { loggedUser } = useContext(LoggedUser);
-    //console.log(loggedUser)
-    //console.log(loggedUser.token)
+    const [likesCounter, setLikesCounter] = useState(0);
+    const [likesTip, setLikesTip] = useState({})
+
     const postObj = {
         posts: [
             {
-                "id": 249,
-                "text": "haha\n",
-                "link": "https://g1.globo.com/ciencia-e-saude/viva-voce/noticia/2020/01/15/como-calcular-a-verdadeira-idade-do-seu-cachorro.ghtml",
-                "linkTitle": "Como calcular a verdadeira idade do seu cachorro",
-                "linkDescription": "No primeiro ano de vida, os filhotes crescem tão rapidamente que envelhecem o equivalente a 31 anos humanos.",
-                "linkImage": "https://s2.glbimg.com/7tn_lc7d43PQAo-LyaBYZsAWhoc=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/U/e/NTegqdSe6SoBAoQDjKZA/cachorro.jpg",
-                "user": {
-                    "id": 66,
-                    "username": "digdiego13",
-                    "avatar": "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/66/avatar"
+                id: 329,
+                text: "PIMP IT BABY! #potato #abacatenaoehavocado #guacamoleismurder",
+                link: "https://stackabuse.com/pimp-my-terminal-an-introduction-to-oh-my-zsh/",
+                linkTitle: "Pimp my Terminal - An Introduction to \"Oh My Zsh\"",
+                linkDescription: "In this introductory guide, we'll lay the foundations of using Oh My Zsh to pimp and customize your UNIX terminal.",
+                linkImage: "",
+                user: {
+                    id: 4,
+                    username: "ramiro",
+                    avatar: "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/4/avatar"
                 },
-                "likes": [],
-                "commentCount": 0,
-                "repostCount": 0
+                likes: [
+                    {
+                        id: 573,
+                        userId: 78,
+                        postId: 329,
+                        createdAt: "2021-09-17T22:22:17.817Z",
+                        updatedAt: "2021-09-17T22:22:17.817Z",
+                        userid: 78,
+                        userusername: "Marcio Cunha"
+                    }
+                ],
+                commentCount: 0,
+                repostCount: 0
             }
+
         ]
     }
 
-    const config = {
-        headers: {
-            Authorization: `Bearer ${loggedUser.token}`
-        }
-    };
-    
+
 
     function like() {
-        const postId = 66;
-       
-       
+        const postId = 329;
+        const body = ''
+        const config = {
+            headers: {
+                Authorization: `Bearer ${loggedUser.token}`
+            }
+        };
+
         if (liked === false) {
             setLiked(true)
-            
-           
-            const promise = giveLike(postId, config)
-            promise.then(res => console.log(res.data));
+
+
+            const promise = giveLike(postId, config, body)
+
+            promise.then(res => {
+                setLikesTip(res.data.post.likes)
+                // console.log(likesTip)
+                setLikesCounter(res.data.post.likes.length)
+            })
 
 
 
 
         } else {
             setLiked(false)
-            const promise = dislike(postId, config)
-            promise.then(res=> console.log(res.data))
+            //setLikesCounter(likesCounter-1)
+            const promise = dislike(postId, config, body)
+            promise.then(res => {
+                setLikesTip(res.data.post.likes)
+                //console.log(likesTip)
+                setLikesCounter(res.data.post.likes.length)
+            })
+            likesTip.forEach(element => {
+                console.log(element)
+            });
         }
     }
     return (
-        
+
         <>
-        
+
             <LikeObj data-tip data-for='registerTip'>
                 <Button type='button' onClick={like} >
                     {liked ? <Liked><BsHeartFill /> </Liked> : <NotLiked><BsHeart /></NotLiked>}
                 </Button>
-                <Counter>0</Counter>
+                <Counter>{likesCounter}</Counter>
 
             </LikeObj>
-            <ReactTooltip id='registerTip'
-                place='bottom'
-                effect='solid' >
-                Teste
-            </ReactTooltip>
+            <StyledTooltip id='registerTip' place='bottom' effect='solid' backgroundColor='rgba(255, 255, 255, 0.9)' textColor='#505050' >
+                {liked ? likesTip.forEach(e => e.username) : ``}
+                {/* {liked ? `${loggedUser.username} e outras ${likesTip.length - 1} pessoa(s) cutiram ` : `teste`} */}
+            </StyledTooltip>
         </>
     );
 }
+const StyledTooltip = styled(ReactTooltip)`
+  font-family: 'Lato', sans-serif;
+  background-color: rgba(255, 255, 255, 0.9) ;
+  color: #505050;
+`
 const LikeObj = styled.div`
     display: flex;
     flex-direction: column;
