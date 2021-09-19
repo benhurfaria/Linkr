@@ -10,8 +10,6 @@ import { LoggedUser } from '../services/contexts/LoggedUser.js';
 import { ContextPost } from '../services/contexts/ContextPost.js';
 import { getAllPosts, getUserPosts } from "../services/api/Api.js";
 
-// { email: "ruffles@mail.com", password: "potato" };
-
 
 export default function Timeline({subType}) {
     const { loggedUser } = useContext(LoggedUser);

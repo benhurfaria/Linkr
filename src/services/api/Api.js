@@ -76,4 +76,3 @@ function getAllPosts(configHeader) {
 
 
 export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts }
-
