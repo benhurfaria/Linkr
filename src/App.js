@@ -33,7 +33,11 @@ export default function App() {
                         <Route exact path="/my-posts">
                             <Timeline subType="my posts" />
                         </Route>
-
+                        
+                        <Route exat path="/my-likes">
+                            <Timeline subType="my likes"/>
+                        </Route>
+                        
                     </Switch>
                 </BrowserRouter>
             </LoggedUser.Provider>
