@@ -63,7 +63,7 @@ export default function SignUp() {
                     <Input type='password' placeholder=' password' value={password} onChange={e => setPassword(e.target.value)} disabled={disabled}></Input>
                     <Input type='text' placeholder=' username' value={username} onChange={e => setUsername(e.target.value)} disabled={disabled}></Input>
                     <Input type='text' placeholder=' picture url' value={pictureUrl} onChange={e => setPictureUrl(e.target.value)} disabled={disabled}></Input>
-                    <Button type='button' disabled={disabled} >Sign Up</Button>
+                    <Button type='submit' disabled={disabled} >Sign Up</Button>
                 </Form>
                 <Link to='/'>
                     <BackToLogin>Switch back to log in</BackToLogin>

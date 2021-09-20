@@ -1,10 +1,13 @@
-import NewPost from "./NewPost/NewPost.js";
+import NewPost from "../NewPost/NewPost.js";
 
 import { AllPostsList, Posts, StillLoading } from "./PostsList_style.js"
 
 import SinglePost from "./SinglePost.js";
 
-export default function PostsList({ showList, avatar, allPostsArray }) {
+
+export default function PostsList({ showList, avatar, postsArray, render }) {
+    
+
     if (showList === false) {
         return (
             <AllPostsList>
@@ -12,16 +15,35 @@ export default function PostsList({ showList, avatar, allPostsArray }) {
             </AllPostsList>
         );
     }
-    return (
-        <>
-            <AllPostsList>
-                <NewPost avatar={avatar} />
-                <Posts allPostsArray={allPostsArray}>
-                    {allPostsArray.map((post) =>
-                        <SinglePost key={post.id} post={post} />)
-                    }
-                </Posts>
-            </AllPostsList>
-        </>
-    );
+
+    else {
+        if (render === "my posts") {
+            return (
+                <>
+                    <AllPostsList>
+                        <Posts postsArray={postsArray}>
+                            {postsArray.map((post) =>
+                                <SinglePost post={post} key={post.id} />)
+                            }
+                        </Posts>
+                    </AllPostsList>
+                </>
+            );
+        }
+        if (render === "timeline") {
+            return (
+                <>
+                    <AllPostsList>
+                        <NewPost avatar={avatar} />
+                        <Posts postsArray={postsArray}>
+                            {postsArray.map((post) =>
+                                <SinglePost post={post} key={post.id} />)
+                            }
+                        </Posts>
+                    </AllPostsList>
+                </>
+            );
+        }
+    }
+
 }

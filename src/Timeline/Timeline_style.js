@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-/*
-font-family: 'Passion One', cursive;
-font-family: 'Oswald', sans-serif;
-font-family: 'Lato', sans-serif;
-*/
 
 const TimelineHeader = styled.div`
     width: 100%;
@@ -50,7 +45,7 @@ const MainContainer = styled.div`
 `;
 
 const ContainerHeader = styled.div`
-    width: 145px;
+    max-width: 400px;
     height: 64px;
     margin: 5px auto 43px 0;
     font-family: 'Oswald', sans-serif;

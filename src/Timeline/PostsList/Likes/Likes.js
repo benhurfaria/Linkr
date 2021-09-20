@@ -18,8 +18,6 @@ export default function Likes({ likes, id }) {
             likes.map(like => setLikesTip( [{username: like["user.username"] }]))
         }
         likes.forEach(like => { if (like["user.id"] === loggedUser.id) setLiked(true) })
-        
-
     }, [likes, loggedUser])
 
     function like() {
@@ -58,7 +56,7 @@ export default function Likes({ likes, id }) {
         if (likes.length !== 0 && likesTip.length === 0) {
             switch (likes.length) {
                 case 0:
-                    console.log('1')
+                    
                     return undefined;
                 case 1:
                     if (liked) {
@@ -68,13 +66,13 @@ export default function Likes({ likes, id }) {
                     }
                 case 2:
                     if (liked) {
-                        return `Você  e ${likes[0]["user.username"]} curtiram`;
+                        return `Você  e ${likes[1]["user.username"]} curtiram`;
                     } else {
                         return `${likes[0]["user.username"]} e ${likes[1]["user.username"]} curtiram`;
                     }
                 default:
                     if (liked) {
-                        return `Você, ${likes[0]["user.username"]} e mais ${likes.length} 
+                        return `Você, ${likes[1]["user.username"]} e mais ${likes.length} 
                     pessoa${likes.length === 3 ? '' : "s"} curti${likes.length === 3 ? 'u' : "ram"}`;
                     } else {
                         return `${likes[0]["user.username"]}, ${likes[1]["user.username"]} e mais ${likes.length - 2} 
@@ -85,7 +83,7 @@ export default function Likes({ likes, id }) {
 
             switch (likesTip.length) {
                 case 0:
-                    console.log('1')
+                    
                     return undefined;
                 case 1:
                     if (liked) {
@@ -95,13 +93,13 @@ export default function Likes({ likes, id }) {
                     }
                 case 2:
                     if (liked) {
-                        return `Você  e ${likesTip[0].username} curtiram`;
+                        return `Você  e ${likesTip[1].username} curtiram`;
                     } else {
                         return `${likesTip[0].username} e ${likesTip[1].username} curtiram`;
                     }
                 default:
                     if (liked) {
-                        return `Você, ${likesTip[0].username} e mais ${likesTip.length - 2} 
+                        return `Você, ${likesTip[1].username} e mais ${likesTip.length - 2} 
                     pessoa${likesTip.length === 3 ? '' : "s"} curti${likesTip.length === 3 ? 'u' : "ram"}`;
                     } else {
                         return `${likesTip[0].username}, ${likesTip[1].username} e mais ${likesTip.length - 2} 
