@@ -7,7 +7,7 @@ import { LoggedUser } from '../services/contexts/LoggedUser';
 import PostsList from "./PostsList/PostsList.js";
 import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerPosts } from "./Timeline_style.js";
 import Hashtags from '../Hashtags/Hashtags'
-import Likes from "../Likes/Likes.js";
+//import Likes from "../Likes/Likes.js";
 
 import { ContextPost } from '../services/contexts/ContextPost.js';
 

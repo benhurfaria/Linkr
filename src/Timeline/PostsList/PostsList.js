@@ -18,7 +18,7 @@ export default function PostsList({ showList, avatar, allPostsArray }) {
                 <NewPost avatar={avatar} />
                 <Posts allPostsArray={allPostsArray}>
                     {allPostsArray.map((post) =>
-                        <SinglePost post={post} />)
+                        <SinglePost key={post.id} post={post} />)
                     }
                 </Posts>
             </AllPostsList>
