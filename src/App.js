@@ -8,6 +8,8 @@ import './shared/styles/index.css';
 import SignUp from "./SignUp/SignUp.js";
 import Login from "./Login/Login";
 import Timeline from "./Timeline/Timeline.js";
+import MyPosts from "./MyPosts/MyPosts.js";
+
 
 export default function App() {
     const [signedUser, setSignedUser] = useState({})
@@ -28,7 +30,10 @@ export default function App() {
                             <SignUp />
                         </Route>
                         <Route exact path="/my-posts">
-                            <Timeline subType="my posts" />
+                            <MyPosts />
+                        </Route>
+                        <Route exact path="/user/:id">
+                            {/* <UserPosts /> */}
                         </Route>
                     </Switch>
                 </BrowserRouter>

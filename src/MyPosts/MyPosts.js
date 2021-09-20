@@ -4,14 +4,14 @@ import { IoIosArrowDown } from "react-icons/io";
 
 import PostsList from "../shared/PostsList/PostsList.js";
 import Hashtags from '../Hashtags/Hashtags'
-import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts } from "./Timeline_style.js";
+import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts } from "../Timeline/Timeline_style.js";
 
 import { LoggedUser } from '../services/contexts/LoggedUser.js';
 import { ContextPost } from '../services/contexts/ContextPost.js';
-import { getAllPosts, getUserPosts } from "../services/api/Api.js";
+import { getUserPosts } from "../services/api/Api.js";
 
 
-export default function Timeline() {
+export default function Timeline({ subType }) {
     const { loggedUser } = useContext(LoggedUser);
     const [postsArray, setPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
@@ -33,10 +33,10 @@ export default function Timeline() {
             }
         };
 
-        getAllPosts(requestConfig)
+        getUserPosts(requestConfig, loggedUser.id)
             .then(updatePostsArray)
             .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
-    }, [loggedUser])
+    }, [loggedUser]);
 
     return (
         <>
@@ -53,10 +53,10 @@ export default function Timeline() {
                 </TimelineHeader>
                 <MainContainer>
                     <ContainerHeader>
-                        <h1>timeline</h1>
+                        <h1>{`${subType}`}</h1>
                     </ContainerHeader>
                     <ContainerPosts>
-                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render="timeline"/>
+                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render="my posts" />
                         <Hashtags />
                     </ContainerPosts>
                 </MainContainer>

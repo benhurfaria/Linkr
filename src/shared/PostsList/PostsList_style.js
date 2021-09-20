@@ -58,14 +58,19 @@ const PostContent = styled.div `
     justify-content: space-between;
                
     & a,h1 {
-        max-width: 100%;        text-decoration: none;
+        text-decoration: none;
+        max-width: 100%;
         font-size: 19px;
         font-weight: 400;
         line-height: 23px;
         color: #FFFFFF;        
     }
     & a {
-        -webkit-line-clamp: 2;
+        max-width: 100%;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
     }
     & h2 {
         max-width: 100%;

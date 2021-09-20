@@ -1,5 +1,5 @@
 import { NewPostFrame, NewPostForm, NewPostURL, NewPostComment, PostLeftPanel } from "./NewPost_style.js";
-import { UserAvatar } from "../Timeline_style.js";
+import { UserAvatar } from "../../Timeline/Timeline_style.js";
 import { useState, useContext } from "react";
 import { mandarPost } from '../../services/api/Api.js';
 import { ContextPost } from "../../services/contexts/ContextPost.js";
