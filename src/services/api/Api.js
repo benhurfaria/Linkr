@@ -55,12 +55,29 @@ function getHashtag( config){
     return promise;
 };
 
+
+function giveLike(postId, config, body){
+    
+    const Url = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${postId}/like`;
+    const promise = axios.post(Url,body, config);
+    return promise;
+};
+
+function dislike(postId, config, body){
+   
+    const Url = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${postId}/dislike`;
+   
+    const promise = axios.post(Url, body, config);
+    return promise;
+};
+
 function getUserPosts(configHeader, userID) {
     const USERPOSTS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/";
 
     const appendedURL = USERPOSTS_URL + `${userID}/posts`;
 
     const userPostsPromise = axios.get(appendedURL, configHeader);
+
 
     return userPostsPromise;    
 }
@@ -75,4 +92,4 @@ function getAllPosts(configHeader) {
 
 
 
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts }
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts,  giveLike, dislike }

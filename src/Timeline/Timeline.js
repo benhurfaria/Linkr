@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PostsList from "./PostsList/PostsList.js";
 import { MainContainer, ContainerHeader, ContainerPosts} from "./Timeline_style.js";
 import Hashtags from '../Hashtags/Hashtags'
+
 import Topbar from "../Topbar/Topbar.js";
 import { LoggedUser } from '../services/contexts/LoggedUser.js';
 import { ContextPost } from '../services/contexts/ContextPost.js';
@@ -43,6 +44,7 @@ export default function Timeline({subType}) {
     }, [loggedUser, subType]);
 
     return (
+
         <>
             <ContextPost.Provider value={{ postsArray, setPostsArray }}>
                 <Topbar/>
@@ -57,5 +59,6 @@ export default function Timeline({subType}) {
                 </MainContainer>
             </ContextPost.Provider>
         </>
+
     );
 }
