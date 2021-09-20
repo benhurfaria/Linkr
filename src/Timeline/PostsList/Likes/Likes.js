@@ -35,7 +35,7 @@ export default function Likes({ likes, id }) {
             promise.then(res => {
                 setLikesTip(res.data.post.likes)
                 setLikesCounter(res.data.post.likes.length)
-                console.log(res.data.post.likes)
+                
             })
 
 
@@ -46,7 +46,7 @@ export default function Likes({ likes, id }) {
             promise.then(res => {
                 setLikesTip(res.data.post.likes)
                 setLikesCounter(res.data.post.likes.length)
-                console.log(res.data.post.likes)
+                
             })
 
         }
