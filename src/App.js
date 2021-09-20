@@ -21,7 +21,7 @@ export default function App() {
                         <Route path='/' exact>
                             <Login />
                         </Route>
-                        
+
                         <Route exact path="/timeline">
                             <Timeline subType="timeline" />
                         </Route>
@@ -30,13 +30,10 @@ export default function App() {
                             <SignUp />
                         </Route>
 
-                        <Route path="/my-likes" exact>
-
-                        </Route>
-
                         <Route exact path="/my-posts">
                             <Timeline subType="my posts" />
                         </Route>
+
                     </Switch>
                 </BrowserRouter>
             </LoggedUser.Provider>
