@@ -45,7 +45,7 @@ const MainContainer = styled.div`
 `;
 
 const ContainerHeader = styled.div`
-    width: 145px;
+    max-width: 400px;
     height: 64px;
     margin: 5px auto 43px 0;
     font-family: 'Oswald', sans-serif;

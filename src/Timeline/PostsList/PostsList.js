@@ -1,12 +1,12 @@
-import NewPost from "./NewPost/NewPost.js";
+import NewPost from "../NewPost/NewPost.js";
 
 import { AllPostsList, Posts, StillLoading } from "./PostsList_style.js"
-import { ContextPost } from "../../services/contexts/ContextPost.js";
-import SinglePost from "./SinglePost.js";
-import { useContext } from "react";
 
-export default function PostsList({ showList, avatar }) {
-    const {allPostsArray} = useContext(ContextPost);
+import SinglePost from "./SinglePost.js";
+
+
+export default function PostsList({ showList, avatar, postsArray, render }) {
+    
 
     if (showList === false) {
         return (
@@ -15,16 +15,33 @@ export default function PostsList({ showList, avatar }) {
             </AllPostsList>
         );
     }
-    return (
-        <>
-            <AllPostsList>
-                <NewPost avatar={avatar} />
-                <Posts allPostsArray={allPostsArray}>
-                    {allPostsArray.map((post) =>
-                        <SinglePost post={post} />)
-                    }
-                </Posts>
-            </AllPostsList>
-        </>
-    );
+    else {
+        if (render === "my posts") {
+            return (
+                <>
+                    <AllPostsList>
+                        <Posts postsArray={postsArray}>
+                            {postsArray.map((post) =>
+                                <SinglePost post={post} key={post.id} />)
+                            }
+                        </Posts>
+                    </AllPostsList>
+                </>
+            );
+        }
+        if (render === "timeline") {
+            return (
+                <>
+                    <AllPostsList>
+                        <NewPost avatar={avatar} />
+                        <Posts postsArray={postsArray}>
+                            {postsArray.map((post) =>
+                                <SinglePost post={post} key={post.id} />)
+                            }
+                        </Posts>
+                    </AllPostsList>
+                </>
+            );
+        }
+    }
 }

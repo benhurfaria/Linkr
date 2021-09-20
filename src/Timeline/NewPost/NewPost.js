@@ -1,15 +1,15 @@
 import { NewPostFrame, NewPostForm, NewPostURL, NewPostComment, PostLeftPanel } from "./NewPost_style.js";
-import { UserAvatar } from "../../Timeline_style.js";
+import { UserAvatar } from "../Timeline_style.js";
 import { useState, useContext } from "react";
-import { mandarPost } from '../../../services/api/Api.js';
-import { ContextPost } from "../../../services/contexts/ContextPost.js";
-import { LoggedUser } from "../../../services/contexts/LoggedUser.js";
+import { mandarPost } from '../../services/api/Api.js';
+import { ContextPost } from "../../services/contexts/ContextPost.js";
+import { LoggedUser } from "../../services/contexts/LoggedUser.js";
 
 export default function NewPost() {
     const [urlLink, setUrlLink] = useState("");
     const [texto, setTexto] = useState("");
     const [status2, setStatus2] = useState({disable: "", cor: "", status: "Publicar"});
-    const {allPostsArray, setAllPostsArray} = useContext(ContextPost);
+    const {postsArray, setPostsArray} = useContext(ContextPost);
     const { loggedUser } = useContext(LoggedUser);
     
     const token = loggedUser.token;
@@ -30,7 +30,7 @@ export default function NewPost() {
         
         if(status2.status === "Publicar"){
             setStatus2({disable: "unable", cor: "desabilitar", status:"Publicando..."});
-            mandarPost(body, config, setUrlLink, setTexto, setStatus2, setAllPostsArray, allPostsArray);
+            mandarPost(body, config, setUrlLink, setTexto, setStatus2, setPostsArray, postsArray);
         }
         
     }

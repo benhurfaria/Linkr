@@ -14,14 +14,14 @@ function signUp(body, setDisabled) {
     return promise;
 }
 
-function mandarPost(body, config, setUrlLink, setTexto, setStatus2, setAllPostsArray, allPostsArray){
+function mandarPost(body, config, setUrlLink, setTexto, setStatus2, setPostsArray, postsArray){
     axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts", body, config)
             .then(res =>{
 
                 setUrlLink("");
                 setTexto("");
                 setStatus2({disable:"", cor: "", status: "Publicar"});
-                setAllPostsArray([res.data.post, ...allPostsArray]);
+                setPostsArray([res.data.post, ...postsArray]);
             })
             .catch(err =>{
 
@@ -55,7 +55,24 @@ function getHashtag( config){
     return promise;
 };
 
+function getUserPosts(configHeader, userID) {
+    const USERPOSTS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/";
+
+    const appendedURL = USERPOSTS_URL + `${userID}/posts`;
+
+    const userPostsPromise = axios.get(appendedURL, configHeader);
+
+    return userPostsPromise;    
+}
+
+function getAllPosts(configHeader) {
+    const POSTS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/";
+
+    const allPostsPromise = axios.get(POSTS_URL, configHeader);
+
+    return allPostsPromise;
+}
 
 
-export { signUp, login, getHashtag, mandarPost }
 
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts }
