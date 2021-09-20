@@ -34,7 +34,7 @@ export default function App() {
                             <Timeline subType="my posts" />
                         </Route>
                         
-                        <Route exact path="/my-likes">
+                        <Route path="/my-likes" exact>
                             <Timeline subType="my likes"/>
                         </Route>
                         

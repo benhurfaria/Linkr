@@ -90,6 +90,10 @@ function getAllPosts(configHeader) {
     return allPostsPromise;
 }
 
+function getMyLikes(config){
+    return axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/liked", config);
+
+}
 
 
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts,  giveLike, dislike }
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts,  giveLike, dislike, getMyLikes }
