@@ -55,7 +55,24 @@ function getHashtag( config){
     return promise;
 };
 
+function getUserPosts(configHeader, userID) {
+    const USERPOSTS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/";
+
+    const appendedURL = USERPOSTS_URL + `${userID}/posts`;
+
+    const userPostsPromise = axios.get(appendedURL, configHeader);
+
+    return userPostsPromise;    
+}
+
+function getAllPosts(configHeader) {
+    const POSTS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/";
+
+    const allPostsPromise = axios.get(POSTS_URL, configHeader);
+
+    return allPostsPromise;
+}
 
 
-export { signUp, login, getHashtag, mandarPost }
 
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts }
