@@ -34,10 +34,10 @@ export default function Topbar(){
         {
             seta ? 
             <SideBar>
-                <Link to="/my-posts" class="decoration">
+                <Link to="/my-posts" className="decoration">
                     <h1>My posts</h1>
                 </Link>
-                <Link to="/my-likes" class="decoration">
+                <Link to="/my-likes" className="decoration">
                     <h1>My likes</h1>
                 </Link>
                 <h1 onClick={limpaStorage}>Logout</h1>
