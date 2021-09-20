@@ -38,13 +38,14 @@ function login(body, setDisabled) {
     promise.catch(err => {
         setDisabled(false)
         if (err.response.status === 401) {
-            alert('Usuário/senha incorretos');
-        }
-        if (err.response.status === 400) {
+           
             alert('Dados inseridos são invalídos!');
         }
+        if (err.response.status === 400) {
+            alert('Usuário/senha incorretos');
+        }
         if (err.response.status === 403) {
-            alert("Usuario não encontrado!");
+            alert('Usuário/senha incorretos');
         }
     })
     return promise;

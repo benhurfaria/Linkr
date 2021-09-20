@@ -15,7 +15,7 @@ export default function Likes({ likes, id }) {
     const [likesTip, setLikesTip] = useState([])
     useEffect(() => {
         if (!t) {
-            likes.map(like => setLikesTip( [{username: like["user.username"] }]))
+            likes.map(like => setLikesTip( [{userId: like["user.id"],username: like["user.username"] }]))
         }
         likes.forEach(like => { if (like["user.id"] === loggedUser.id) setLiked(true) })
     }, [likes, loggedUser])
@@ -53,10 +53,13 @@ export default function Likes({ likes, id }) {
     }
 
     function peoplesLikes() {
+        
+        
+       
+        
         if (likes.length !== 0 && likesTip.length === 0) {
             switch (likes.length) {
                 case 0:
-                    
                     return undefined;
                 case 1:
                     if (liked) {
@@ -66,13 +69,15 @@ export default function Likes({ likes, id }) {
                     }
                 case 2:
                     if (liked) {
-                        return `Você  e ${likes[1]["user.username"]} curtiram`;
+                        likes = likes.filter(like =>{return like["user.id"] !== loggedUser.id})
+                        return `Você  e ${likes[0]["user.username"]} curtiram`;
                     } else {
                         return `${likes[0]["user.username"]} e ${likes[1]["user.username"]} curtiram`;
                     }
                 default:
                     if (liked) {
-                        return `Você, ${likes[1]["user.username"]} e mais ${likes.length} 
+                        likes = likes.filter(like =>{return like["user.id"] !== loggedUser.id})
+                        return `Você, ${likes[0]["user.username"]} e mais ${likes.length} 
                     pessoa${likes.length === 3 ? '' : "s"} curti${likes.length === 3 ? 'u' : "ram"}`;
                     } else {
                         return `${likes[0]["user.username"]}, ${likes[1]["user.username"]} e mais ${likes.length - 2} 
@@ -80,31 +85,34 @@ export default function Likes({ likes, id }) {
                     }
             }
         } else {
-
+            let likesTip1 = likesTip.filter(like =>{return like.userId !== loggedUser.id})
+            
             switch (likesTip.length) {
                 case 0:
-                    
                     return undefined;
                 case 1:
                     if (liked) {
                         return `Você curtiu`
-                    } else {
-                        return `${likesTip[0].username} curtiu`;
+                    } else if(likesTip1.length === 1) {
+                        return `${likesTip1[0].username} curtiu`;
                     }
+                    break;
                 case 2:
                     if (liked) {
-                        return `Você  e ${likesTip[1].username} curtiram`;
-                    } else {
-                        return `${likesTip[0].username} e ${likesTip[1].username} curtiram`;
+                        return `Você  e ${likesTip1[0].username} curtiram`;
+                    } else if(likesTip1.length === 2){
+                        return `${likesTip1[0].username} e ${likesTip1[1].username} curtiram`;
                     }
+                    break;
                 default:
                     if (liked) {
-                        return `Você, ${likesTip[1].username} e mais ${likesTip.length - 2} 
+                        return `Você, ${likesTip1[0].username} e mais ${likesTip.length - 2} 
                     pessoa${likesTip.length === 3 ? '' : "s"} curti${likesTip.length === 3 ? 'u' : "ram"}`;
-                    } else {
-                        return `${likesTip[0].username}, ${likesTip[1].username} e mais ${likesTip.length - 2} 
+                    } else if(likesTip1.length >=3 ){
+                        return `${likesTip1[0].username}, ${likesTip1[1].username} e mais ${likesTip.length - 2} 
                     pessoa${likesTip.length === 3 ? '' : "s"} curti${likesTip.length === 3 ? 'u' : "ram"}`;
                     }
+                    break;
             }
         }
     }
