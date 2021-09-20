@@ -21,15 +21,23 @@ export default function App() {
                         <Route path='/' exact>
                             <Login />
                         </Route>
+
                         <Route exact path="/timeline">
                             <Timeline subType="timeline" />
                         </Route>
+
                         <Route path='/signup' exact>
                             <SignUp />
                         </Route>
+
                         <Route exact path="/my-posts">
                             <Timeline subType="my posts" />
                         </Route>
+                        
+                        <Route exat path="/my-likes">
+                            <Timeline subType="my likes"/>
+                        </Route>
+                        
                     </Switch>
                 </BrowserRouter>
             </LoggedUser.Provider>

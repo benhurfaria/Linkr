@@ -41,7 +41,8 @@ const Trending = styled.div`
     width: 230px;
     background-color: #151515;
     border-radius: 10px;
-    margin: 0 auto auto 25px;
+    margin: 80px 0 0 25px;
+
 `
 
 export { Sharp, SharpList, TrendingTitle, Border, Trending }

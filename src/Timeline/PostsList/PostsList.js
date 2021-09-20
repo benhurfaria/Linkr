@@ -7,7 +7,7 @@ import SinglePost from "./SinglePost.js";
 
 export default function PostsList({ showList, avatar, postsArray, render }) {
     
-        
+
     if (showList === false) {
         return (
             <AllPostsList>
