@@ -20,10 +20,13 @@ const Button = styled.button`
     background-color: #171717;
     height: 30px;
     width: 60px;
+    :hover{
+    cursor: pointer;
+  }
 `
 const Counter = styled.div`
     color: #ffffff;
     font-family: 'Lato', sans-serif;
     font-size: 16px;
 `
-export { LikeObj, Liked,NotLiked, Button, Counter}
+export { LikeObj, Liked, NotLiked, Button, Counter }

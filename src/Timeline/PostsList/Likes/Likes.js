@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { BsHeart, BsHeartFill } from 'react-icons/bs'
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip'
@@ -8,14 +8,19 @@ import { giveLike, dislike } from '../../../services/api/Api';
 import { LikeObj, Liked, NotLiked, Button, Counter } from './style_Likes'
 
 export default function Likes({ likes, id }) {
+    const t = useRef(false)
     const [liked, setLiked] = useState(false)
     const { loggedUser } = useContext(LoggedUser);
     const [likesCounter, setLikesCounter] = useState(likes.length);
     const [likesTip, setLikesTip] = useState([])
     useEffect(() => {
-        likes.map(like => likesTip.push({ userId: like["user.id"], username: like["user.username"] }))
-        likesTip.forEach(like => {if(like.userId === loggedUser.id) setLiked(true)})
-    }, [likes, loggedUser, likesTip])
+        if (!t) {
+            likes.map(like => setLikesTip( [{username: like["user.username"] }]))
+        }
+        likes.forEach(like => { if (like["user.id"] === loggedUser.id) setLiked(true) })
+        
+
+    }, [likes, loggedUser])
 
     function like() {
         const postId = id;
@@ -27,42 +32,86 @@ export default function Likes({ likes, id }) {
         };
         if (liked === false) {
             setLiked(true)
+            StyledTooltip.rebuild();
             const promise = giveLike(postId, config, body)
             promise.then(res => {
                 setLikesTip(res.data.post.likes)
-                //console.log(likesTip)
                 setLikesCounter(res.data.post.likes.length)
+                console.log(res.data.post.likes)
             })
 
 
         } else {
             setLiked(false)
-
+            StyledTooltip.rebuild();
             const promise = dislike(postId, config, body)
             promise.then(res => {
                 setLikesTip(res.data.post.likes)
                 setLikesCounter(res.data.post.likes.length)
+                console.log(res.data.post.likes)
             })
 
         }
     }
 
     function peoplesLikes() {
-        switch (likesTip.length) {
-            case 0:
-                return undefined;
-            case 1:
-                return `${likesTip[0].username}`;
-            case 2:
-                return `${likesTip[0].username}, ${likesTip[1].username}`;
-            default:
-                return `${likesTip[0].username}, ${likesTip[1].username} e mais ${likesTip.length - 2} 
+        if (likes.length !== 0 && likesTip.length === 0) {
+            switch (likes.length) {
+                case 0:
+                    console.log('1')
+                    return undefined;
+                case 1:
+                    if (liked) {
+                        return `Você curtiu`
+                    } else {
+                        return `${likes[0]["user.username"]} curtiu`;
+                    }
+                case 2:
+                    if (liked) {
+                        return `Você  e ${likes[0]["user.username"]} curtiram`;
+                    } else {
+                        return `${likes[0]["user.username"]} e ${likes[1]["user.username"]} curtiram`;
+                    }
+                default:
+                    if (liked) {
+                        return `Você, ${likes[0]["user.username"]} e mais ${likes.length} 
+                    pessoa${likes.length === 3 ? '' : "s"} curti${likes.length === 3 ? 'u' : "ram"}`;
+                    } else {
+                        return `${likes[0]["user.username"]}, ${likes[1]["user.username"]} e mais ${likes.length - 2} 
+                    pessoa${likes.length === 3 ? '' : "s"} curti${likes.length === 3 ? 'u' : "ram"}`;
+                    }
+            }
+        } else {
+
+            switch (likesTip.length) {
+                case 0:
+                    console.log('1')
+                    return undefined;
+                case 1:
+                    if (liked) {
+                        return `Você curtiu`
+                    } else {
+                        return `${likesTip[0].username} curtiu`;
+                    }
+                case 2:
+                    if (liked) {
+                        return `Você  e ${likesTip[0].username} curtiram`;
+                    } else {
+                        return `${likesTip[0].username} e ${likesTip[1].username} curtiram`;
+                    }
+                default:
+                    if (liked) {
+                        return `Você, ${likesTip[0].username} e mais ${likesTip.length - 2} 
                     pessoa${likesTip.length === 3 ? '' : "s"} curti${likesTip.length === 3 ? 'u' : "ram"}`;
+                    } else {
+                        return `${likesTip[0].username}, ${likesTip[1].username} e mais ${likesTip.length - 2} 
+                    pessoa${likesTip.length === 3 ? '' : "s"} curti${likesTip.length === 3 ? 'u' : "ram"}`;
+                    }
+            }
         }
     }
 
     function showHeart() {
-        
 
         if (liked) {
             return <Liked ><BsHeartFill /> </Liked>
@@ -76,7 +125,7 @@ export default function Likes({ likes, id }) {
             <LikeObj data-tip='' data-for={`${id}`}>
                 <Button key={id} type='button' onClick={like} >
                     {showHeart()}
-                    {/* {liked===true ? <Liked ><BsHeartFill /> </Liked> : <NotLiked ><BsHeart /></NotLiked>} */}
+
                 </Button>
                 <Counter>{likesCounter} likes</Counter>
             </LikeObj>
@@ -92,6 +141,7 @@ const StyledTooltip = styled(ReactTooltip)`
   text-overflow: ellipsis;
   overflow: hidden;
   max-width: 200px;
+ 
 `
 // const LikeObj = styled.div`
 //     display: flex;
