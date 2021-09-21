@@ -5,7 +5,7 @@ import { AllPostsList, Posts, StillLoading } from "./PostsList_style.js"
 
 
 export default function PostsList({ showList, avatar, postsArray, render }) {
-
+    
 
     if (showList === false) {
         return (
@@ -14,6 +14,7 @@ export default function PostsList({ showList, avatar, postsArray, render }) {
             </AllPostsList>
         );
     }
+
     else {
         if (render === "timeline") {
             return (
@@ -56,4 +57,5 @@ export default function PostsList({ showList, avatar, postsArray, render }) {
             );
         }
     }
+
 }

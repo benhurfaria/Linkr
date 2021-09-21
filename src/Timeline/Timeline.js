@@ -1,17 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import { IoIosArrowDown } from "react-icons/io";
-
-import PostsList from "../shared/PostsList/PostsList.js";
+import PostsList from "./PostsList/PostsList.js";
+import { MainContainer, ContainerHeader, ContainerPosts} from "./Timeline_style.js";
 import Hashtags from '../Hashtags/Hashtags'
-import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts } from "./Timeline_style.js";
 
+import Topbar from "../Topbar/Topbar.js";
 import { LoggedUser } from '../services/contexts/LoggedUser.js';
 import { ContextPost } from '../services/contexts/ContextPost.js';
 import { getAllPosts, getUserPosts } from "../services/api/Api.js";
 
-
-export default function Timeline() {
+export default function Timeline({subType}) {
     const { loggedUser } = useContext(LoggedUser);
     const [postsArray, setPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
@@ -39,18 +36,10 @@ export default function Timeline() {
     }, [loggedUser])
 
     return (
+
         <>
             <ContextPost.Provider value={{ postsArray, setPostsArray }}>
-                <TimelineHeader>
-                    <h1>linkr</h1>
-
-                    <DropdownMenu>
-                        <IoIosArrowDown />
-                        <Link to="/my-posts">
-                            <UserAvatar src={loggedUser.avatar} />
-                        </Link>
-                    </DropdownMenu>
-                </TimelineHeader>
+                <Topbar/>
                 <MainContainer>
                     <ContainerHeader>
                         <h1>timeline</h1>
@@ -62,5 +51,6 @@ export default function Timeline() {
                 </MainContainer>
             </ContextPost.Provider>
         </>
+
     );
 }
