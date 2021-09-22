@@ -5,7 +5,7 @@ import {
 } from './style_Login';
 import { Link, useHistory } from "react-router-dom";
 import { useState, useContext } from 'react';
-import { login } from '../services/api/Api'
+import { login, storeToken } from '../services/api/Api'
 import { LoggedUser } from '../services/contexts/LoggedUser';
 
 export default function Login() {
@@ -36,6 +36,7 @@ export default function Login() {
                     avatar: res.data.user.avatar,
                     token: res.data.token
                 };
+                
                 setLoggedUser(user);
                 history.push('/timeline');
             })
