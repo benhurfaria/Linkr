@@ -134,22 +134,3 @@ export default function SinglePost({ post }) {
     }
 };
 
-/*{
-                (loggedUser.username === user.username) ?
-                <>
-                <IoIosTrash className="trash" onClick={()=> setIsModalVisible(true)}/>
-                <Modal isOpen={isModalVisible} className="modal">
-                    <ModalScreen>
-                        <h1>Tem certeza que deseja excluir essa publicação?</h1>
-                        <div>
-                            <div className="naoexcluir" onClick={() => setIsModalVisible(false)}>
-                                Não, voltar
-                            </div>
-                            <div className="excluir" onClick={() => removerPost()}>
-                                Sim, excluir
-                            </div>
-                        </div>
-                    </ModalScreen>
-                </Modal> </>: ""
-
-            }       */
