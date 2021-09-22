@@ -19,7 +19,6 @@ export default function Timeline({subType}) {
             setPostTipo(false);
             return;
         }
-        console.log(response);
         setPostsArray(response.data.posts);
         setPostTipo(true);
         setPostsLoaded(true);
@@ -32,7 +31,6 @@ export default function Timeline({subType}) {
                 Authorization: `Bearer ${loggedUser.token}`
             }
         };
-        console.log(subType);
         if (subType === "my posts") {
             setPostsArray([]);
             getUserPosts(requestConfig, loggedUser.id)
