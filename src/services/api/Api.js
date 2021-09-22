@@ -75,7 +75,6 @@ function getUserPosts(configHeader, userID) {
     const USERPOSTS_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/${userID}/posts`;
 
     const userPostsPromise = axios.get(USERPOSTS_URL, configHeader);
-
     return userPostsPromise;    
 }
 
@@ -83,9 +82,15 @@ function getAllPosts(configHeader) {
     const POSTS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/";
 
     const allPostsPromise = axios.get(POSTS_URL, configHeader);
-
     return allPostsPromise;
 }
 
+function getHashtagPosts(configHeader, hashtag) {
+    const HASHTAGPOSTS_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/hashtags/${hashtag}/posts`;
+    
+    const hashtagPostsPromise = axios.get(HASHTAGPOSTS_URL, configHeader);
+    return hashtagPostsPromise;
+}
 
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts,  giveLike, dislike }
+
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, getHashtagPosts, giveLike, dislike }

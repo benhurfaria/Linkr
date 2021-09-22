@@ -10,6 +10,7 @@ import Login from "./Login/Login";
 import Timeline from "./Timeline/Timeline.js";
 import MyPosts from "./MyPosts/MyPosts.js";
 import UserIDPosts from "./UserIDPosts/UserIDPosts.js";
+import HashtagPosts from "./HashtagPosts/HashtagPosts.js";
 
 
 export default function App() {
@@ -42,6 +43,10 @@ export default function App() {
                         
                         <Route exact path="/my-likes">
                             <Timeline subType="my likes"/>
+                        </Route>
+
+                        <Route exact path="/hashtag/:hashtagid">
+                            <HashtagPosts />
                         </Route>
                         
                     </Switch>

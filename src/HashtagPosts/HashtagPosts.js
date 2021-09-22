@@ -8,20 +8,23 @@ import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeade
 
 import { LoggedUser } from '../services/contexts/LoggedUser.js';
 import { ContextPost } from '../services/contexts/ContextPost.js';
-import { getUserPosts } from "../services/api/Api.js";
+import { getHashtagPosts  } from "../services/api/Api.js";
 
 
-export default function UserIDPosts() {
+export default function HashtagPosts() {
     const { loggedUser } = useContext(LoggedUser);
     const [postsArray, setPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
-    const IDParam = useParams();
+    const hashtagParam = useParams();
+    console.log("#:", hashtagParam.hashtagid);
     
+
     function updatePostsArray(response) {
         if (response.data.posts.length < 1) {
             alert("Nenhum post encontrado");
             return;
         }
+        console.log(response.data);
         setPostsArray(response.data.posts);
         setPostsLoaded(true);
     };
@@ -32,10 +35,10 @@ export default function UserIDPosts() {
                 Authorization: `Bearer ${loggedUser.token}`
             }
         };
-        getUserPosts(requestConfig, IDParam.id)
+        getHashtagPosts(requestConfig, hashtagParam.hashtagid)
             .then(updatePostsArray)
             .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
-    },[loggedUser.token, IDParam]);
+    },[loggedUser.token, hashtagParam]);
     
     return (
         <>
@@ -52,10 +55,10 @@ export default function UserIDPosts() {
                 </TimelineHeader>
                 <MainContainer>
                     <ContainerHeader>
-                        <h1>{(postsLoaded === true) ? `${postsArray[0].user.username}'s posts` : ""}</h1>
+                        <h1>{`#${hashtagParam.hashtagid}`}</h1>
                     </ContainerHeader>
                     <ContainerPosts>
-                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render="userID posts" />
+                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render="hashtag posts" />
                         <Hashtags />
                     </ContainerPosts>
                 </MainContainer>

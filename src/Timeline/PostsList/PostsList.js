@@ -56,6 +56,19 @@ export default function PostsList({ showList, avatar, postsArray, render }) {
                 </>
             );
         }
+        if (render === "hashtag posts") {
+            return (
+                <>
+                    <AllPostsList>
+                        <Posts postsArray={postsArray}>
+                            {postsArray.map((post) =>
+                                <SinglePost post={post} key={post.id} />)
+                            }
+                        </Posts>
+                    </AllPostsList>
+                </>
+            );
+        }
     }
 
 }
