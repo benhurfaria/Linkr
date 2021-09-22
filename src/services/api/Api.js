@@ -17,7 +17,6 @@ function signUp(body, setDisabled) {
 function mandarPost(body, config, setUrlLink, setTexto, setStatus2, setPostsArray, postsArray){
     axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts", body, config)
             .then(res =>{
-
                 setUrlLink("");
                 setTexto("");
                 setStatus2({disable:"", cor: "", status: "Publicar"});
@@ -90,6 +89,28 @@ function getAllPosts(configHeader) {
     return allPostsPromise;
 }
 
+function apagarPost(config, id, setIsModalVisible, setPostsArray, postsArray){
+    const DELETE_POST = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${id}`;
+   
+    function retirar(idarray, idpost){
+        console.log("dentro");
+        console.log(idarray);
+        console.log(idpost);
+        if(idarray === idpost) return false;
+        return true;
+    }
+
+    axios.delete(DELETE_POST, config)
+        .then(res => {
+            setIsModalVisible(false);
+            setPostsArray(postsArray.filter((arr) => retirar(arr.id, id)));
+        })
+        .catch(err =>{
+            alert("Não foi possivel excluir esse post")
+            setIsModalVisible(false);
+        });
+
+}
 
 
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts,  giveLike, dislike }
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts,  giveLike, dislike, apagarPost }

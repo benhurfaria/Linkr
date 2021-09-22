@@ -1,15 +1,21 @@
 import { Link, useHistory } from "react-router-dom";
 import { UserAvatar } from "../Timeline_style.js";
 import { PostLeftPanel } from "../NewPost/NewPost_style.js";
-import { Post, PostContent, PostPreview, PreviewInfo, ThumbPreview } from "./PostsList_style.js";
-
+import { Post, PostContent, PostPreview, PreviewInfo, ThumbPreview, ModalScreen } from "./PostsList_style.js";
+import Modal from "react-modal";
+import { useState, useContext } from "react";
 import ReactHashtag from "react-hashtag";
-//import { IoIosHeart } from "react-icons/io";
+import { IoIosTrash } from "react-icons/io";
 import Likes from "./Likes/Likes.js";
-
+import {apagarPost} from '../../services/api/Api';
+import { LoggedUser } from '../../services/contexts/LoggedUser.js';
+import { ContextPost } from '../../services/contexts/ContextPost.js';
 export default function SinglePost({ post }) {
     const { id, likes, text, link, linkTitle, linkDescription, linkImage, user } = post;
-    
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const { loggedUser } = useContext(LoggedUser);
+    const { postsArray, setPostsArray } = useContext(ContextPost);
+
     const history = useHistory();
 
     function goToHashtag(hashtag) {
@@ -17,6 +23,15 @@ export default function SinglePost({ post }) {
         history.push("/hashtag/" + filteredHashtag);
     }
 
+    const config = {
+        headers: {
+            Authorization: `Bearer ${loggedUser.token}`
+        }
+    };
+
+    function removerPost(){
+        apagarPost(config, id, setIsModalVisible, setPostsArray, postsArray);
+    }
     return (
         <Post key={id}>
             <PostLeftPanel>
@@ -32,7 +47,6 @@ export default function SinglePost({ post }) {
                 <h2><ReactHashtag onHashtagClick={goToHashtag}>
                     {text}
                 </ReactHashtag></h2>
-
                 <PostPreview>
                     <PreviewInfo>
                         <a href={link} target="_blank" rel="noreferrer noopener">
@@ -56,7 +70,21 @@ export default function SinglePost({ post }) {
                 </PostPreview>
 
             </PostContent>
-
+            <IoIosTrash className="trash" onClick={()=> setIsModalVisible(true)}/>
+            <Modal isOpen={isModalVisible} className="modal">
+                <ModalScreen>
+                    <h1>Tem certeza que deseja excluir essa publicação?</h1>
+                    <div>
+                        <div className="naoexcluir" onClick={() => setIsModalVisible(false)}>
+                            Não, voltar
+                        </div>
+                        <div className="excluir" onClick={() => removerPost()}>
+                            Sim, excluir
+                        </div>
+                    </div>
+                </ModalScreen>
+            </Modal>
         </Post >
     );
 };
+

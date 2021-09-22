@@ -46,6 +46,69 @@ const Post = styled.li`
     color: yellow;
     border-radius: 16px;
     font-family: 'Lato', sans-serif;
+    position: relative;
+    z-index: 0;
+    .trash{
+        position: absolute;
+        right: 15px;
+        font-size: 30px;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+    .modal{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.9);
+        color: #FFFFFF;
+        opacity: 1;
+    }
+`;
+const ModalScreen = styled.div`
+    width: 600px;
+    height: 300px;
+    color: #FFFFFF;
+    background-color: #333333;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 34px;
+    line-height: 50px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    border-radius: 50px;
+    top: calc(50% - 150px);
+    left: calc(50% - 300px);
+    padding: 20px 113px 142px 126px;
+    box-sizing: border-box;
+    text-align: center;
+    .excluir{
+        background-color: #1877F2;
+        width: 134px;
+        height: 37px;
+        border-radius: 5px;
+        color: #FFFFFF;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+    }
+    .naoexcluir{
+        background-color: #FFFFFF;
+        border-radius: 5px;
+        width: 134px;
+        height: 37px;
+        color: #1877F2;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+    }
+    div{
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
 `;
 
 const PostContent = styled.div `
@@ -129,4 +192,4 @@ const ThumbPreview = styled.div`
 `;
 
 
-export {AllPostsList, Posts, StillLoading, Post, PostContent, PostPreview, PreviewInfo, ThumbPreview}
+export {AllPostsList, Posts, StillLoading, Post, PostContent, PostPreview, PreviewInfo, ThumbPreview, ModalScreen}

@@ -10,6 +10,7 @@ const Top = styled.div`
     align-items: center;
     background-color: #151515;
     color: #ffffff;
+    z-index: 1;
     h1{
         font-family: 'Passion One';
         font-weight: 700;
