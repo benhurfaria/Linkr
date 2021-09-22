@@ -46,7 +46,7 @@ export default function App() {
                         </Route>
 
                         <Route exact path="/hashtag/:hashtagid">
-                            <HashtagPosts />
+                            <HashtagPosts  />
                         </Route>
                         
                     </Switch>
