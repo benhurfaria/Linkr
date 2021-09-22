@@ -6,7 +6,7 @@ import Hashtags from '../Hashtags/Hashtags'
 import Topbar from "../Topbar/Topbar.js";
 import { LoggedUser } from '../services/contexts/LoggedUser.js';
 import { ContextPost } from '../services/contexts/ContextPost.js';
-import { getAllPosts, getUserPosts } from "../services/api/Api.js";
+import { getAllPosts } from "../services/api/Api.js";
 
 export default function Timeline({subType}) {
     const { loggedUser } = useContext(LoggedUser);

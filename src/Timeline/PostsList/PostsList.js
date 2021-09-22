@@ -1,4 +1,4 @@
-import NewPost from "../NewPost/NewPost.js";
+import NewPost from "./NewPost/NewPost.js";
 import SinglePost from "./SinglePost.js";
 
 import { AllPostsList, Posts, StillLoading } from "./PostsList_style.js"

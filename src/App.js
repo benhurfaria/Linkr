@@ -9,6 +9,7 @@ import SignUp from "./SignUp/SignUp.js";
 import Login from "./Login/Login";
 import Timeline from "./Timeline/Timeline.js";
 import MyPosts from "./MyPosts/MyPosts.js";
+import UserIDPosts from "./UserIDPosts/UserIDPosts.js";
 
 
 export default function App() {
@@ -36,7 +37,7 @@ export default function App() {
                             <MyPosts />
                         </Route>
                         <Route exact path="/user/:id">
-                            {/* <UserPosts /> */}
+                            <UserIDPosts />
                         </Route>
                         
                         <Route exact path="/my-likes">

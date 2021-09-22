@@ -1,6 +1,6 @@
 import { Link, useHistory } from "react-router-dom";
-import { UserAvatar } from "../../Timeline/Timeline_style.js";
-import { PostLeftPanel } from "../NewPost/NewPost_style.js";
+import { UserAvatar } from "../Timeline_style.js";
+import { PostLeftPanel } from "./NewPost/NewPost_style.js";
 import { Post, PostContent, PostPreview, PreviewInfo, ThumbPreview } from "./PostsList_style.js";
 
 import ReactHashtag from "react-hashtag";
