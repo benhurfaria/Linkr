@@ -6,7 +6,7 @@ import {
 import { Link, useHistory } from "react-router-dom";
 import { useState, useContext, useEffect} from 'react';
 import {SignedUser} from '../services/contexts/SignedUser'
-import { signUp, getStoredUser } from '../services/api/Api';
+import { signUp } from '../services/api/Api';
 
 
 export default function SignUp() {
@@ -17,14 +17,7 @@ export default function SignUp() {
     const [pictureUrl, setPictureUrl] = useState('');
     const [disabled, setDisabled] = useState(false);
     const history = useHistory();
-    useEffect(()=>{
-        const user= getStoredUser();
-        if(user !== null){
-            history.push("/timeline")
-        }else{
-            history.push('/signup')
-        }
-    }, [history])
+  
     function SendSignUpData(e) {
         e.preventDefault();
         setDisabled(true);
