@@ -58,7 +58,8 @@ export default function PostsList({ showList, avatar, postsArray, render, postTi
                         postTipo ?
                         <AllPostsList>
                             <Posts postsArray={postsArray}>
-                                {postsArray.map((post) =>
+                                {
+                                postsArray.map((post) =>
                                     <SinglePost post={post} key={post.id} />)
                                 }
                             </Posts>

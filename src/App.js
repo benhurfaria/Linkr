@@ -12,7 +12,7 @@ import Timeline from "./Timeline/Timeline.js";
 export default function App() {
     const [signedUser, setSignedUser] = useState({})
     const [loggedUser, setLoggedUser] = useState({});
-
+    
     return (
         <SignedUser.Provider value={{ signedUser, setSignedUser }}>
             <LoggedUser.Provider value={{ loggedUser, setLoggedUser }}>

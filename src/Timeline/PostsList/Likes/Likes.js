@@ -17,7 +17,8 @@ export default function Likes({ likes, id }) {
         if (!t) {
             likes.map(like => setLikesTip( [{username: like["user.username"] }]))
         }
-        likes.forEach(like => { if (like["user.id"] === loggedUser.id) setLiked(true) })
+        setLikesCounter(likes.length);
+        likes.forEach(like => { if (like.userId === loggedUser.id) setLiked(true) })
     }, [likes, loggedUser])
 
     function like() {
@@ -35,7 +36,6 @@ export default function Likes({ likes, id }) {
             promise.then(res => {
                 setLikesTip(res.data.post.likes)
                 setLikesCounter(res.data.post.likes.length)
-                
             })
 
 

@@ -34,18 +34,21 @@ export default function Timeline({subType}) {
         };
         console.log(subType);
         if (subType === "my posts") {
+            setPostsArray([]);
             getUserPosts(requestConfig, loggedUser.id)
                 .then(updatePostsArray)
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
 
         if (subType === "timeline") {
+            setPostsArray([]);
             getAllPosts(requestConfig)
                 .then(updatePostsArray)
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
 
         if(subType === "my likes"){
+            setPostsArray([]);
             getMyLikes(requestConfig)
                 .then(updatePostsArray)
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
