@@ -17,7 +17,7 @@ export default function SinglePost({ post }) {
     const { postsArray, setPostsArray } = useContext(ContextPost);
 
     const history = useHistory();
-
+    
     function goToHashtag(hashtag) {
         const filteredHashtag = hashtag.substring(1);
         history.push("/hashtag/" + filteredHashtag);
@@ -32,8 +32,9 @@ export default function SinglePost({ post }) {
     function removerPost(){
         apagarPost(config, id, setIsModalVisible, setPostsArray, postsArray);
     }
-    return (
-        <Post key={id}>
+    if(loggedUser.username === user.username){
+        return(
+            <Post key={id}>
             <PostLeftPanel>
                 <Link to={`/user/${user.id}`} >
                     <UserAvatar src={user.avatar} />
@@ -71,20 +72,84 @@ export default function SinglePost({ post }) {
 
             </PostContent>
             <IoIosTrash className="trash" onClick={()=> setIsModalVisible(true)}/>
-            <Modal isOpen={isModalVisible} className="modal">
-                <ModalScreen>
-                    <h1>Tem certeza que deseja excluir essa publicação?</h1>
-                    <div>
-                        <div className="naoexcluir" onClick={() => setIsModalVisible(false)}>
-                            Não, voltar
+                <Modal isOpen={isModalVisible} className="modal">
+                    <ModalScreen>
+                        <h1>Tem certeza que deseja excluir essa publicação?</h1>
+                        <div>
+                            <div className="naoexcluir" onClick={() => setIsModalVisible(false)}>
+                                Não, voltar
+                            </div>
+                            <div className="excluir" onClick={() => removerPost()}>
+                                Sim, excluir
+                            </div>
                         </div>
-                        <div className="excluir" onClick={() => removerPost()}>
-                            Sim, excluir
-                        </div>
-                    </div>
-                </ModalScreen>
-            </Modal>
+                    </ModalScreen>
+                </Modal>
+            </Post >
+        );
+    }else{
+    return (
+        
+        <Post key={id}>
+            <PostLeftPanel>
+                <Link to={`/user/${user.id}`} >
+                    <UserAvatar src={user.avatar} />
+                </Link>
+                <h1><Likes key={id} likes={likes} id={id} /></h1>
+                
+            </PostLeftPanel>
+            <PostContent>
+                <Link to={`/user/${user.id}`} >{user.username}</Link>
+
+                <h2><ReactHashtag onHashtagClick={goToHashtag}>
+                    {text}
+                </ReactHashtag></h2>
+                <PostPreview>
+                    <PreviewInfo>
+                        <a href={link} target="_blank" rel="noreferrer noopener">
+                            <h1> {linkTitle}</h1>
+
+                            <h2>{linkDescription}</h2>
+
+                            <h3>{link}</h3>
+
+                        </a>
+                    </PreviewInfo>
+                    <ThumbPreview >
+                        {
+                            linkImage ?
+                                <img src={linkImage} alt="thumbnail" />
+                                :
+                                <></>
+                        }
+                    </ThumbPreview>
+
+                </PostPreview>
+
+            </PostContent>
+                
         </Post >
+        
     );
+    }
 };
 
+/*{
+                (loggedUser.username === user.username) ?
+                <>
+                <IoIosTrash className="trash" onClick={()=> setIsModalVisible(true)}/>
+                <Modal isOpen={isModalVisible} className="modal">
+                    <ModalScreen>
+                        <h1>Tem certeza que deseja excluir essa publicação?</h1>
+                        <div>
+                            <div className="naoexcluir" onClick={() => setIsModalVisible(false)}>
+                                Não, voltar
+                            </div>
+                            <div className="excluir" onClick={() => removerPost()}>
+                                Sim, excluir
+                            </div>
+                        </div>
+                    </ModalScreen>
+                </Modal> </>: ""
+
+            }       */
