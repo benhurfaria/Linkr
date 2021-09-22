@@ -14,17 +14,14 @@ import { getStoredUser } from "./services/api/Api.js";
 export default function App() {
     const [signedUser, setSignedUser] = useState({});
     const [loggedUser, setLoggedUser] = useState({});
-<<<<<<< HEAD
-   
-    
-=======
+
     
     useEffect(() => {
         const user = getStoredUser()
         setLoggedUser(user)
         
     }, [])
->>>>>>> feat/LoginPersist
+
     return (
         <SignedUser.Provider value={{ signedUser, setSignedUser }}>
             <LoggedUser.Provider value={{ loggedUser, setLoggedUser }}>
