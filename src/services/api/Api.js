@@ -91,14 +91,14 @@ function getAllPosts(configHeader) {
     return allPostsPromise;
 }
 
-function storeToken(user) {
-    const serialToken = JSON.stringify(user.token);
-    localStorage.setItem("userToken", serialToken);
+function storeUser(user) {
+    const serialUser = JSON.stringify(user);
+    localStorage.setItem("user", serialUser);
 }
-function getStoredToken() {
-    let serialToken = localStorage.getItem("userToken");
-    const token = JSON.parse(serialToken);
-    return token;
+function getStoredUser() {
+    let serialUser = localStorage.getItem("user");
+    const user = JSON.parse(serialUser);
+    return user;
 }
 
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeToken, getStoredToken }
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser }
