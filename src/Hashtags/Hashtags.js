@@ -1,19 +1,19 @@
 import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { getHashtag} from "../services/api/Api";
+import { getHashtag, getStoredUser } from "../services/api/Api";
 import { LoggedUser } from "../services/contexts/LoggedUser";
 import { Sharp, SharpList, TrendingTitle, Border, Trending } from './style_Hashtags'
 
 export default function Hashtags() {
     const [hashtags, setHashtags] = useState([])
-    const {loggedUser } = useContext(LoggedUser)
+    const { setLoggedUser } = useContext(LoggedUser)
 
     useEffect(() => {
-       
+        setLoggedUser(getStoredUser())
         const config = {
             headers: {
-                Authorization: `Bearer ${loggedUser.token}`
+                Authorization: `Bearer ${getStoredUser().token}`
             }
         }
 
@@ -21,7 +21,7 @@ export default function Hashtags() {
         promise.then(res => {
             setHashtags(res.data.hashtags)
         })
-    }, [])
+    }, [setLoggedUser])
 
     return (
         < Trending >
