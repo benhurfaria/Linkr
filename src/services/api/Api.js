@@ -7,30 +7,30 @@ function signUp(body, setDisabled) {
         if (err.response.status === 403) {
             alert("Email já cadsatrado!")
         };
-        if(err.response.status === 400){
+        if (err.response.status === 400) {
             alert('Dados inseridos são invalídos!');
         };
     })
     return promise;
 }
 
-function mandarPost(body, config, setUrlLink, setTexto, setStatus2, setPostsArray, postsArray){
+function mandarPost(body, config, setUrlLink, setTexto, setStatus2, setPostsArray, postsArray) {
     axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts", body, config)
-            .then(res =>{
+        .then(res => {
 
-                setUrlLink("");
-                setTexto("");
-                setStatus2({disable:"", cor: "", status: "Publicar"});
-                setPostsArray([res.data.post, ...postsArray]);
-            })
-            .catch(err =>{
+            setUrlLink("");
+            setTexto("");
+            setStatus2({ disable: "", cor: "", status: "Publicar" });
+            setPostsArray([res.data.post, ...postsArray]);
+        })
+        .catch(err => {
 
-                alert("Houve um erro ao publicar seu link");
-                setUrlLink("");
-                setTexto("");
-                setStatus2({disable:"", cor: "", status: "Publicar"});
-            });
-    
+            alert("Houve um erro ao publicar seu link");
+            setUrlLink("");
+            setTexto("");
+            setStatus2({ disable: "", cor: "", status: "Publicar" });
+        });
+
 };
 
 function login(body, setDisabled) {
@@ -38,7 +38,7 @@ function login(body, setDisabled) {
     promise.catch(err => {
         setDisabled(false)
         if (err.response.status === 401) {
-           
+
             alert('Dados inseridos são invalídos!');
         }
         if (err.response.status === 400) {
@@ -51,23 +51,23 @@ function login(body, setDisabled) {
     return promise;
 };
 
-function getHashtag( config){
+function getHashtag(config) {
     const promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/hashtags/trending", config);
     return promise;
 };
 
 
-function giveLike(postId, config, body){
-    
+function giveLike(postId, config, body) {
+
     const Url = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${postId}/like`;
-    const promise = axios.post(Url,body, config);
+    const promise = axios.post(Url, body, config);
     return promise;
 };
 
-function dislike(postId, config, body){
-   
+function dislike(postId, config, body) {
+
     const Url = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${postId}/dislike`;
-   
+
     const promise = axios.post(Url, body, config);
     return promise;
 };
@@ -80,7 +80,7 @@ function getUserPosts(configHeader, userID) {
     const userPostsPromise = axios.get(appendedURL, configHeader);
 
 
-    return userPostsPromise;    
+    return userPostsPromise;
 }
 
 function getAllPosts(configHeader) {
@@ -91,6 +91,14 @@ function getAllPosts(configHeader) {
     return allPostsPromise;
 }
 
+function storeToken(user) {
+    const serialToken = JSON.stringify(user.token);
+    localStorage.setItem("userToken", serialToken);
+}
+function getStoredToken() {
+    let serialToken = localStorage.getItem("userToken");
+    const token = JSON.parse(serialToken);
+    return token;
+}
 
-
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts,  giveLike, dislike }
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeToken, getStoredToken }
