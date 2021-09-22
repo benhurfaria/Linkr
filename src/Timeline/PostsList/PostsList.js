@@ -33,7 +33,6 @@ export default function PostsList({ showList, avatar, postsArray, render }) {
         if (render === "timeline") {
             return (
                 <>
-                    {console.log(postsArray)}
                     <AllPostsList>
                         <NewPost avatar={avatar} />
                         <Posts postsArray={postsArray}>
