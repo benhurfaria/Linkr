@@ -1,5 +1,5 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { SignedUser } from "./services/contexts/SignedUser.js";
 import { LoggedUser } from './services/contexts/LoggedUser'
@@ -8,12 +8,23 @@ import './shared/styles/index.css';
 import SignUp from "./SignUp/SignUp.js";
 import Login from "./Login/Login";
 import Timeline from "./Timeline/Timeline.js";
+import { getStoredUser } from "./services/api/Api.js";
+
 
 export default function App() {
-    const [signedUser, setSignedUser] = useState({})
+    const [signedUser, setSignedUser] = useState({});
     const [loggedUser, setLoggedUser] = useState({});
+<<<<<<< HEAD
    
     
+=======
+    
+    useEffect(() => {
+        const user = getStoredUser()
+        setLoggedUser(user)
+        
+    }, [])
+>>>>>>> feat/LoginPersist
     return (
         <SignedUser.Provider value={{ signedUser, setSignedUser }}>
             <LoggedUser.Provider value={{ loggedUser, setLoggedUser }}>
@@ -34,11 +45,11 @@ export default function App() {
                         <Route exact path="/my-posts">
                             <Timeline subType="my posts" />
                         </Route>
-                        
+
                         <Route exact path="/my-likes">
-                            <Timeline subType="my likes"/>
+                            <Timeline subType="my likes" />
                         </Route>
-                        
+
                     </Switch>
                 </BrowserRouter>
             </LoggedUser.Provider>

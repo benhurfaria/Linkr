@@ -4,9 +4,12 @@ import {
     Form, LoginForm
 } from './style_Login';
 import { Link, useHistory } from "react-router-dom";
-import { useState, useContext } from 'react';
-import { login, storeToken } from '../services/api/Api'
+
+import { useState, useContext, useEffect } from 'react';
+import { login, storeUser, getStoredUser } from '../services/api/Api'
+
 import { LoggedUser } from '../services/contexts/LoggedUser';
+
 
 export default function Login() {
     const { setLoggedUser } = useContext(LoggedUser);
@@ -14,7 +17,14 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [disabled, setDisabled] = useState(false);
     const history = useHistory();
-    
+    useEffect(()=>{
+        const user= getStoredUser();
+        if(user !== null){
+            history.push("/timeline")
+        }else{
+            history.push('/')
+        }
+    }, [history])
     function SendLoginData(e) {
         e.preventDefault();
         setDisabled(true);
@@ -36,7 +46,9 @@ export default function Login() {
                     avatar: res.data.user.avatar,
                     token: res.data.token
                 };
-                
+
+                storeUser(user)
+
                 setLoggedUser(user);
                 history.push('/timeline');
             })

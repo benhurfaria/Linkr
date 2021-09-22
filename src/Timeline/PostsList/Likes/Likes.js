@@ -15,7 +15,9 @@ export default function Likes({ likes, id }) {
     const [likesTip, setLikesTip] = useState([])
     useEffect(() => {
         if (!t) {
-            likes.map(like => setLikesTip( [{userId: like.userId,username: like["user.username"] }])) 
+
+            likes.map(like => setLikesTip( [{userId: like.userId, username: like["user.username"] }]))
+
         }
         likes.forEach(like => { if (like.userId === loggedUser.id) setLiked(true) })
     }, [likes, loggedUser])
