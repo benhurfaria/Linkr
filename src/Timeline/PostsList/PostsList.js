@@ -15,7 +15,6 @@ export default function PostsList({ showList, avatar, postsArray, render, postTi
                 </AllPostsList>
             );
     }
-
     else {
         if (render === "my posts") {
 

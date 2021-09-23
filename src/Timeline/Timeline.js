@@ -1,18 +1,19 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext} from "react";
 import PostsList from "./PostsList/PostsList.js";
-import { MainContainer, ContainerHeader, ContainerPosts} from "./Timeline_style.js";
+import { MainContainer, ContainerHeader, ContainerPosts } from "./Timeline_style.js";
 import Hashtags from '../Hashtags/Hashtags'
 
 import Topbar from "../Topbar/Topbar.js";
 import { LoggedUser } from '../services/contexts/LoggedUser.js';
 import { ContextPost } from '../services/contexts/ContextPost.js';
-import { getAllPosts, getUserPosts, getMyLikes } from "../services/api/Api.js";
+import { getAllPosts, getStoredUser, getUserPosts, getMyLikes } from "../services/api/Api.js";
 
-export default function Timeline({subType}) {
-    const { loggedUser } = useContext(LoggedUser);
+export default function Timeline({ subType }) {
+    const { loggedUser} = useContext(LoggedUser);
     const [postsArray, setPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
     const [postTipo, setPostTipo] = useState(false);
+
 
     function updatePostsArray(response) {
         if (response.data.posts.length < 1) {
@@ -26,12 +27,14 @@ export default function Timeline({subType}) {
 
 
     useEffect(() => {
+       
         const requestConfig = {
             headers: {
-                Authorization: `Bearer ${loggedUser.token}`
+                Authorization: `Bearer ${getStoredUser().token}`
             }
         };
         if (subType === "my posts") {
+
             setPostsArray([]);
             getUserPosts(requestConfig, loggedUser.id)
                 .then(updatePostsArray)
@@ -39,6 +42,7 @@ export default function Timeline({subType}) {
         }
 
         if (subType === "timeline") {
+
             setPostsArray([]);
             getAllPosts(requestConfig)
                 .then(updatePostsArray)
@@ -58,7 +62,7 @@ export default function Timeline({subType}) {
 
         <>
             <ContextPost.Provider value={{ postsArray, setPostsArray }}>
-                <Topbar/>
+                <Topbar />
                 <MainContainer>
                     <ContainerHeader>
                         <h1>{`${subType}`}</h1>
