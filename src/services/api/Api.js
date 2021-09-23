@@ -16,22 +16,6 @@ function signUp(body, setDisabled) {
 
 function mandarPost(body, config, setUrlLink, setTexto, setStatus2, setPostsArray, postsArray) {
     axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts", body, config)
-<<<<<<< HEAD
-            .then(res =>{
-                setUrlLink("");
-                setTexto("");
-                setStatus2({disable:"", cor: "", status: "Publicar"});
-                setPostsArray([res.data.post, ...postsArray]);
-            })
-            .catch(err =>{
-
-                alert("Houve um erro ao publicar seu link");
-                setUrlLink("");
-                setTexto("");
-                setStatus2({disable:"", cor: "", status: "Publicar"});
-            });
-    
-=======
         .then(res => {
 
             setUrlLink("");
@@ -47,7 +31,7 @@ function mandarPost(body, config, setUrlLink, setTexto, setStatus2, setPostsArra
             setStatus2({ disable: "", cor: "", status: "Publicar" });
         });
 
->>>>>>> main
+
 };
 
 function login(body, setDisabled) {
