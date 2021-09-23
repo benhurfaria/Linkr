@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IoLocationOutline } from "react-icons/io5";
 
 const NewPostFrame = styled.div`
     width: 611px;
@@ -61,23 +62,29 @@ const NewPostForm = styled.form`
 const NewPostFooter = styled.div`
     width: 100%;
     display: flex;
+    align-items: center;
 `;
 
 const GeoLocation = styled.div`
-    width: 155px;
+    width: 360px;
     height: 18px;
-    margin: auto auto auto 0px;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-size: 13px;
-    line-height: 16px;
-
-    & .react-icons {
-        width: 30px;
+    font-size: 33px;
+    line-height: 36px;
+    color: ${status => status.geoLocation === true ? '#238700' : '#949494'};
+    
+    & h1 {
+        display: ${status => status.geoLocation ? 'none' : 'inherit'};
     }
+    & h2 {
+        display: ${status => status.geoLocation ? 'initial' : 'none'};
+    }
+`;
 
-    border: 2px dotted orange;
+const LocationPin = styled(IoLocationOutline)`
+    
+    width: 36px;
+    height: 36px;
 `;
 
 const NewPostURL = styled.input`
@@ -113,4 +120,4 @@ const PostLeftPanel = styled.div`
 `;
 
 
-export {NewPostFrame, NewPostForm, NewPostURL, NewPostComment, PostLeftPanel, NewPostFooter, GeoLocation}
+export {NewPostFrame, NewPostForm, NewPostURL, NewPostComment, PostLeftPanel, NewPostFooter, GeoLocation, LocationPin}

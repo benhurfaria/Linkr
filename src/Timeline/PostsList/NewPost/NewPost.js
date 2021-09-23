@@ -1,5 +1,5 @@
-import { NewPostFrame, NewPostForm, NewPostURL, NewPostComment, PostLeftPanel, NewPostFooter, GeoLocation } from "./NewPost_style.js";
-import { IoLocationOutline } from "react-icons/io5";
+import { NewPostFrame, NewPostForm, NewPostURL, NewPostComment, PostLeftPanel, NewPostFooter, GeoLocation, LocationPin } from "./NewPost_style.js";
+
 
 import { UserAvatar } from "../../Timeline_style.js"
 import { useState, useContext } from "react";
@@ -36,7 +36,7 @@ export default function NewPost() {
         }
 
     }
-
+    const geoLocation = true;
     return (
         <NewPostFrame>
             <PostLeftPanel>
@@ -48,15 +48,17 @@ export default function NewPost() {
                 <NewPostURL required type="url" placeholder="http://..." value={urlLink} onChange={e => setUrlLink(e.target.value)} disabled={`${status2.disable}`} />
                 <NewPostComment type="text" placeholder="Comente aqui sobre sua publicação" value={texto} onChange={e => setTexto(e.target.value)} disabled={`${status2.disable}`} />
 
+                
                 <NewPostFooter>
-                <GeoLocation geoLocation={false}>
-                    <IoLocationOutline />
-                    <h1>Localização desativada</h1>
-                    {/* <h1> Localização ativada</h1> */}
+                <GeoLocation status={geoLocation}>
+                    <LocationPin />
+                    <h1 status={geoLocation}>Localização desativada</h1>
+                    {/* <h2 status={geoLocation}> Localização ativada</h2> */}
                 </GeoLocation>
 
                 <button className={`${status2.cor}`} type="submit" > {status2.status} </button>
                 </NewPostFooter>
+                
             </NewPostForm>
         </NewPostFrame>
     );
