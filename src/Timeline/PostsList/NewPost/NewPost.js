@@ -36,7 +36,7 @@ export default function NewPost() {
         }
 
     }
-    const geoLocation = true;
+    const geoLocationActive = false;
     return (
         <NewPostFrame>
             <PostLeftPanel>
@@ -50,10 +50,10 @@ export default function NewPost() {
 
                 
                 <NewPostFooter>
-                <GeoLocation status={geoLocation}>
-                    <LocationPin />
-                    <h1 status={geoLocation}>Localização desativada</h1>
-                    {/* <h2 status={geoLocation}> Localização ativada</h2> */}
+                <GeoLocation status={geoLocationActive}>
+                    <LocationPin status={geoLocationActive}/>
+                    <h1 status={geoLocationActive}>Localização desativada</h1>
+                    <h2 status={geoLocationActive}> Localização ativada</h2>
                 </GeoLocation>
 
                 <button className={`${status2.cor}`} type="submit" > {status2.status} </button>

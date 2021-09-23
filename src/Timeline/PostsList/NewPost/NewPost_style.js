@@ -71,20 +71,20 @@ const GeoLocation = styled.div`
     display: flex;
     font-size: 33px;
     line-height: 36px;
-    color: ${status => status.geoLocation === true ? '#238700' : '#949494'};
-    
     & h1 {
-        display: ${status => status.geoLocation ? 'none' : 'inherit'};
+        display: ${props => props.status ? 'none' : 'inline-block'};
+        color: ${props => props.status ? '#238700' : '#949494'};
     }
     & h2 {
-        display: ${status => status.geoLocation ? 'initial' : 'none'};
+        display: ${props => props.status ? 'inline-block' : 'none'};
+        color: ${props => props.status ? '#238700' : '#949494'};
     }
 `;
 
 const LocationPin = styled(IoLocationOutline)`
-    
     width: 36px;
     height: 36px;
+    color: ${props => props.status ? '#238700' : '#949494'};
 `;
 
 const NewPostURL = styled.input`
