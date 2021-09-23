@@ -58,6 +58,28 @@ const NewPostForm = styled.form`
     }
 `;
 
+const NewPostFooter = styled.div`
+    width: 100%;
+    display: flex;
+`;
+
+const GeoLocation = styled.div`
+    width: 155px;
+    height: 18px;
+    margin: auto auto auto 0px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 13px;
+    line-height: 16px;
+
+    & .react-icons {
+        width: 30px;
+    }
+
+    border: 2px dotted orange;
+`;
+
 const NewPostURL = styled.input`
     height: 30px;
     margin: 0 auto 5px 0;
@@ -91,4 +113,4 @@ const PostLeftPanel = styled.div`
 `;
 
 
-export {NewPostFrame, NewPostForm, NewPostURL, NewPostComment, PostLeftPanel}
+export {NewPostFrame, NewPostForm, NewPostURL, NewPostComment, PostLeftPanel, NewPostFooter, GeoLocation}
