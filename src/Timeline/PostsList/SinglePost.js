@@ -46,7 +46,7 @@ export default function SinglePost({ post }) {
             setTexto(text);
         }
     }
-
+    if(loggedUser.username === user.username){
     return (
         <Post key={id}>
             <PostLeftPanel>
@@ -98,4 +98,47 @@ export default function SinglePost({ post }) {
             }/>
         </Post >
     );
+    } else{
+        return(<Post key={id}>
+            <PostLeftPanel>
+                <Link to={`/user/${user.id}`} >
+                    <UserAvatar src={user.avatar} />
+                </Link>
+                <h1><Likes key={id} likes={likes} id={id} /></h1>
+                
+            </PostLeftPanel>
+            <PostContent>
+                <Link to={`/user/${user.id}`} >{user.username}</Link>
+
+                <h2><ReactHashtag onHashtagClick={goToHashtag}>
+                    {text}
+                </ReactHashtag></h2>
+                <PostPreview>
+                    <PreviewInfo>
+                        <a href={link} target="_blank" rel="noreferrer noopener">
+                            <h1> {linkTitle}</h1>
+
+                            <h2>{linkDescription}</h2>
+
+                            <h3>{link}</h3>
+
+                        </a>
+                    </PreviewInfo>
+                    <ThumbPreview >
+                        {
+                            linkImage ?
+                                <img src={linkImage} alt="thumbnail" />
+                                :
+                                <></>
+                        }
+                    </ThumbPreview>
+
+                </PostPreview>
+
+            </PostContent>
+                
+        </Post >
+        
+    );
+    }
 };
