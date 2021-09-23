@@ -97,9 +97,6 @@ function apagarPost(config, id, setIsModalVisible, setPostsArray, postsArray){
     const DELETE_POST = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${id}`;
    
     function retirar(idarray, idpost){
-        console.log("dentro");
-        console.log(idarray);
-        console.log(idpost);
         if(idarray === idpost) return false;
         return true;
     }
