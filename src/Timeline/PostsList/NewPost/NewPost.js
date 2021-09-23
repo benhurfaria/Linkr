@@ -10,6 +10,7 @@ import { LoggedUser } from "../../../services/contexts/LoggedUser.js";
 export default function NewPost() {
     const [urlLink, setUrlLink] = useState("");
     const [texto, setTexto] = useState("");
+    const [geoLocationActive, setGeoLocationActive] = useState(false);
     const [status2, setStatus2] = useState({ disable: "", cor: "", status: "Publicar" });
     const { postsArray, setPostsArray } = useContext(ContextPost);
     const { loggedUser } = useContext(LoggedUser);
@@ -21,6 +22,7 @@ export default function NewPost() {
             Authorization: `Bearer ${token}`
         }
     };
+
 
     function Postagem(event) {
         event.preventDefault();
@@ -36,7 +38,11 @@ export default function NewPost() {
         }
 
     }
-    const geoLocationActive = false;
+
+    function toggleGeoLocation() {
+        geoLocationActive ? setGeoLocationActive(false) : setGeoLocationActive(true);
+    }
+
     return (
         <NewPostFrame>
             <PostLeftPanel>
@@ -50,7 +56,7 @@ export default function NewPost() {
 
                 
                 <NewPostFooter>
-                <GeoLocation status={geoLocationActive}>
+                <GeoLocation onClick={toggleGeoLocation} status={geoLocationActive}>
                     <LocationPin status={geoLocationActive}/>
                     <h1 status={geoLocationActive}>Localização desativada</h1>
                     <h2 status={geoLocationActive}> Localização ativada</h2>
