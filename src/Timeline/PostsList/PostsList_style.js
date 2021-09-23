@@ -3,6 +3,8 @@ import styled from "styled-components";
 const AllPostsList = styled.div`
     display: flex;
     flex-direction: column;
+    
+    
 `;
 
 const Posts = styled.ul`

@@ -39,9 +39,14 @@ const UserAvatar = styled.img`
 
 const MainContainer = styled.div`
     width: 938px;
-    margin: 125px auto auto auto;
+    margin: 73px auto auto auto;
+    padding-top: 52px;
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    //overflow-y: auto;
+
+    
 `;
 
 const ContainerHeader = styled.div`
