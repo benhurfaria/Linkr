@@ -66,17 +66,17 @@ const NewPostFooter = styled.div`
 `;
 
 const GeoLocation = styled.div`
-    width: 360px;
+    width: 150px;
     height: 18px;
     display: flex;
-    font-size: 33px;
-    line-height: 36px;
-    color: ${props => props.status ? '#238700' : '#949494'}
+    font-size: 13px;
+    line-height: 16px;
+    color: ${props => props.status ? '#238700' : '#949494'};
 `;
 
 const LocationPin = styled(IoLocationOutline)`
-    width: 36px;
-    height: 36px;
+    width: 16px;
+    height: 16px;
 `;
 
 const NewPostURL = styled.input`

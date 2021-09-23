@@ -39,8 +39,48 @@ export default function NewPost() {
 
     }
 
-    function toggleGeoLocation() {
-        setGeoLocationActive(!geoLocationActive);   //passar pra =>
+    /*
+    function enableGeoLocation() {
+        setGeoLocationActive(!geoLocationActive);
+    }
+    */
+
+    function printPosition(receivedPosition) {
+        console.log("receivedPosition: ", receivedPosition);
+    }
+
+    function positionAccessDenied() {
+        alert('positionAccessDenied');
+    }
+
+    function permissionGranted(response) {
+        const geoLocationSettings = {
+            enableHighAccurracy: false, maximumAge: 30 * 1000, timeout: 20 * 1000
+        };
+
+        if (response.state === 'granted') {
+            console.log("geoqueryresponse: " + response.state);
+        }
+        else if (response.state === 'prompt') {
+            console.log("geoqueryresponse: " + response.state);
+            navigator.geolocation.getCurrentPosition(printPosition, positionAccessDenied, geoLocationSettings);
+        }
+        else if (response.state === 'denied') {
+            console.log(response.state);
+        }
+        response.onchange(console.log);
+    }
+
+
+    function askForGeoLocation() {
+        if (!('geolocation' in navigator)) {
+            alert("Geolocation not available in this browser");
+        }
+        else {
+            navigator.permissions.query({ name: 'geolocation' })
+                .then(permissionGranted)
+                .catch(() => console.log("wait for user/browser permission to obtain geoposition"));
+        }
     }
 
     return (
@@ -54,19 +94,19 @@ export default function NewPost() {
                 <NewPostURL required type="url" placeholder="http://..." value={urlLink} onChange={e => setUrlLink(e.target.value)} disabled={`${status2.disable}`} />
                 <NewPostComment type="text" placeholder="Comente aqui sobre sua publicação" value={texto} onChange={e => setTexto(e.target.value)} disabled={`${status2.disable}`} />
 
-                
-                <NewPostFooter>
-                <GeoLocation onClick={toggleGeoLocation} status={geoLocationActive}>
-                    <LocationPin />
-                    {geoLocationActive ?
-                        <h1>Localização ativada</h1>
-                        :
-                        <h1>Localização desativada</h1> }
-                </GeoLocation>
 
-                <button className={`${status2.cor}`} type="submit" > {status2.status} </button>
+                <NewPostFooter>
+                    <GeoLocation onClick={askForGeoLocation} status={geoLocationActive}>
+                        <LocationPin />
+                        {geoLocationActive ?
+                            <h1>Localização ativada</h1>
+                            :
+                            <h1>Localização desativada</h1>}
+                    </GeoLocation>
+
+                    <button className={`${status2.cor}`} type="submit" > {status2.status} </button>
                 </NewPostFooter>
-                
+
             </NewPostForm>
         </NewPostFrame>
     );
