@@ -71,20 +71,12 @@ const GeoLocation = styled.div`
     display: flex;
     font-size: 33px;
     line-height: 36px;
-    & h1 {
-        display: ${props => props.status ? 'none' : 'inline-block'};
-        color: ${props => props.status ? '#238700' : '#949494'};
-    }
-    & h2 {
-        display: ${props => props.status ? 'inline-block' : 'none'};
-        color: ${props => props.status ? '#238700' : '#949494'};
-    }
+    color: ${props => props.status ? '#238700' : '#949494'}
 `;
 
 const LocationPin = styled(IoLocationOutline)`
     width: 36px;
     height: 36px;
-    color: ${props => props.status ? '#238700' : '#949494'};
 `;
 
 const NewPostURL = styled.input`

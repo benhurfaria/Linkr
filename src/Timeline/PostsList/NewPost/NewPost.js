@@ -40,7 +40,7 @@ export default function NewPost() {
     }
 
     function toggleGeoLocation() {
-        geoLocationActive ? setGeoLocationActive(false) : setGeoLocationActive(true);
+        setGeoLocationActive(!geoLocationActive);   //passar pra =>
     }
 
     return (
@@ -57,9 +57,11 @@ export default function NewPost() {
                 
                 <NewPostFooter>
                 <GeoLocation onClick={toggleGeoLocation} status={geoLocationActive}>
-                    <LocationPin status={geoLocationActive}/>
-                    <h1 status={geoLocationActive}>Localização desativada</h1>
-                    <h2 status={geoLocationActive}> Localização ativada</h2>
+                    <LocationPin />
+                    {geoLocationActive ?
+                        <h1>Localização ativada</h1>
+                        :
+                        <h1>Localização desativada</h1> }
                 </GeoLocation>
 
                 <button className={`${status2.cor}`} type="submit" > {status2.status} </button>
