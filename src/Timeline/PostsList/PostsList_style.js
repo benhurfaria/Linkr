@@ -46,6 +46,15 @@ const Post = styled.li`
     color: yellow;
     border-radius: 16px;
     font-family: 'Lato', sans-serif;
+    position: relative;
+    .pencil{
+        position: absolute;
+        top:15px;
+        right: 15px;
+        font-size: 20px;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
 `;
 
 const PostContent = styled.div `
@@ -78,6 +87,16 @@ const PostContent = styled.div `
         line-height: 20px;
         color: #B7B7B7;
         }
+    input{
+        border-radius: 7px;
+        outline: none;
+        height: 50px;
+        width: 500px;
+        height: 44px;
+        font-family: 'Lato', sans-serif;
+        border: none;
+    }
+    
 `;
 
 const PostPreview = styled.div`
