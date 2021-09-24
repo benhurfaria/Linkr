@@ -6,20 +6,22 @@ import Hashtags from '../Hashtags/Hashtags'
 import Topbar from "../Topbar/Topbar.js";
 import { LoggedUser } from '../services/contexts/LoggedUser.js';
 import { ContextPost } from '../services/contexts/ContextPost.js';
-import { getAllPosts, getStoredUser, getUserPosts } from "../services/api/Api.js";
+import { getAllPosts, getStoredUser, getUserPosts, getMyLikes } from "../services/api/Api.js";
 
 export default function Timeline({ subType }) {
     const { loggedUser} = useContext(LoggedUser);
     const [postsArray, setPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
+    const [postTipo, setPostTipo] = useState(false);
 
 
     function updatePostsArray(response) {
         if (response.data.posts.length < 1) {
-            alert("Nenhum post encontrado");
+            setPostTipo(false);
             return;
         }
         setPostsArray(response.data.posts);
+        setPostTipo(true);
         setPostsLoaded(true);
     };
 
@@ -31,20 +33,29 @@ export default function Timeline({ subType }) {
                 Authorization: `Bearer ${getStoredUser().token}`
             }
         };
-
         if (subType === "my posts") {
-            setPostsArray([])
+
+            setPostsArray([]);
             getUserPosts(requestConfig, loggedUser.id)
                 .then(updatePostsArray)
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
 
         if (subType === "timeline") {
-            setPostsArray([])
+
+            setPostsArray([]);
             getAllPosts(requestConfig)
                 .then(updatePostsArray)
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
+
+        if(subType === "my likes"){
+            setPostsArray([]);
+            getMyLikes(requestConfig)
+                .then(updatePostsArray)
+                .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
+        }
+
     }, [loggedUser, subType]);
 
     return (
@@ -57,7 +68,7 @@ export default function Timeline({ subType }) {
                         <h1>{`${subType}`}</h1>
                     </ContainerHeader>
                     <ContainerPosts>
-                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} />
+                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} postTipo={postTipo}/>
                         <Hashtags />
                     </ContainerPosts>
                 </MainContainer>
