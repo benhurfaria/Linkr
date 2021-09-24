@@ -85,7 +85,8 @@ export default function Timeline({ subType }) {
 
     }
     function loadingPost() {
-        return loading ? <></> : <LoaderPosition><Loader type="TailSpin" color="#00BFFF" height={80} width={80} /></LoaderPosition>
+        return loading ? <></> : 
+        <LoaderPosition><Loader type="TailSpin" color="#6d6d6d" height={60} width={60} />Loading more posts...</LoaderPosition>
     }
 
     return (
@@ -104,6 +105,7 @@ export default function Timeline({ subType }) {
                         hasMore={true || false}
                         loader={loadingPost()}
                         //useWindow={false}
+                        threshold={10}
                         
                         >
                         <ContainerPosts>

@@ -65,9 +65,20 @@ const ContainerPosts = styled.div`
   
 `;
 const LoaderPosition = styled.div`
+    height: 80px;
+    font-family: 'Lato', sans-serif;
     position: fixed;
-    bottom: 0px;
-    left: 40%;
+    bottom: 180px;
+    left: calc(40% - 30px);
+    color: #6D6D6D;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    @media (max-width: 640px){
+        left: calc(50% - 30px);
+    }
 `
 
-export {TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts, LoaderPosition};
+export { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts, LoaderPosition };

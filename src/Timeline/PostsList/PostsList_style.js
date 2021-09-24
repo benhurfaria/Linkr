@@ -9,8 +9,8 @@ const AllPostsList = styled.div`
 
 const Posts = styled.ul`
     width: 611px;
-    height: 1200px;
-    margin: 0 auto auto 0;
+    //height: 1200px;
+    margin: 0 auto 300px 0;
     & span {    
     font-weight: bold;
     color: #FFFFFF;
