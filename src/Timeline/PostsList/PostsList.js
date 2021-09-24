@@ -5,18 +5,6 @@ import { AllPostsList, Posts, StillLoading } from "./PostsList_style.js"
 import SinglePost from "./SinglePost.js";
 
 
-<<<<<<< HEAD
-
-export default function PostsList({ showList, avatar, postsArray, render }) {
-
-   
-    if (showList === false) {
-        return (
-            <AllPostsList>
-                <StillLoading > <h1>loading....</h1></StillLoading>
-            </AllPostsList>
-        );
-=======
 export default function PostsList({ showList, avatar, postsArray, render, postTipo}) {
     
     
@@ -26,30 +14,20 @@ export default function PostsList({ showList, avatar, postsArray, render, postTi
                     <StillLoading > <h1>Loading...</h1></StillLoading>
                 </AllPostsList>
             );
->>>>>>> main
+
     }
     else {
         if (render === "my posts") {
 
             return (
                 <>
-<<<<<<< HEAD
-                    <AllPostsList>
-                        <Posts postsArray={postsArray}>
 
-                            {postsArray.map((post) =>
-                                
-                                <SinglePost post={post} key={post.repostCount===0? post.id:post.repostId} />)
-                            }
-                        </Posts>
-                    </AllPostsList>
-=======
                     {
                     postTipo ?
                         <AllPostsList>
                             <Posts postsArray={postsArray}>
                                 {postsArray.map((post) =>
-                                    <SinglePost post={post} key={post.id} />)
+                                    <SinglePost post={post} key={post.repostCount===0? post.id:post.repostId} />)
                                 }
                             </Posts>
                         </AllPostsList> : 
@@ -57,7 +35,7 @@ export default function PostsList({ showList, avatar, postsArray, render, postTi
                             <StillLoading > <h1>Você não fez posts</h1></StillLoading>
                         </AllPostsList>
                     }
->>>>>>> main
+
                 </>
             );
         }

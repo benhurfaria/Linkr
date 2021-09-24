@@ -106,12 +106,6 @@ function getStoredUser() {
     return user;
 }
 
-<<<<<<< HEAD
 
-
-
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser }
-=======
 export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes }
->>>>>>> main
 
