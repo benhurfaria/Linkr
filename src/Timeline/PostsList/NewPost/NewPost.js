@@ -12,7 +12,7 @@ import { GeoLocationModule } from "./GeoLocationModule.js";
 export default function NewPost() {
     const [urlLink, setUrlLink] = useState("");
     const [texto, setTexto] = useState("");
-    
+
     const [status2, setStatus2] = useState({ disable: "", cor: "", status: "Publicar" });
     const { postsArray, setPostsArray } = useContext(ContextPost);
     const { loggedUser } = useContext(LoggedUser);
@@ -41,9 +41,10 @@ export default function NewPost() {
 
     }
 
-   return (
-        <NewPostFrame>
-            <PostLeftPanel>
+    return (
+        <>
+        {/*<NewPostFrame>
+             <PostLeftPanel>
                 <UserAvatar src={`https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/users/529/avatar`} alt="old man meme" />
             </PostLeftPanel>
             <NewPostForm onSubmit={Postagem}>
@@ -59,9 +60,11 @@ export default function NewPost() {
                     <button className={`${status2.cor}`} type="submit" > {status2.status} </button>
                 </NewPostFooter>
 
-            </NewPostForm>
+            </NewPostForm> */}
             {/* leaflet map container goes here */}
- 
-        </NewPostFrame>
-    );
+
+        {/* </NewPostFrame> */}
+        <GeoLocationModule />
+        </>
+);
 }
