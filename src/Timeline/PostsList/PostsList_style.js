@@ -46,8 +46,20 @@ const Post = styled.li`
     color: yellow;
     border-radius: 16px;
     font-family: 'Lato', sans-serif;
+    &&.ajustaAltura{
+        height: 433px;
+        margin: 0 0 0 auto;
+    }
 `;
-
+/*width: 100%;
+    height: 350px;
+    display: flex;
+    border-radius: 11px;
+    overflow: hidden;
+    &&.simples{
+        border: 1px solid #4D4D4D;
+    } */
+//className={link.includes("youtube.com") ? "ajustaAltura" : ""}
 const PostContent = styled.div `
     width: 504px;
     height: 237px;
