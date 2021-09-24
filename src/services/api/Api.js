@@ -91,6 +91,11 @@ function getAllPosts(configHeader, params) {
     return allPostsPromise;
 }
 
+function getMyLikes(config, params){
+    return axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/liked/${params}`, config);
+
+}
+
 function storeUser(user) {
     const serialUser = JSON.stringify(user);
     localStorage.setItem("user", serialUser);
@@ -101,4 +106,6 @@ function getStoredUser() {
     return user;
 }
 
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser }
+
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes }
+

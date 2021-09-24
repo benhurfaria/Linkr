@@ -14,12 +14,13 @@ import { getStoredUser } from "./services/api/Api.js";
 export default function App() {
     const [signedUser, setSignedUser] = useState({});
     const [loggedUser, setLoggedUser] = useState({});
-    
+
     useEffect(() => {
         const user = getStoredUser()
         setLoggedUser(user)
         
     }, [])
+
     return (
         <SignedUser.Provider value={{ signedUser, setSignedUser }}>
             <LoggedUser.Provider value={{ loggedUser, setLoggedUser }}>
@@ -40,9 +41,9 @@ export default function App() {
                         <Route exact path="/my-posts">
                             <Timeline subType="my posts" />
                         </Route>
-
-                        <Route exact path="/my-likes">
-                            <Timeline subType="my likes" />
+                        
+                        <Route path="/my-likes" exact>
+                            <Timeline subType="my likes"/>
                         </Route>
 
                     </Switch>

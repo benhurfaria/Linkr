@@ -7,7 +7,7 @@ import Loader from "react-loader-spinner";
 import Topbar from "../Topbar/Topbar.js";
 import { LoggedUser } from '../services/contexts/LoggedUser.js';
 import { ContextPost } from '../services/contexts/ContextPost.js';
-import { getAllPosts, getStoredUser, getUserPosts } from "../services/api/Api.js";
+import { getAllPosts, getStoredUser, getUserPosts, getMyLikes } from "../services/api/Api.js";
 
 import QueryString from "qs";
 
@@ -17,14 +17,18 @@ export default function Timeline({ subType }) {
     const [postsArray, setPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
     const [loading, setLoading] = useState(true)
+    const [postTipo, setPostTipo] = useState(false);
+
+
 
     function updatePostsArray(response) {
         setLoading(true)
         if (response.data.posts.length < 1) {
-            alert("Nenhum post encontrado");
+            setPostTipo(false);
             return;
         }
         setPostsArray(response.data.posts);
+        setPostTipo(true);
         setPostsLoaded(true);
     };
     useEffect(() => {
@@ -41,13 +45,24 @@ export default function Timeline({ subType }) {
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
         if (subType === "timeline") {
+
             const params = QueryString.stringify({ limit: 10 })
             setPostsArray([])
             getAllPosts(requestConfig, params)
                 .then(updatePostsArray)
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
-    }, [loggedUser, subType,]);
+
+        if (subType === "my likes") {
+            const params = QueryString.stringify({ limit: 10 })
+            setPostsArray([]);
+            getMyLikes(requestConfig, params)
+                .then(updatePostsArray)
+                .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
+        }
+
+    }, [loggedUser, subType]);
+
     function getMorePost(params) {
         setLoading(false)
         const strParams = QueryString.stringify(params)
@@ -67,6 +82,7 @@ export default function Timeline({ subType }) {
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
 
+
     }
     function loadingPost() {
         return loading ? <></> : <LoaderPosition><Loader type="TailSpin" color="#00BFFF" height={80} width={80} /></LoaderPosition>
@@ -76,10 +92,15 @@ export default function Timeline({ subType }) {
         <>
             <ContextPost.Provider value={{ postsArray, setPostsArray }}>
                 <Topbar />
+<<<<<<< HEAD
                 <MainContainer style={{ height:"5000px ", overflowY: "auto"}} >
+=======
+                <MainContainer style={{ height: "max-content", overflow: "auto" }} >
+>>>>>>> fix/Likes
                     <ContainerHeader>
                         <h1>{`${subType}`}</h1>
                     </ContainerHeader>
+
                     <InfiniteScroll pageStart={0}
                         loadMore={() => getMorePost({ limit: postsArray.length + 1 })}
                         hasMore={true || false}
@@ -88,10 +109,11 @@ export default function Timeline({ subType }) {
                         
                         >
                         <ContainerPosts>
-                            <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} />
+                            <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} postTipo={postTipo}/>
                             <Hashtags />
                         </ContainerPosts>
                     </InfiniteScroll>
+
                 </MainContainer>
             </ContextPost.Provider>
         </>

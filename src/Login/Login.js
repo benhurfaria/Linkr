@@ -4,8 +4,10 @@ import {
     Form, LoginForm
 } from './style_Login';
 import { Link, useHistory } from "react-router-dom";
+
 import { useState, useContext, useEffect } from 'react';
 import { login, storeUser, getStoredUser } from '../services/api/Api'
+
 import { LoggedUser } from '../services/contexts/LoggedUser';
 
 
@@ -40,7 +42,9 @@ export default function Login() {
                     avatar: res.data.user.avatar,
                     token: res.data.token
                 };
+
                 storeUser(user)
+
                 setLoggedUser(user);
                 history.push('/timeline');
             })

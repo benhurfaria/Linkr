@@ -14,12 +14,10 @@ function generateTooltipString(likes, likesTip, liked, loggedUser) {
     usernamesList.forEach((username, index) => {
         if (index === 1) resultString += (usernamesList.length === 3) ? ", " : " e ";
         if (index === 2 && usernamesList.length === 3) resultString += " e ";
-        
         resultString += username["user.username"];
     })
 
     resultString += (usernamesList.length === 1) ? " curtiu esse post" : " curtiram esse post";
-
     return resultString;
 }
 function getFirstThreeUsernames(likes, liked, loggedUser, likesTip) {
@@ -27,10 +25,7 @@ function getFirstThreeUsernames(likes, liked, loggedUser, likesTip) {
     let firstThreeUsernames = [];
     if (likesTip.length) {
         if (liked) {
-            
             likesTip = likesTip.filter(like => like.userId !== loggedUser.id);
-            
-            
             const loggedUserTooltipObject = { "user.username": "Você" };
             firstThreeUsernames.push(loggedUserTooltipObject);
             addedNames++;
@@ -40,8 +35,6 @@ function getFirstThreeUsernames(likes, liked, loggedUser, likesTip) {
         
         if(!likesTip.length) return firstThreeUsernames;
         do {
-            
-            
             likesTip = likesTip.map(like => like = { "user.username": `${like.username}` })
             firstThreeUsernames.push(likesTip[index]);
             addedNames++;
@@ -50,7 +43,6 @@ function getFirstThreeUsernames(likes, liked, loggedUser, likesTip) {
 
     } else {
         if (liked) {
-            
             likes = likes.filter(like => like.userId !== loggedUser.id);
             const loggedUserTooltipObject = { "user.username": "Você" };
             firstThreeUsernames.push(loggedUserTooltipObject);
