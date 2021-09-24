@@ -102,7 +102,7 @@ export default function Timeline({ subType }) {
                         loader={loadingPost()}
                         useWindow={false}>
                         <ContainerPosts>
-                            <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} />
+                            <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} postTipo={postTipo}/>
                             <Hashtags />
                         </ContainerPosts>
                     </InfiniteScroll>
