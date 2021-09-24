@@ -6,11 +6,7 @@ import Hashtags from '../Hashtags/Hashtags'
 import Topbar from "../Topbar/Topbar.js";
 import { LoggedUser } from '../services/contexts/LoggedUser.js';
 import { ContextPost } from '../services/contexts/ContextPost.js';
-<<<<<<< HEAD
-import { getAllPosts } from "../services/api/Api.js";
-=======
-import { getAllPosts, getStoredUser, getUserPosts, getMyLikes } from "../services/api/Api.js";
->>>>>>> main
+import { getAllPosts, getStoredUser } from "../services/api/Api.js";
 
 export default function Timeline({ subType }) {
     const { loggedUser} = useContext(LoggedUser);
@@ -20,7 +16,7 @@ export default function Timeline({ subType }) {
 
 
     function updatePostsArray(response) {
-        if (response.data.posts.length < 1) {
+        if (!response.data.posts.length) {
             setPostTipo(false);
             return;
         }
@@ -53,8 +49,7 @@ export default function Timeline({ subType }) {
                         <h1>timeline</h1>
                     </ContainerHeader>
                     <ContainerPosts>
-                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render="timeline"/>
-                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} postTipo={postTipo}/>
+                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render="timeline" postTipo={postTipo}/>
                         <Hashtags />
                     </ContainerPosts>
                 </MainContainer>
