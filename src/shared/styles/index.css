@@ -8,7 +8,7 @@
 
 body {
     width: 100vw;
-    height: 2500px;
+    height: 100vh;
     margin: auto;
     background-color: #333333;
     overflow-x: hidden;
