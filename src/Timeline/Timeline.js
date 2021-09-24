@@ -39,7 +39,7 @@ export default function Timeline({ subType }) {
         if (subType === "my posts") {
             const params = QueryString.stringify({ limit: 10 })
             setPostsArray([])
-            getUserPosts(requestConfig, loggedUser.id, params)
+            getUserPosts(requestConfig, getStoredUser().id, params)
                 .then(updatePostsArray)
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
@@ -72,14 +72,14 @@ export default function Timeline({ subType }) {
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
         if (subType === "my posts") {
-            getUserPosts(requestConfig, loggedUser.id, strParams)
+            getUserPosts(requestConfig, getStoredUser().id, strParams)
                 .then(updatePostsArray)
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
         if (subType === "my likes") {
-            setPostsArray([]);
-            getMyLikes(requestConfig, params)
-            .then(updatePostsArray)
+            
+            getMyLikes(requestConfig, strParams)
+                .then(updatePostsArray)
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
 

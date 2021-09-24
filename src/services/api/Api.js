@@ -73,9 +73,9 @@ function dislike(postId, config, body) {
 };
 
 function getUserPosts(configHeader, userID, params) {
-    const USERPOSTS_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/?${params}`;
+    const USERPOSTS_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/`;
 
-    const appendedURL = USERPOSTS_URL + `${userID}/posts`;
+    const appendedURL = USERPOSTS_URL + `${userID}/posts/?${params}`;
 
     const userPostsPromise = axios.get(appendedURL, configHeader);
 
