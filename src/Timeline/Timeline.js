@@ -56,7 +56,7 @@ export default function Timeline({ subType }) {
                 Authorization: `Bearer ${getStoredUser().token}`
             }
         };
-        if (subType === "timeline1") {
+        if (subType === "timeline") {
             getAllPosts(requestConfig, strParams)
                 .then(updatePostsArray)
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
@@ -76,15 +76,17 @@ export default function Timeline({ subType }) {
         <>
             <ContextPost.Provider value={{ postsArray, setPostsArray }}>
                 <Topbar />
-                <MainContainer style={{ height:"calc(max-content)", overflow:"auto" }} >
+                <MainContainer style={{ height:"5000px ", overflowY: "auto"}} >
                     <ContainerHeader>
                         <h1>{`${subType}`}</h1>
                     </ContainerHeader>
                     <InfiniteScroll pageStart={0}
-                        loadMore={() => getMorePost({ limit: postsArray.length + 10 })}
+                        loadMore={() => getMorePost({ limit: postsArray.length + 1 })}
                         hasMore={true || false}
                         loader={loadingPost()}
-                        useWindow={false}>
+                        useWindow={false}
+                        
+                        >
                         <ContainerPosts>
                             <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} />
                             <Hashtags />
