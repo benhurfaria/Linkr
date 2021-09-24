@@ -7,6 +7,7 @@ import { ContextPost } from "../../../services/contexts/ContextPost.js";
 import { LoggedUser } from "../../../services/contexts/LoggedUser.js";
 
 import { GeoLocationModule } from "./GeoLocationModule.js";
+import MapTester from "./MapTester.js";
 
 
 export default function NewPost() {
@@ -43,8 +44,8 @@ export default function NewPost() {
 
     return (
         <>
-        {/*<NewPostFrame>
-             <PostLeftPanel>
+        <NewPostFrame>
+             {/* <PostLeftPanel>
                 <UserAvatar src={`https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/users/529/avatar`} alt="old man meme" />
             </PostLeftPanel>
             <NewPostForm onSubmit={Postagem}>
@@ -61,10 +62,10 @@ export default function NewPost() {
                 </NewPostFooter>
 
             </NewPostForm> */}
-            {/* leaflet map container goes here */}
-
-        {/* </NewPostFrame> */}
-        <GeoLocationModule />
+            {/* <GeoLocationModule /> */}
+            <MapTester />
+        </NewPostFrame>
+        
         </>
 );
 }
