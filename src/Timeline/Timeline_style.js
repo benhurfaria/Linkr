@@ -43,8 +43,7 @@ const MainContainer = styled.div`
     padding-top: 52px;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    //overflow-y: auto;
+    
 
     
 `;
@@ -62,7 +61,13 @@ const ContainerHeader = styled.div`
 const ContainerPosts = styled.div`
     display: flex;
     flex-direction: row;
-        
+    
+  
 `;
+const LoaderPosition = styled.div`
+    position: fixed;
+    bottom: 0px;
+    left: 40%;
+`
 
-export {TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts};
+export {TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts, LoaderPosition};

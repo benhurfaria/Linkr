@@ -24,7 +24,8 @@ export default function PostsList({ showList, avatar, postsArray, render }) {
                         <Posts postsArray={postsArray}>
 
                             {postsArray.map((post) =>
-                                <SinglePost post={post} key={post.id} />)
+                                
+                                <SinglePost post={post} key={post.repostCount===0? post.id:post.repostId} />)
                             }
                         </Posts>
                     </AllPostsList>
@@ -41,7 +42,7 @@ export default function PostsList({ showList, avatar, postsArray, render }) {
                             <Posts postsArray={postsArray}>
 
                                 {postsArray.map((post) =>
-                                    <SinglePost post={post} key={post.id} />)
+                                    <SinglePost post={post} key={post.repostCount===0? post.id:post.repostId} />)
                                 }
                             </Posts>
                         

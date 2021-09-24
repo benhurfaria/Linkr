@@ -17,11 +17,7 @@ export default function Login() {
     const history = useHistory();
     useEffect(()=>{
         const user= getStoredUser();
-        if(user !== null){
-            history.push("/timeline")
-        }else{
-            history.push('/')
-        }
+        user ? history.push("/timeline") : history.push('/')
     }, [history])
     function SendLoginData(e) {
         e.preventDefault();
