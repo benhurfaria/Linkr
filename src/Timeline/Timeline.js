@@ -54,8 +54,9 @@ export default function Timeline({ subType }) {
         }
 
         if (subType === "my likes") {
+            const params = QueryString.stringify({ limit: 10 })
             setPostsArray([]);
-            getMyLikes(requestConfig)
+            getMyLikes(requestConfig, params)
                 .then(updatePostsArray)
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
