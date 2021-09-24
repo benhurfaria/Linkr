@@ -72,8 +72,8 @@ function dislike(postId, config, body) {
     return promise;
 };
 
-function getUserPosts(configHeader, userID) {
-    const USERPOSTS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/";
+function getUserPosts(configHeader, userID, params) {
+    const USERPOSTS_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/?${params}`;
 
     const appendedURL = USERPOSTS_URL + `${userID}/posts`;
 
@@ -83,8 +83,8 @@ function getUserPosts(configHeader, userID) {
     return userPostsPromise;
 }
 
-function getAllPosts(configHeader) {
-    const POSTS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/";
+function getAllPosts(configHeader, params) {
+    const POSTS_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/?${params}`;
 
     const allPostsPromise = axios.get(POSTS_URL, configHeader);
 

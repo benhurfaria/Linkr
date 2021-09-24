@@ -39,9 +39,13 @@ const UserAvatar = styled.img`
 
 const MainContainer = styled.div`
     width: 938px;
-    margin: 125px auto auto auto;
+    margin: 73px auto auto auto;
+    padding-top: 52px;
     display: flex;
     flex-direction: column;
+    
+
+    
 `;
 
 const ContainerHeader = styled.div`
@@ -57,7 +61,13 @@ const ContainerHeader = styled.div`
 const ContainerPosts = styled.div`
     display: flex;
     flex-direction: row;
-        
+    
+  
 `;
+const LoaderPosition = styled.div`
+    position: fixed;
+    bottom: 0px;
+    left: 40%;
+`
 
-export {TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts};
+export {TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts, LoaderPosition};

@@ -11,6 +11,9 @@ body {
     height: 100vh;
     margin: auto;
     background-color: #333333;
+    overflow-x: hidden;
+    
+    
 }
 
 span {    
