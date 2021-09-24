@@ -53,17 +53,17 @@ function GeoLocationModule() {
         }
     }
 
-    // let L = {};
-    // let mymap = L.map('mapid').setView([51.505, -0.09], 13);
+    let L = {};
+    let mymap = L.map('mapid').setView([51.505, -0.09], 13);
 
-    // L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    //     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    //     maxZoom: 18,
-    //     id: 'mapbox/streets-v11',
-    //     tileSize: 512,
-    //     zoomOffset: -1,
-    //     accessToken: 'pk.eyJ1IjoidGVsZXMtdGFyY2lzaW8iLCJhIjoiY2t0eHRsY2doMDQ4NjJvcGl3dXJ5ank4byJ9.3fjUEvn7-6yp_gR7AlNHlA'
-    // }).addTo(mymap);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoidGVsZXMtdGFyY2lzaW8iLCJhIjoiY2t0eHRsY2doMDQ4NjJvcGl3dXJ5ank4byJ9.3fjUEvn7-6yp_gR7AlNHlA'
+     }).addTo(mymap);
 
     return (
         <TretaMaps >
@@ -78,7 +78,9 @@ function GeoLocationModule() {
                     </Popup>
                 </Marker>
             </MapContainer>
-            aqui
+            <div id="map">
+
+            </div>
         </TretaMaps>
 
 
