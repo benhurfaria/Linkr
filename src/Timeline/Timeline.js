@@ -8,7 +8,7 @@ import { LoggedUser } from '../services/contexts/LoggedUser.js';
 import { ContextPost } from '../services/contexts/ContextPost.js';
 import { getAllPosts, getStoredUser } from "../services/api/Api.js";
 
-export default function Timeline({ subType }) {
+export default function Timeline() {
     const { loggedUser} = useContext(LoggedUser);
     const [postsArray, setPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);

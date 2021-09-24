@@ -33,7 +33,7 @@ export default function App() {
                         </Route>
 
                         <Route exact path="/timeline">
-                            <Timeline subType="timeline" />
+                            <Timeline />
                         </Route>
 
                         <Route path='/signup' exact>
@@ -48,7 +48,7 @@ export default function App() {
                         </Route>
                         
                         <Route path="/my-likes" exact>
-                            <Timeline subType="my likes"/>
+                            <Timeline />
                         </Route>
 
                         <Route exact path="/hashtag/:hashtagid">
