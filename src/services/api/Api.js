@@ -106,7 +106,10 @@ function mudarDescricaoPost(id, texto, config, setInputHabilitado, setEdit, setT
         })
 }
 
+function getMyLikes(config){
+    return axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/liked", config);
 
+}
 
 function storeUser(user) {
     const serialUser = JSON.stringify(user);
@@ -118,5 +121,7 @@ function getStoredUser() {
     return user;
 }
 
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, mudarDescricaoPost }
+
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, mudarDescricaoPost }
+
 

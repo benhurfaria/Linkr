@@ -18,7 +18,8 @@ export default function Topbar(){
     }
     
     function limpaStorage(){
-        
+        localStorage.clear();
+
         window.location.href = '/';
         
     }
