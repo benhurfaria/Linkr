@@ -28,3 +28,5 @@ export default GoogleApiWrapper({
 
 
 //latitude: -8.0347136, longitude: -34.9110272,
+
+

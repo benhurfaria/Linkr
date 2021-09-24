@@ -8,6 +8,7 @@ import { LoggedUser } from "../../../services/contexts/LoggedUser.js";
 
 import { GeoLocationModule } from "./GeoLocationModule.js";
 import MapTester from "./MapTester.js";
+import Mapview from "./MapView.js";
 
 
 export default function NewPost() {
@@ -63,7 +64,8 @@ export default function NewPost() {
 
             </NewPostForm> */}
             {/* <GeoLocationModule /> */}
-            <MapTester />
+            {/* <MapTester /> */}
+            <Mapview />
         </NewPostFrame>
         
         </>
