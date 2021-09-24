@@ -17,7 +17,7 @@ export default function MyPosts() {
     const [postsLoaded, setPostsLoaded] = useState(false);
 
     function updatePostsArray(response) {
-        if (response.data.posts.length < 1) {
+        if (!response.data.posts.length) {
             alert("Nenhum post encontrado");
             return;
         }

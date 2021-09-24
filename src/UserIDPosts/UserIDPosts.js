@@ -18,7 +18,7 @@ export default function UserIDPosts() {
     const IDParam = useParams();
     
     function updatePostsArray(response) {
-        if (response.data.posts.length < 1) {
+        if (!response.data.posts.length) {
             alert("Nenhum post encontrado");
             return;
         }
@@ -52,7 +52,7 @@ export default function UserIDPosts() {
                 </TimelineHeader>
                 <MainContainer>
                     <ContainerHeader>
-                        <h1>{(postsLoaded === true) ? `${postsArray[0].user.username}'s posts` : ""}</h1>
+                        <h1>{postsLoaded && `${postsArray[0].user.username}'s posts`}</h1>
                     </ContainerHeader>
                     <ContainerPosts>
                         <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render="userID posts" />
