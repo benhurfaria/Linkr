@@ -92,7 +92,7 @@ function getAllPosts(configHeader, params) {
 }
 
 function getMyLikes(config, params){
-    return axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/liked/${params}`, config);
+    return axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/liked/?${params}`, config);
 
 }
 
