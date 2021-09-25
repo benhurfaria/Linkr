@@ -13,7 +13,7 @@ export default function PlayerTube({link}){
                 onReady = {e => e.target.pauseVideo()}
                 opts={{
                     width: '100%',
-                    height: '281px',
+                    height: '400px',
                     playerVars:{
                         controls:1, 
                         start:0,
@@ -21,7 +21,7 @@ export default function PlayerTube({link}){
                     
                 }}
             />
-            <p>{link}</p>
+            <a href={link} ><p>{link}</p></a>
         </Video>
     ); 
 }

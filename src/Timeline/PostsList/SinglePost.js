@@ -4,7 +4,6 @@ import { PostLeftPanel } from "../NewPost/NewPost_style.js";
 import { Post, PostContent, PostPreview, PreviewInfo, ThumbPreview } from "./PostsList_style.js";
 import PlayerTube from "./PlayerTube";
 import ReactHashtag from "react-hashtag";
-//import { IoIosHeart } from "react-icons/io";
 import Likes from "./Likes/Likes.js";
 
 export default function SinglePost({ post }) {
@@ -16,9 +15,9 @@ export default function SinglePost({ post }) {
         const filteredHashtag = hashtag.substring(1);
         history.push("/hashtag/" + filteredHashtag);
     }
-    console.log(link);
+
     return (
-        <Post key={id} className={link.includes("youtube.com") ? "ajustaAltura" : ""}>
+        <Post key={id} >
             <PostLeftPanel>
                 <Link to={`/user/${user.id}`} >
                     <UserAvatar src={user.avatar} />
@@ -33,13 +32,7 @@ export default function SinglePost({ post }) {
                     {text}
                 </ReactHashtag></h2>
 
-                {/* {link.includes("youtube.com")?
-                <>
-                <PlayerTube link={link}/>
-                </>
-                : */}
-
-                <PostPreview>
+                <PostPreview className={link.includes("youtube.com") ? "" : "altura"}>
                     {link.includes("youtube.com") ?
                         <>
                             <PlayerTube link={link} />

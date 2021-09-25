@@ -5,6 +5,8 @@ const Video = styled.div`
     p{
         margin-top: 12px;
     }
-    margin-top:30px;
+    a{
+        color: #B7B7B7;
+    }
 `;
 export {Video};
