@@ -1,4 +1,5 @@
 import styled from "styled-components";
+const mobile = '@media (max-width: 700px)';
 
 const NewPostFrame = styled.div`
     width: 611px;
@@ -13,7 +14,9 @@ const NewPostFrame = styled.div`
     font-weight: 300;
     font-size: 20px;
     line-height: 24px;
-    
+    ${mobile}{
+        width: 100%;
+    }
     & img {
         margin: 16px 18px auto 18px;
     }   
@@ -25,6 +28,9 @@ const NewPostForm = styled.form`
     margin: 22px 22px 16px 0; 
     display: flex;
     flex-direction: column;
+    ${mobile}{
+        width:100%;
+    }
     & h2 {
         height: 40px;
         font-weight: 300;
@@ -62,12 +68,14 @@ const NewPostURL = styled.input`
     height: 30px;
     margin: 0 auto 5px 0;
     width: 100%;
+    
 `;
 
 const NewPostComment = styled.textarea`
     height: 66px;
     margin: 0 auto 5px 0;
     width: 100%;
+  
 `;
 
 const PostLeftPanel = styled.div`

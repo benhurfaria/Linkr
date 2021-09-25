@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+const mobile = '@media (max-width: 700px)';
 
 const TimelineHeader = styled.div`
     width: 100%;
@@ -42,6 +42,9 @@ const MainContainer = styled.div`
     margin: 125px auto auto auto;
     display: flex;
     flex-direction: column;
+    ${mobile}{
+        width: 100%;
+    }
 `;
 
 const ContainerHeader = styled.div`
@@ -52,12 +55,14 @@ const ContainerHeader = styled.div`
     color: #FFFFFF;
     font-size: 43px;
     font-weight: 700;
+    ${mobile}{
+        width: 80%;
+    }
 `;
 
 const ContainerPosts = styled.div`
     display: flex;
     flex-direction: row;
-        
 `;
 
 export {TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts};

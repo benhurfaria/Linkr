@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+const mobile = '@media (max-width: 700px)';
 const Sharp = styled.li`
     font-family: 'Lato', sans-serif;
     color: #ffffff;
@@ -28,6 +28,7 @@ const TrendingTitle = styled.div`
     height: 40px;
     display: flex;
     align-items: center;
+    
 
 `
 const Border = styled.div`
@@ -42,7 +43,9 @@ const Trending = styled.div`
     background-color: #151515;
     border-radius: 10px;
     margin: 80px 0 0 25px;
-
+    ${mobile}{
+        display: none;
+    }
 `
 
 export { Sharp, SharpList, TrendingTitle, Border, Trending }

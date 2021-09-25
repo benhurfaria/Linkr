@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+const mobile = '@media (max-width: 700px)';
 const AllPostsList = styled.div`
     display: flex;
     flex-direction: column;
@@ -12,6 +12,9 @@ const Posts = styled.ul`
     & span {    
     font-weight: bold;
     color: #FFFFFF;
+    }
+    ${mobile}{
+        width:100%;
     }
 `;
 
@@ -32,6 +35,9 @@ const StillLoading = styled.div`
         font-size: 49px;
         color: yellow;
     }
+    ${mobile}{
+        width:100%;
+    }
 `;
 
 const Post = styled.li`
@@ -46,6 +52,9 @@ const Post = styled.li`
     color: yellow;
     border-radius: 16px;
     font-family: 'Lato', sans-serif;
+    ${mobile}{
+        width: 100%;
+    }
 `;
 
 const PostContent = styled.div `
@@ -56,7 +65,9 @@ const PostContent = styled.div `
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-               
+    ${mobile}{
+        width:100%;
+    }
     & a,h1 {
         max-width: 100%;        text-decoration: none;
         font-size: 19px;
@@ -121,6 +132,9 @@ const PreviewInfo = styled.div`
 const ThumbPreview = styled.div`
     margin-left: 14px;
     width: 154px;
+    ${mobile}{
+        width:115px;
+    }
     & img {
         width: 100%;
         height: 100%;
