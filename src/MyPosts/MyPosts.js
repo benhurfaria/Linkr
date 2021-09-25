@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import { IoIosArrowDown } from "react-icons/io";
 
 import PostsList from "../Timeline/PostsList/PostsList";
 import Hashtags from '../Hashtags/Hashtags'
-import { TimelineHeader, DropdownMenu, UserAvatar, MainContainer, ContainerHeader, ContainerPosts } from "../Timeline/Timeline_style.js";
+import Topbar from "../Topbar/Topbar.js";
+import { MainContainer, ContainerHeader, ContainerPosts } from "../Timeline/Timeline_style.js";
 
 import { LoggedUser } from '../services/contexts/LoggedUser.js';
 import { ContextPost } from '../services/contexts/ContextPost.js';
@@ -41,16 +40,7 @@ export default function MyPosts() {
     return (
         <>
             <ContextPost.Provider value={{ postsArray, setPostsArray }}>
-                <TimelineHeader>
-                    <h1>linkr</h1>
-
-                    <DropdownMenu>
-                        <IoIosArrowDown />
-                        <Link to="/my-posts">
-                            <UserAvatar src={loggedUser.avatar} />
-                        </Link>
-                    </DropdownMenu>
-                </TimelineHeader>
+                <Topbar />
                 <MainContainer>
                     <ContainerHeader>
                         <h1>my posts</h1>
