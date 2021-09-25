@@ -48,8 +48,18 @@ const Post = styled.li`
     font-family: 'Lato', sans-serif;
     position: relative;
     z-index: 0;
+    .pencil{
+        position: absolute;
+        top:15px;
+        right: 55px;
+        font-size: 25px;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+    
     .trash{
         position: absolute;
+        top: 15px;
         right: 15px;
         font-size: 30px;
         color: #FFFFFF;
@@ -141,6 +151,16 @@ const PostContent = styled.div `
         line-height: 20px;
         color: #B7B7B7;
         }
+    input{
+        border-radius: 7px;
+        outline: none;
+        height: 50px;
+        width: 500px;
+        height: 44px;
+        font-family: 'Lato', sans-serif;
+        border: none;
+    }
+    
 `;
 
 const PostPreview = styled.div`

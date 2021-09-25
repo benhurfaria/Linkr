@@ -93,11 +93,27 @@ function getAllPosts(configHeader) {
 }
 
 
+
+function mudarDescricaoPost(id, texto, config, setInputHabilitado, setEdit, setTexto, text, edit, setTextoSucesso){
+    const EDIT_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${id}`;
+    return axios.put(EDIT_URL, texto, config)
+        .then(resp =>{
+            setInputHabilitado(false);
+            setTextoSucesso(texto.text);
+            setEdit(!edit);
+        })
+        .catch(err =>{
+            setInputHabilitado(false);
+            alert("Não foi possivel editar o post");
+        })
+}
+
 function apagarPost(config, id){
     const DELETE_POST = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${id}`;
 
      return axios.delete(DELETE_POST, config)
         
+
 }
 
 function getMyLikes(config){
@@ -118,5 +134,5 @@ function getStoredUser() {
 
 
 
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, apagarPost}
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, apagarPost, mudarDescricaoPost}
 
