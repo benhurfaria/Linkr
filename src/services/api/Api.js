@@ -111,14 +111,13 @@ function mudarDescricaoPost(id, texto, config, setInputHabilitado, setEdit, edit
 function apagarPost(config, id){
     const DELETE_POST = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${id}`;
 
-     return axios.delete(DELETE_POST, config)
+    return axios.delete(DELETE_POST, config)
         
 
 }
 
 function getMyLikes(config){
     return axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/liked", config);
-
 
 }
 

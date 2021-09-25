@@ -9,6 +9,7 @@ import SignUp from "./SignUp/SignUp.js";
 import Login from "./Login/Login";
 import Timeline from "./Timeline/Timeline.js";
 import MyPosts from "./MyPosts/MyPosts.js";
+import MyLikes from "./MyLikes/MyLikes.js";
 import UserIDPosts from "./UserIDPosts/UserIDPosts.js";
 import HashtagPosts from "./HashtagPosts/HashtagPosts.js";
 import { getStoredUser } from "./services/api/Api.js";
@@ -48,7 +49,7 @@ export default function App() {
                         </Route>
                         
                         <Route path="/my-likes" exact>
-                            <Timeline />
+                            <MyLikes />
                         </Route>
 
                         <Route exact path="/hashtag/:hashtagid">
