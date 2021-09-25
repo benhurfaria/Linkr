@@ -31,6 +31,7 @@ function mandarPost(body, config, setUrlLink, setTexto, setStatus2, setPostsArra
             setStatus2({ disable: "", cor: "", status: "Publicar" });
         });
 
+
 };
 
 function login(body, setDisabled) {
@@ -91,8 +92,17 @@ function getAllPosts(configHeader) {
     return allPostsPromise;
 }
 
+
+function apagarPost(config, id){
+    const DELETE_POST = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${id}`;
+
+     return axios.delete(DELETE_POST, config)
+        
+}
+
 function getMyLikes(config){
     return axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/liked", config);
+
 
 }
 
@@ -106,5 +116,7 @@ function getStoredUser() {
     return user;
 }
 
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes }
+
+
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, apagarPost}
 
