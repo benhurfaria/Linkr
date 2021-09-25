@@ -30,9 +30,18 @@ export default function SinglePost({ post }) {
     };
 
     function removerPost(){
-        apagarPost(config, id, setIsModalVisible, setPostsArray, postsArray);
+        apagarPost(config, id, setIsModalVisible, setPostsArray, postsArray)
+            .then(res => {
+                setIsModalVisible(false);
+                const posts = postsArray.filter((arr) => arr.id !== id);
+                setPostsArray( posts);
+            })
+            .catch(err =>{
+                alert("Não foi possivel excluir esse post")
+                setIsModalVisible(false);
+            });
     }
-    if(loggedUser.username === user.username){
+
         return(
             <Post key={id}>
             <PostLeftPanel>
@@ -60,17 +69,13 @@ export default function SinglePost({ post }) {
                         </a>
                     </PreviewInfo>
                     <ThumbPreview >
-                        {
-                            linkImage ?
-                                <img src={linkImage} alt="thumbnail" />
-                                :
-                                <></>
-                        }
+                        {linkImage &&  <img src={linkImage} alt="thumbnail" />}
                     </ThumbPreview>
 
                 </PostPreview>
 
             </PostContent>
+            {(loggedUser.username === user.username) && <>
             <IoIosTrash className="trash" onClick={()=> setIsModalVisible(true)}/>
                 <Modal isOpen={isModalVisible} className="modal">
                     <ModalScreen>
@@ -85,52 +90,8 @@ export default function SinglePost({ post }) {
                         </div>
                     </ModalScreen>
                 </Modal>
+                </>
+            }
             </Post >
         );
-    }else{
-    return (
-        
-        <Post key={id}>
-            <PostLeftPanel>
-                <Link to={`/user/${user.id}`} >
-                    <UserAvatar src={user.avatar} />
-                </Link>
-                <h1><Likes key={id} likes={likes} id={id} /></h1>
-                
-            </PostLeftPanel>
-            <PostContent>
-                <Link to={`/user/${user.id}`} >{user.username}</Link>
-
-                <h2><ReactHashtag onHashtagClick={goToHashtag}>
-                    {text}
-                </ReactHashtag></h2>
-                <PostPreview>
-                    <PreviewInfo>
-                        <a href={link} target="_blank" rel="noreferrer noopener">
-                            <h1> {linkTitle}</h1>
-
-                            <h2>{linkDescription}</h2>
-
-                            <h3>{link}</h3>
-
-                        </a>
-                    </PreviewInfo>
-                    <ThumbPreview >
-                        {
-                            linkImage ?
-                                <img src={linkImage} alt="thumbnail" />
-                                :
-                                <></>
-                        }
-                    </ThumbPreview>
-
-                </PostPreview>
-
-            </PostContent>
-                
-        </Post >
-        
-    );
-    }
-};
-
+}

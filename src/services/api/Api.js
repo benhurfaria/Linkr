@@ -93,23 +93,16 @@ function getAllPosts(configHeader) {
 }
 
 
-function apagarPost(config, id, setIsModalVisible, setPostsArray, postsArray){
+function apagarPost(config, id){
     const DELETE_POST = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${id}`;
-   
-    function retirar(idarray, idpost){
-        if(idarray === idpost) return false;
-        return true;
-    }
 
-    axios.delete(DELETE_POST, config)
-        .then(res => {
-            setIsModalVisible(false);
-            setPostsArray(postsArray.filter((arr) => retirar(arr.id, id)));
-        })
-        .catch(err =>{
-            alert("Não foi possivel excluir esse post")
-            setIsModalVisible(false);
-        });
+     return axios.delete(DELETE_POST, config)
+        
+}
+
+function getMyLikes(config){
+    return axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/liked", config);
+
 
 }
 
@@ -123,5 +116,7 @@ function getStoredUser() {
     return user;
 }
 
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, apagarPost }
+
+
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, apagarPost}
 

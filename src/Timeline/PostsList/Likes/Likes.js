@@ -17,6 +17,9 @@ export default function Likes({ likes, id }) {
         if (!t) {
             likes.map(like => setLikesTip( [{userId: like.userId, username: like["user.username"] }]))
         }
+
+        setLikesCounter(likes.length);
+
         likes.forEach(like => { if (like.userId === loggedUser.id) setLiked(true) })
     }, [likes, loggedUser])
 
