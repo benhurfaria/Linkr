@@ -3,6 +3,7 @@ import { LoggedUser } from "../services/contexts/LoggedUser";
 import { useContext, useState} from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { Link } from "react-router-dom";
+import SearchBar from '../SearchBar/SearchBar';
 
 export default function Topbar(){
     const { loggedUser } = useContext(LoggedUser)
@@ -27,6 +28,7 @@ export default function Topbar(){
         <>
         <Top>
             <h1>linkr</h1>
+            <SearchBar/>
             <DropdownMenu>
                 {seta ?  <IoIosArrowUp onClick={alteraSeta} className="clicavel"/> : <IoIosArrowDown onClick={alteraSeta} className="clicavel"/>}
                 <UserAvatar onClick={alteraSeta} src={loggedUser.avatar}/>
