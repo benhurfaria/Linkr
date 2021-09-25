@@ -33,7 +33,7 @@ const PostContent = styled.div`
 const UsernameLink = styled.div`
     & a {
         text-decoration: none;
-        max-width: 100%;
+        max-width: 500px;
         font-size: 19px;
         font-weight: 400;
         line-height: 23px;
@@ -46,7 +46,7 @@ const PostText = styled.h1`
     font-size: 19px;
     font-weight: 400;
     line-height: 23px;
-    color: #FFFFFF; 
+    color: #FFFFFF;
 `;
 
 const PostPreview = styled.div`
@@ -114,4 +114,4 @@ const ThumbPreview = styled.div`
 `;
 
 
-export { Post, PostContent, PostPreview, PreviewInfo, ThumbPreview, UsernameLink, PostText}
+export { Post, PostContent, PostPreview, PreviewInfo, ThumbPreview, UsernameLink, PostText }

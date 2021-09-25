@@ -16,7 +16,7 @@ export default function Timeline() {
 
 
     function updatePostsArray(response) {
-        if (response.data.posts.length < 1) {
+        if (!response.data.posts.length) {
             setPostTipo(false);
             return;
         }
