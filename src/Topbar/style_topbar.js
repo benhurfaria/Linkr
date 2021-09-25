@@ -48,7 +48,7 @@ const SideBar = styled.div`
     right:0;
     border-radius: 0px 0px 0px 20px;
     font-family: 'Lato', sans-serif;
-    
+    position:fixed;
     h1{
         color: #ffffff;
         font-weight: 700;
