@@ -40,7 +40,7 @@ function getFirstThreeUsernames(likes, liked, loggedUser, likesTip) {
             firstThreeUsernames.push(likesTip1[index]);
             addedNames++;
             index++;
-        } while (addedNames <= 2 && index < likesTip1.length)
+        } while (addedNames <= 2 && index < likesTip.length)
 
     } else {
         if (liked) {
