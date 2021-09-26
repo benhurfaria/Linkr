@@ -4,8 +4,7 @@ import { PostLeftPanel } from "../NewPost/NewPost_style.js";
 import { Post, PostContent, PostPreview, PreviewInfo, ThumbPreview } from "./PostsList_style.js";
 
 import ReactHashtag from "react-hashtag";
-//import { IoIosHeart } from "react-icons/io";
-import Likes from "./Likes/Likes.js";
+
 
 export default function SinglePost({ post }) {
     const { id, likes, text, link, linkTitle, linkDescription, linkImage, user } = post;
@@ -23,7 +22,7 @@ export default function SinglePost({ post }) {
                 <Link to={`/user/${user.id}`} >
                     <UserAvatar src={user.avatar} />
                 </Link>
-                <h1><Likes key={id} likes={likes} id={id} /></h1>
+                <h1>{likes.length}</h1>
                 
             </PostLeftPanel>
             <PostContent>

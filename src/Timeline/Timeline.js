@@ -18,16 +18,18 @@ export default function Timeline({ subType }) {
     const [postsLoaded, setPostsLoaded] = useState(false);
     const [loading, setLoading] = useState(true)
     const [postTipo, setPostTipo] = useState(false);
+    const [hasPosts, setHasPosts] = useState(true || false)
 
     function updatePostsArray(response) {
         if (response.data.posts.length < 1) {
             setPostTipo(false);
+            setHasPosts(false)
             return;
         }
         setPostsArray(response.data.posts);
         setPostTipo(true);
         setPostsLoaded(true);
-        setLoading(true)
+        setLoading(false)
     };
     useEffect(() => {
         
@@ -59,7 +61,7 @@ export default function Timeline({ subType }) {
         }
     }, [loggedUser, subType,]);
     function getMorePost(params) {
-        setLoading(false)
+        setLoading(true)
         const strParams = QueryString.stringify(params)
         const requestConfig = {
             headers: {
@@ -85,8 +87,7 @@ export default function Timeline({ subType }) {
 
     }
     function loadingPost() {
-        return loading ? <></> : 
-        <LoaderPosition><Loader type="TailSpin" color="#6d6d6d" height={60} width={60} />Loading more posts...</LoaderPosition>
+        if(loading )  return <LoaderPosition><Loader type="TailSpin" color="#6d6d6d" height={60} width={60} />Loading more posts...</LoaderPosition>
     }
 
     return (
@@ -102,9 +103,8 @@ export default function Timeline({ subType }) {
 
                     <InfiniteScroll pageStart={0}
                         loadMore={() => getMorePost({ limit: postsArray.length + 10 })}
-                        hasMore={true || false}
+                        hasMore={hasPosts}
                         loader={loadingPost()}
-                        //useWindow={false}
                         threshold={10}
                         
                         >
