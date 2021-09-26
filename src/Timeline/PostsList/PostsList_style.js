@@ -36,7 +36,6 @@ const StillLoading = styled.div`
 
 const Post = styled.li`
     width: 611px;
-    height: 276px;
     padding: 19px;
     display: flex;
     align-items: flex-start;
@@ -123,12 +122,12 @@ const ModalScreen = styled.div`
 
 const PostContent = styled.div `
     width: 504px;
-    height: 237px;
+
     margin: 0 0 0 auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
+    
                
     & a,h1 {
         text-decoration: none;
@@ -149,12 +148,13 @@ const PostContent = styled.div `
         max-width: 100%;
         display: -webkit-box;
         overflow: hidden;
-        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         font-size: 17px;
         font-weight: 400;
         line-height: 20px;
         color: #B7B7B7;
+        margin: 15px 0px;
+        word-break: break-all;
         }
     input{
         border-radius: 7px;
@@ -170,11 +170,14 @@ const PostContent = styled.div `
 
 const PostPreview = styled.div`
     width: 100%;
-    height: 155px;
     display: flex;
-    border: 1px solid #4D4D4D;
     border-radius: 11px;
     overflow: hidden;
+    &&.altura{
+        height: 170px;
+        border: 1px solid #4D4D4D;
+        
+    }
 `;
 
 const PreviewInfo = styled.div`
@@ -185,6 +188,7 @@ const PreviewInfo = styled.div`
     justify-content: center;
     padding-left: 20px;
     word-wrap: wrap;
+    padding: 15px 0px;
     & h1 {
 
         font-size: 16px;
