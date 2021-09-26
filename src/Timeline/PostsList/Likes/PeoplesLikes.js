@@ -34,9 +34,12 @@ function getFirstThreeUsernames(likes, liked, loggedUser, likesTip) {
         likesTip = likesTip.filter(like => like.userId !== loggedUser.id);
         
         if(!likesTip.length) return firstThreeUsernames;
+           
         do {
-            likesTip = likesTip.map(like => like = { "user.username": `${like.username}` })
-            firstThreeUsernames.push(likesTip[index]);
+            console.log(likesTip)
+            let likesTip1 = likesTip.map(like => like = { "user.username": `${like.username}` })
+            console.log(likesTip1)
+            firstThreeUsernames.push(likesTip1[index]);
             addedNames++;
             index++;
         } while (addedNames <= 2 && index < likesTip.length)
