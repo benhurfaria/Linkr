@@ -38,7 +38,7 @@ export default function NewPost() {
     return (
         <NewPostFrame>
             <PostLeftPanel>
-                <UserAvatar src={`https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/users/529/avatar`} alt="old man meme" />
+                <UserAvatar src={loggedUser.avatar} alt="old man meme" />
             </PostLeftPanel>
             <NewPostForm onSubmit={Postagem}>
                 <h2> O que você tem pra favoritar hoje?</h2>
