@@ -77,7 +77,7 @@ function getUserPosts(configHeader, userID) {
     const USERPOSTS_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/${userID}/posts`;
 
     const userPostsPromise = axios.get(USERPOSTS_URL, configHeader);
-    return userPostsPromise;
+    return userPostsPromise;    
 }
 
 function getAllPosts(configHeader) {
@@ -131,5 +131,5 @@ function getStoredUser() {
     return user;
 }
 
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, getHashtagPosts, storeUser, getStoredUser, getMyLikes, apagarPost, mudarDescricaoPost}
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, getHashtagPosts, apagarPost, mudarDescricaoPost}
 

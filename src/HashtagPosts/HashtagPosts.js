@@ -16,8 +16,7 @@ export default function HashtagPosts() {
     const [postsArray, setPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
     const hashtagParam = useParams();
-
-
+    
     function updatePostsArray(response) {
         if (response.data.posts.length < 1) {
             alert("Nenhum post encontrado");

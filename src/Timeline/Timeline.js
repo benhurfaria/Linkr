@@ -49,7 +49,7 @@ export default function Timeline() {
                         <h1>timeline</h1>
                     </ContainerHeader>
                     <ContainerPosts>
-                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render="timeline" postTipo={postTipo}/>
+                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render="timeline" postTipo={postTipo} />
                         <Hashtags />
                     </ContainerPosts>
                 </MainContainer>

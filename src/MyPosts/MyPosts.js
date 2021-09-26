@@ -7,20 +7,22 @@ import { MainContainer, ContainerHeader, ContainerPosts } from "../Timeline/Time
 
 import { LoggedUser } from '../services/contexts/LoggedUser.js';
 import { ContextPost } from '../services/contexts/ContextPost.js';
-import { getUserPosts } from "../services/api/Api.js";
+import { getStoredUser, getUserPosts } from "../services/api/Api.js";
 
 
 export default function MyPosts() {
     const { loggedUser } = useContext(LoggedUser);
     const [postsArray, setPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
+    const [postTipo, setPostTipo] = useState(false);
 
     function updatePostsArray(response) {
         if (!response.data.posts.length) {
-            alert("Nenhum post encontrado");
+            setPostTipo(false);
             return;
         }
         setPostsArray(response.data.posts);
+        setPostTipo(true);
         setPostsLoaded(true);
     };
 
@@ -28,7 +30,7 @@ export default function MyPosts() {
     useEffect(() => {
         const requestConfig = {
             headers: {
-                Authorization: `Bearer ${loggedUser.token}`
+                Authorization: `Bearer ${getStoredUser().token}`
             }
         };
 
@@ -46,7 +48,7 @@ export default function MyPosts() {
                         <h1>my posts</h1>
                     </ContainerHeader>
                     <ContainerPosts>
-                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render="my posts" />
+                        <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render="my posts" postTipo={postTipo}/>
                         <Hashtags />
                     </ContainerPosts>
                 </MainContainer>

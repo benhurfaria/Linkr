@@ -8,13 +8,15 @@ const MainContainer = styled.div`
 `;
 
 const ContainerHeader = styled.div`
-    max-width: 400px;
-    height: 64px;
+    max-width: 600px;
+    max-height: 50px;
     margin: 5px auto 43px 0;
     font-family: 'Oswald', sans-serif;
     color: #FFFFFF;
     font-size: 43px;
     font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 
 const ContainerPosts = styled.div`
