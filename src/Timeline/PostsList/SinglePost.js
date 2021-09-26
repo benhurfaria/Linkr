@@ -3,18 +3,15 @@ import { UserAvatar } from "../Timeline_style.js";
 import { PostLeftPanel } from "../NewPost/NewPost_style.js";
 import { Post, PostContent, PostPreview, PreviewInfo, ThumbPreview, ModalScreen } from "./PostsList_style.js";
 import ReactHashtag from "react-hashtag";
-<<<<<<< HEAD
 
-=======
 import { BsPencil } from 'react-icons/bs';
 import { IoIosTrash } from "react-icons/io";
-import Likes from "./Likes/Likes.js";
 import Modal from "react-modal";
 import { useEffect, useRef, useState, useContext } from "react";
 import { mudarDescricaoPost, apagarPost} from "../../services/api/Api.js";
 import { LoggedUser } from '../../services/contexts/LoggedUser.js';
 import { ContextPost } from '../../services/contexts/ContextPost.js';
->>>>>>> main
+
 
 export default function SinglePost({ post }) {
     const { id, likes, text, link, linkTitle, linkDescription, linkImage, user } = post;
