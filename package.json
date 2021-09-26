@@ -14,12 +14,9 @@
     "react-dom": "^16.0.2",
     "react-hashtag": "^2.1.2",
     "react-icons": "^4.2.0",
-<<<<<<< HEAD
     "react-infinite-scroller": "^1.2.4",
     "react-loader-spinner": "^4.0.0",
-=======
     "react-modal": "^3.14.3",
->>>>>>> main
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-tooltip": "^4.2.21",
