@@ -84,7 +84,7 @@ export default function SinglePost({ post }) {
                     <UserAvatar src={user.avatar} />
                 </Link>
 
-                <Likes likes={likes} id={id} />
+                <h1><Likes key={id} likes={likes} id={id} /></h1>
 
             </PostLeftPanel>
             <PostContent>
