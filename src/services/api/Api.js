@@ -7,30 +7,31 @@ function signUp(body, setDisabled) {
         if (err.response.status === 403) {
             alert("Email já cadsatrado!")
         };
-        if(err.response.status === 400){
+        if (err.response.status === 400) {
             alert('Dados inseridos são invalídos!');
         };
     })
     return promise;
 }
 
-function mandarPost(body, config, setUrlLink, setTexto, setStatus2, setPostsArray, postsArray){
+function mandarPost(body, config, setUrlLink, setTexto, setStatus2, setPostsArray, postsArray) {
     axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts", body, config)
-            .then(res =>{
+        .then(res => {
 
-                setUrlLink("");
-                setTexto("");
-                setStatus2({disable:"", cor: "", status: "Publicar"});
-                setPostsArray([res.data.post, ...postsArray]);
-            })
-            .catch(err =>{
+            setUrlLink("");
+            setTexto("");
+            setStatus2({ disable: "", cor: "", status: "Publicar" });
+            setPostsArray([res.data.post, ...postsArray]);
+        })
+        .catch(err => {
 
-                alert("Houve um erro ao publicar seu link");
-                setUrlLink("");
-                setTexto("");
-                setStatus2({disable:"", cor: "", status: "Publicar"});
-            });
-    
+            alert("Houve um erro ao publicar seu link");
+            setUrlLink("");
+            setTexto("");
+            setStatus2({ disable: "", cor: "", status: "Publicar" });
+        });
+
+
 };
 
 function login(body, setDisabled) {
@@ -38,35 +39,36 @@ function login(body, setDisabled) {
     promise.catch(err => {
         setDisabled(false)
         if (err.response.status === 401) {
-            alert('Usuário/senha incorretos');
-        }
-        if (err.response.status === 400) {
+
             alert('Dados inseridos são invalídos!');
         }
+        if (err.response.status === 400) {
+            alert('Usuário/senha incorretos');
+        }
         if (err.response.status === 403) {
-            alert("Usuario não encontrado!");
+            alert('Usuário/senha incorretos');
         }
     })
     return promise;
 };
 
-function getHashtag( config){
+function getHashtag(config) {
     const promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/hashtags/trending", config);
     return promise;
 };
 
 
-function giveLike(postId, config, body){
-    
+function giveLike(postId, config, body) {
+
     const Url = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${postId}/like`;
-    const promise = axios.post(Url,body, config);
+    const promise = axios.post(Url, body, config);
     return promise;
 };
 
-function dislike(postId, config, body){
-   
+function dislike(postId, config, body) {
+
     const Url = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${postId}/dislike`;
-   
+
     const promise = axios.post(Url, body, config);
     return promise;
 };
@@ -92,5 +94,42 @@ function getHashtagPosts(configHeader, hashtag) {
     return hashtagPostsPromise;
 }
 
+function mudarDescricaoPost(id, texto, config, setInputHabilitado, setEdit, edit, setTextoSucesso){
+    const EDIT_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${id}`;
+    return axios.put(EDIT_URL, texto, config)
+        .then(resp =>{
+            setInputHabilitado(false);
+            setTextoSucesso(texto.text);
+            setEdit(!edit);
+        })
+        .catch(err =>{
+            setInputHabilitado(false);
+            alert("Não foi possivel editar o post");
+        })
+}
 
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, getHashtagPosts, giveLike, dislike }
+function apagarPost(config, id){
+    const DELETE_POST = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${id}`;
+
+    return axios.delete(DELETE_POST, config)
+        
+
+}
+
+function getMyLikes(config){
+    return axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/liked", config);
+
+}
+
+function storeUser(user) {
+    const serialUser = JSON.stringify(user);
+    localStorage.setItem("user", serialUser);
+}
+function getStoredUser() {
+    let serialUser = localStorage.getItem("user");
+    const user = JSON.parse(serialUser);
+    return user;
+}
+
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, getHashtagPosts, apagarPost, mudarDescricaoPost}
+

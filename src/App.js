@@ -1,5 +1,5 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { SignedUser } from "./services/contexts/SignedUser.js";
 import { LoggedUser } from './services/contexts/LoggedUser'
@@ -9,13 +9,20 @@ import SignUp from "./SignUp/SignUp.js";
 import Login from "./Login/Login";
 import Timeline from "./Timeline/Timeline.js";
 import MyPosts from "./MyPosts/MyPosts.js";
+import MyLikes from "./MyLikes/MyLikes.js";
 import UserIDPosts from "./UserIDPosts/UserIDPosts.js";
 import HashtagPosts from "./HashtagPosts/HashtagPosts.js";
+import { getStoredUser } from "./services/api/Api.js";
 
 
 export default function App() {
-    const [signedUser, setSignedUser] = useState({})
+    const [signedUser, setSignedUser] = useState({});
     const [loggedUser, setLoggedUser] = useState({});
+    useEffect(() => {
+        const user = getStoredUser()
+        setLoggedUser(user)
+        
+    }, [])
 
     return (
         <SignedUser.Provider value={{ signedUser, setSignedUser }}>
@@ -27,7 +34,7 @@ export default function App() {
                         </Route>
 
                         <Route exact path="/timeline">
-                            <Timeline subType="timeline" />
+                            <Timeline />
                         </Route>
 
                         <Route path='/signup' exact>
@@ -41,8 +48,8 @@ export default function App() {
                             <UserIDPosts />
                         </Route>
                         
-                        <Route exact path="/my-likes">
-                            <Timeline subType="my likes"/>
+                        <Route path="/my-likes" exact>
+                            <MyLikes />
                         </Route>
 
                         <Route exact path="/hashtag/:hashtagid">

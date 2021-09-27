@@ -10,6 +10,7 @@ const Top = styled.div`
     align-items: center;
     background-color: #151515;
     color: #ffffff;
+    z-index: 1;
     h1{
         font-family: 'Passion One';
         font-weight: 700;
@@ -48,7 +49,7 @@ const SideBar = styled.div`
     right:0;
     border-radius: 0px 0px 0px 20px;
     font-family: 'Lato', sans-serif;
-    
+    position:fixed;
     h1{
         color: #ffffff;
         font-weight: 700;
