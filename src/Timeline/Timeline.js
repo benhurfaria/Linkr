@@ -14,13 +14,17 @@ import QueryString from "qs";
 
 export default function Timeline({ subType }) {
     const { loggedUser } = useContext(LoggedUser);
+
     const [postsArray, setPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
     const [loading, setLoading] = useState(true)
     const [postTipo, setPostTipo] = useState(false);
 
     function updatePostsArray(response) {
-        if (response.data.posts.length < 1) {
+
+        setLoading(true)
+        if (!response.data.posts.length) {
+
             setPostTipo(false);
             return;
         }
@@ -36,6 +40,7 @@ export default function Timeline({ subType }) {
                 Authorization: `Bearer ${getStoredUser().token}`
             }
         };
+
         if (subType === "my posts") {
             const params = QueryString.stringify({ limit: 10 })
             setPostsArray([])
@@ -89,27 +94,27 @@ export default function Timeline({ subType }) {
         <LoaderPosition><Loader type="TailSpin" color="#6d6d6d" height={60} width={60} />Loading more posts...</LoaderPosition>
     }
 
+
     return (
         <>
             <ContextPost.Provider value={{ postsArray, setPostsArray }}>
                 <Topbar />
 
-
                 <MainContainer style={{ height:"calc(max-content) ", overflowY: "auto"}} >
+
                     <ContainerHeader>
-                        <h1>{`${subType}`}</h1>
+                        <h1>timeline</h1>
                     </ContainerHeader>
 
                     <InfiniteScroll pageStart={0}
                         loadMore={() => getMorePost({ limit: postsArray.length + 10 })}
                         hasMore={true || false}
                         loader={loadingPost()}
-                        //useWindow={false}
                         threshold={10}
                         
                         >
                         <ContainerPosts>
-                            <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} postTipo={postTipo}/>
+                            <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} postTipo={postTipo} />
                             <Hashtags />
                         </ContainerPosts>
                     </InfiniteScroll>

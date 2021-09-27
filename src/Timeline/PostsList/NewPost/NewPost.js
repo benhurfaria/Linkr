@@ -1,9 +1,9 @@
 import { NewPostFrame, NewPostForm, NewPostURL, NewPostComment, PostLeftPanel } from "./NewPost_style.js";
-import { UserAvatar } from "../Timeline_style.js";
+import { UserAvatar } from "../../../Topbar/style_topbar.js"
 import { useState, useContext } from "react";
-import { mandarPost } from '../../services/api/Api.js';
-import { ContextPost } from "../../services/contexts/ContextPost.js";
-import { LoggedUser } from "../../services/contexts/LoggedUser.js";
+import { mandarPost } from '../../../services/api/Api.js';
+import { ContextPost } from "../../../services/contexts/ContextPost.js";
+import { LoggedUser } from "../../../services/contexts/LoggedUser.js";
 
 export default function NewPost() {
     const [urlLink, setUrlLink] = useState("");
@@ -38,7 +38,7 @@ export default function NewPost() {
     return (
         <NewPostFrame>
             <PostLeftPanel>
-                <UserAvatar src={loggedUser.avatar} alt="old man meme" />
+                <UserAvatar src={loggedUser.avatar} alt="user profile picture" />
             </PostLeftPanel>
             <NewPostForm onSubmit={Postagem}>
                 <h2> O que você tem pra favoritar hoje?</h2>
