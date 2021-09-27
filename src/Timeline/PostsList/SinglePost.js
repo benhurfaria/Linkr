@@ -7,14 +7,16 @@ import { Post, PostContent, PostPreview, PreviewInfo, ThumbPreview, ModalScreen 
 import { UsernameLink, PostText } from "./SinglePost_style.js";
 
 import ReactHashtag from "react-hashtag";
+
 import { BsPencil } from 'react-icons/bs';
 import { IoIosTrash } from "react-icons/io";
-import Likes from "./Likes/Likes.js";
 import Modal from "react-modal";
 import { useEffect, useRef, useState, useContext } from "react";
 import { mudarDescricaoPost, apagarPost } from "../../services/api/Api.js";
 import { LoggedUser } from '../../services/contexts/LoggedUser.js';
 import { ContextPost } from '../../services/contexts/ContextPost.js';
+import Likes from "./Likes/Likes.js";
+
 
 export default function SinglePost({ post }) {
     const { id, likes, text, link, linkTitle, linkDescription, linkImage, user } = post;
@@ -81,6 +83,7 @@ export default function SinglePost({ post }) {
                 <Link to={`/user/${user.id}`} >
                     <UserAvatar src={user.avatar} />
                 </Link>
+
                 <h1><Likes key={id} likes={likes} id={id} /></h1>
 
             </PostLeftPanel>

@@ -43,14 +43,14 @@ export default function App() {
                         </Route>
 
                         <Route exact path="/my-posts">
-                            <MyPosts />
+                            <MyPosts subType={"my posts"}/>
                         </Route>
                         <Route exact path="/user/:id">
                             <UserIDPosts />
                         </Route>
                         
                         <Route path="/my-likes" exact>
-                            <MyLikes />
+                            <MyLikes subType={"my likes"}/>
                         </Route>
 
                         <Route exact path="/hashtag/:hashtagid">

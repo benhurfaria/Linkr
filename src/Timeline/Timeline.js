@@ -19,19 +19,21 @@ export default function Timeline({ subType }) {
     const [postsLoaded, setPostsLoaded] = useState(false);
     const [loading, setLoading] = useState(true)
     const [postTipo, setPostTipo] = useState(false);
+    const [hasPosts, setHasPosts] = useState(true || false)
 
     function updatePostsArray(response) {
 
         setLoading(true)
         if (!response.data.posts.length) {
-
             setPostTipo(false);
+            setHasPosts(false)
+
             return;
         }
         setPostsArray(response.data.posts);
         setPostTipo(true);
         setPostsLoaded(true);
-        setLoading(true)
+        setLoading(false)
     };
     useEffect(() => {
         
@@ -49,6 +51,7 @@ export default function Timeline({ subType }) {
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
         if (subType === "timeline") {
+            console.log("ok")
             const params = QueryString.stringify({ limit: 10 })
             setPostsArray([])
             getAllPosts(requestConfig, params)
@@ -62,9 +65,9 @@ export default function Timeline({ subType }) {
             .then(updatePostsArray)
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
-    }, [loggedUser, subType,]);
+    }, [loggedUser, subType]);
     function getMorePost(params) {
-        setLoading(false)
+        setLoading(true)
         const strParams = QueryString.stringify(params)
         const requestConfig = {
             headers: {
@@ -90,8 +93,7 @@ export default function Timeline({ subType }) {
 
     }
     function loadingPost() {
-        return loading ? <></> : 
-        <LoaderPosition><Loader type="TailSpin" color="#6d6d6d" height={60} width={60} />Loading more posts...</LoaderPosition>
+        if(loading )  return <LoaderPosition><Loader type="TailSpin" color="#6d6d6d" height={60} width={60} />Loading more posts...</LoaderPosition>
     }
 
 
@@ -99,7 +101,6 @@ export default function Timeline({ subType }) {
         <>
             <ContextPost.Provider value={{ postsArray, setPostsArray }}>
                 <Topbar />
-
                 <MainContainer style={{ height:"calc(max-content) ", overflowY: "auto"}} >
 
                     <ContainerHeader>
@@ -108,17 +109,15 @@ export default function Timeline({ subType }) {
 
                     <InfiniteScroll pageStart={0}
                         loadMore={() => getMorePost({ limit: postsArray.length + 10 })}
-                        hasMore={true || false}
+                        hasMore={hasPosts}
                         loader={loadingPost()}
                         threshold={10}
-                        
                         >
                         <ContainerPosts>
                             <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} postTipo={postTipo} />
                             <Hashtags />
                         </ContainerPosts>
                     </InfiniteScroll>
-
                 </MainContainer>
             </ContextPost.Provider>
         </>

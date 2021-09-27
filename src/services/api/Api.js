@@ -128,9 +128,6 @@ function apagarPost(config, id){
 
 }
 
-
-
-
 function storeUser(user) {
     const serialUser = JSON.stringify(user);
     localStorage.setItem("user", serialUser);
@@ -140,6 +137,8 @@ function getStoredUser() {
     const user = JSON.parse(serialUser);
     return user;
 }
+
+
 
 export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, getHashtagPosts, apagarPost, mudarDescricaoPost}
 

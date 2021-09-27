@@ -47,4 +47,7 @@ const LoaderPosition = styled.div`
 `
 
 
-export {MainContainer, ContainerHeader, ContainerPosts, LoaderPosition};
+
+
+export {MainContainer, ContainerHeader, ContainerPosts, LoaderPosition };
+
