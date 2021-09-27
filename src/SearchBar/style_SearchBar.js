@@ -7,7 +7,6 @@ const Input = styled.input`
     border: none;
     font-family: 'Lato', sans-serif;
     font-size: 18px;
-
     ::placeholder{
         font-family: 'Lato', sans-serif;
         font-size: 18px;
@@ -23,6 +22,9 @@ const IMG = styled.img`
     width: 20px;
     height: 20px;
     object-fit: cover;
+    margin-left: -33px;
+    margin-top: 7px;
+    opacity: 0.3;
 `
 
 export {Input, Form, IMG}

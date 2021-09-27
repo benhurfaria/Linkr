@@ -104,7 +104,6 @@ export default function Timeline({ subType }) {
                         loadMore={() => getMorePost({ limit: postsArray.length + 10 })}
                         hasMore={true || false}
                         loader={loadingPost()}
-                        //useWindow={false}
                         threshold={10}
                         
                         >
