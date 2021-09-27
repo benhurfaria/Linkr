@@ -132,7 +132,15 @@ function getStoredUser() {
     return user;
 }
 
+function getFollowers(config){
+    return axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/follows", config);
+}
+
+function followUser(id, body, config){
+    console.log(id.id);
+    return axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/${id.id}/follow`, body, config);
+}
 
 
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, apagarPost, mudarDescricaoPost}
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, apagarPost, mudarDescricaoPost, getFollowers, followUser}
 

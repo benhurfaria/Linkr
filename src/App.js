@@ -1,6 +1,5 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-
 import { SignedUser } from "./services/contexts/SignedUser.js";
 import { LoggedUser } from './services/contexts/LoggedUser'
 import './shared/styles/reset.css';
@@ -8,8 +7,8 @@ import './shared/styles/index.css';
 import SignUp from "./SignUp/SignUp.js";
 import Login from "./Login/Login";
 import Timeline from "./Timeline/Timeline.js";
+import UserIDPosts from "./UserIDPosts/UserIDPosts.js";
 import { getStoredUser } from "./services/api/Api.js";
-
 
 export default function App() {
     const [signedUser, setSignedUser] = useState({});
@@ -40,7 +39,11 @@ export default function App() {
                         <Route exact path="/my-posts">
                             <Timeline subType="my posts" />
                         </Route>
-                        
+
+                        <Route path="/user/:id" exact>
+                            <UserIDPosts />
+                        </Route>
+
                         <Route path="/my-likes" exact>
                             <Timeline subType="my likes"/>
                         </Route>
