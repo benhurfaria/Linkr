@@ -1,15 +1,4 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@Audamon 
-benhurfaria
-/
-projeto_11_linkr
-Public
+
 
 import { useEffect, useState, useRef } from 'react';
 import { BsHeart, BsHeartFill } from 'react-icons/bs'

@@ -15,6 +15,7 @@ import { useEffect, useRef, useState, useContext } from "react";
 import { mudarDescricaoPost, apagarPost } from "../../services/api/Api.js";
 import { LoggedUser } from '../../services/contexts/LoggedUser.js';
 import { ContextPost } from '../../services/contexts/ContextPost.js';
+import Likes from "./Likes/Likes.js";
 
 
 export default function SinglePost({ post }) {
@@ -83,7 +84,7 @@ export default function SinglePost({ post }) {
                     <UserAvatar src={user.avatar} />
                 </Link>
 
-                <h1>{likes.length}</h1>
+                <Likes likes={likes} id={id} />
 
             </PostLeftPanel>
             <PostContent>
