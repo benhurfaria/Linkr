@@ -47,13 +47,9 @@ export default function NewPost() {
     return (
         <>
         <NewPostFrame>
-<<<<<<< HEAD
-             {/* <PostLeftPanel>
-                <UserAvatar src={`https://mock-api.bootcamp.respondeai.com.br/api/v2/linkr/users/529/avatar`} alt="old man meme" />
-=======
-            <PostLeftPanel>
+             {/*     <PostLeftPanel>
                 <UserAvatar src={loggedUser.avatar} alt="user profile picture" />
->>>>>>> main
+
             </PostLeftPanel>
             <NewPostForm onSubmit={Postagem}>
 
