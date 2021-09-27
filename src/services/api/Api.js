@@ -105,8 +105,6 @@ function getMyLikes(config, params){
     return axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/liked/?${params}`, config);
 }
 
-
-
 function mudarDescricaoPost(id, texto, config, setInputHabilitado, setEdit, edit, setTextoSucesso){
 
     const EDIT_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${id}`;
@@ -141,7 +139,7 @@ function getStoredUser() {
 }
 
 
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, getHashtagPosts, apagarPost, mudarDescricaoPost}
 
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, getHashtagPosts, apagarPost, mudarDescricaoPost}
 
 

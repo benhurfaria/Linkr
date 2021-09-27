@@ -101,8 +101,6 @@ export default function Timeline({ subType }) {
         <>
             <ContextPost.Provider value={{ postsArray, setPostsArray }}>
                 <Topbar />
-
-
                 <MainContainer style={{ height:"calc(max-content) ", overflowY: "auto"}} >
 
                     <ContainerHeader>

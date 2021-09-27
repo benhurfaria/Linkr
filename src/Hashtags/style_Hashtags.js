@@ -44,6 +44,7 @@ const Trending = styled.div`
     @media (max-width: 640px){
         display: none;
     }
+
 `
 
 export { Sharp, SharpList, TrendingTitle, Border, Trending }
