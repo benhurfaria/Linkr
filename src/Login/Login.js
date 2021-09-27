@@ -4,8 +4,10 @@ import {
     Form, LoginForm
 } from './style_Login';
 import { Link, useHistory } from "react-router-dom";
+
 import { useState, useContext, useEffect } from 'react';
 import { login, storeUser, getStoredUser } from '../services/api/Api'
+
 import { LoggedUser } from '../services/contexts/LoggedUser';
 
 
@@ -17,11 +19,7 @@ export default function Login() {
     const history = useHistory();
     useEffect(()=>{
         const user= getStoredUser();
-        if(user !== null){
-            history.push("/timeline")
-        }else{
-            history.push('/')
-        }
+        user ? history.push("/timeline") : history.push('/')
     }, [history])
     function SendLoginData(e) {
         e.preventDefault();
@@ -44,7 +42,9 @@ export default function Login() {
                     avatar: res.data.user.avatar,
                     token: res.data.token
                 };
+
                 storeUser(user)
+
                 setLoggedUser(user);
                 history.push('/timeline');
             })

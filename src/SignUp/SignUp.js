@@ -19,11 +19,7 @@ export default function SignUp() {
     const history = useHistory();
     useEffect(()=>{
         const user= getStoredUser();
-        if(user !== null){
-            history.push("/timeline")
-        }else{
-            history.push('/signup')
-        }
+        user ? history.push("/timeline") : history.push('/signup')
     }, [history])
     function SendSignUpData(e) {
         e.preventDefault();

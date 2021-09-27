@@ -40,7 +40,10 @@ const Trending = styled.div`
     width: 230px;
     background-color: #151515;
     border-radius: 10px;
-    margin: 0px 0 0 25px;
+    margin: 80px 0 0 25px;
+    @media (max-width: 640px){
+        display: none;
+    }
 
 `
 

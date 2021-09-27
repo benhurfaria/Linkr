@@ -73,15 +73,21 @@ function dislike(postId, config, body) {
     return promise;
 };
 
-function getUserPosts(configHeader, userID) {
-    const USERPOSTS_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/${userID}/posts`;
 
-    const userPostsPromise = axios.get(USERPOSTS_URL, configHeader);
-    return userPostsPromise;    
+function getUserPosts(configHeader, userID, params) {
+    const USERPOSTS_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/`;
+
+    const appendedURL = USERPOSTS_URL + `${userID}/posts/?${params}`;
+
+    const userPostsPromise = axios.get(appendedURL, configHeader);
+
+
+    return userPostsPromise;
+
 }
 
-function getAllPosts(configHeader) {
-    const POSTS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/";
+function getAllPosts(configHeader, params) {
+    const POSTS_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/?${params}`;
 
     const allPostsPromise = axios.get(POSTS_URL, configHeader);
     return allPostsPromise;
@@ -94,7 +100,13 @@ function getHashtagPosts(configHeader, hashtag) {
     return hashtagPostsPromise;
 }
 
+
+function getMyLikes(config, params){
+    return axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/liked/?${params}`, config);
+}
+
 function mudarDescricaoPost(id, texto, config, setInputHabilitado, setEdit, edit, setTextoSucesso){
+
     const EDIT_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${id}`;
     return axios.put(EDIT_URL, texto, config)
         .then(resp =>{
@@ -116,10 +128,8 @@ function apagarPost(config, id){
 
 }
 
-function getMyLikes(config){
-    return axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/liked", config);
 
-}
+
 
 function storeUser(user) {
     const serialUser = JSON.stringify(user);
@@ -132,4 +142,5 @@ function getStoredUser() {
 }
 
 export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, getHashtagPosts, apagarPost, mudarDescricaoPost}
+
 

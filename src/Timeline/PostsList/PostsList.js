@@ -13,6 +13,7 @@ export default function PostsList({ showList, avatar, postsArray, render, postTi
                     <StillLoading > <h1>Loading...</h1></StillLoading>
                 </AllPostsList>
             );
+
     }
     else {
         if (render === "timeline") {
@@ -22,7 +23,7 @@ export default function PostsList({ showList, avatar, postsArray, render, postTi
                         <NewPost avatar={avatar} />
                         <Posts postsArray={postsArray}>
                             {postsArray.map((post) =>
-                                <SinglePost post={post} key={post.id} />)
+                                <SinglePost post={post} key={post.repostCount===0? post.id:post.repostId} />)
                             }
                         </Posts>
                     </AllPostsList>
@@ -33,12 +34,13 @@ export default function PostsList({ showList, avatar, postsArray, render, postTi
 
             return (
                 <>
+
                     {
                     postTipo ?
                         <AllPostsList>
                             <Posts postsArray={postsArray}>
                                 {postsArray.map((post) =>
-                                    <SinglePost post={post} key={post.id} />)
+                                    <SinglePost post={post} key={post.repostCount===0? post.id:post.repostId} />)
                                 }
                             </Posts>
                         </AllPostsList> : 
@@ -46,6 +48,7 @@ export default function PostsList({ showList, avatar, postsArray, render, postTi
                             <StillLoading > <h1>Você não fez posts</h1></StillLoading>
                         </AllPostsList>
                     }
+
                 </>
             );
         }
@@ -55,7 +58,7 @@ export default function PostsList({ showList, avatar, postsArray, render, postTi
                     <AllPostsList>
                         <Posts postsArray={postsArray}>
                             {postsArray.map((post) =>
-                                <SinglePost post={post} key={post.id} />)
+                                <SinglePost post={post} key={post.repostCount===0? post.id:post.repostId} />)
                             }
                         </Posts>
                     </AllPostsList>
@@ -65,12 +68,19 @@ export default function PostsList({ showList, avatar, postsArray, render, postTi
         if (render === "hashtag posts") {
             return (
                 <>
+                    
                     <AllPostsList>
-                        <Posts postsArray={postsArray}>
-                            {postsArray.map((post) =>
-                                <SinglePost post={post} key={post.id} />)
-                            }
-                        </Posts>
+
+                        
+                            <NewPost avatar={avatar} />
+                            <Posts postsArray={postsArray}>
+
+                                {postsArray.map((post) =>
+                                    <SinglePost post={post} key={post.repostCount===0? post.id:post.repostId} />)
+                                }
+                            </Posts>
+                        
+
                     </AllPostsList>
                 </>
             );
@@ -84,7 +94,7 @@ export default function PostsList({ showList, avatar, postsArray, render, postTi
                             <Posts postsArray={postsArray}>
                                 {
                                 postsArray.map((post) =>
-                                    <SinglePost post={post} key={post.id} />)
+                                    <SinglePost post={post} key={post.repostCount===0? post.id:post.repostId} />)
                                 }
                             </Posts>
                         </AllPostsList> :

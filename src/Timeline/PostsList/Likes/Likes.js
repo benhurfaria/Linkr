@@ -81,5 +81,6 @@ const StyledTooltip = styled(ReactTooltip)`
   text-overflow: ellipsis;
   overflow: hidden;
   max-width: 200px;
+  height: fit-content;
  
 `

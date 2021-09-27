@@ -18,6 +18,7 @@ import { getStoredUser } from "./services/api/Api.js";
 export default function App() {
     const [signedUser, setSignedUser] = useState({});
     const [loggedUser, setLoggedUser] = useState({});
+
     useEffect(() => {
         const user = getStoredUser()
         setLoggedUser(user)
@@ -34,7 +35,7 @@ export default function App() {
                         </Route>
 
                         <Route exact path="/timeline">
-                            <Timeline />
+                            <Timeline subType={"timeline"}/>
                         </Route>
 
                         <Route path='/signup' exact>
