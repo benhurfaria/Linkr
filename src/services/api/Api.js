@@ -106,6 +106,10 @@ function getStoredUser() {
     return user;
 }
 
+function searchUser(requestConfig, username){
+    return axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/search/?username=${username}`, requestConfig);
+}
 
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes }
+
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, searchUser }
 
