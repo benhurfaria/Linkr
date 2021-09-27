@@ -22,7 +22,6 @@ const TrendingTitle = styled.div`
     color: #ffffff;
     font-family: 'Oswald', sans-serif;
     font-style: 27px;
-    //margin-bottom: 15px;
     padding-left: 10px;
     font-weight: 700;
     height: 40px;
@@ -41,7 +40,7 @@ const Trending = styled.div`
     width: 230px;
     background-color: #151515;
     border-radius: 10px;
-    margin: 80px 0 0 25px;
+    margin: 0px 0 0 25px;
 
 `
 

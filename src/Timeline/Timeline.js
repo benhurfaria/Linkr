@@ -7,6 +7,7 @@ import Loader from "react-loader-spinner";
 import Topbar from "../Topbar/Topbar.js";
 import { LoggedUser } from '../services/contexts/LoggedUser.js';
 import { ContextPost } from '../services/contexts/ContextPost.js';
+
 import { getAllPosts, getStoredUser, getUserPosts } from "../services/api/Api.js";
 
 import QueryString from "qs";
@@ -14,14 +15,15 @@ import QueryString from "qs";
 
 export default function Timeline({ subType }) {
     const { loggedUser } = useContext(LoggedUser);
+
     const [postsArray, setPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
     const [loading, setLoading] = useState(true)
 
     function updatePostsArray(response) {
         setLoading(true)
-        if (response.data.posts.length < 1) {
-            alert("Nenhum post encontrado");
+        if (!response.data.posts.length) {
+            setPostTipo(false);
             return;
         }
         setPostsArray(response.data.posts);
@@ -33,6 +35,7 @@ export default function Timeline({ subType }) {
                 Authorization: `Bearer ${getStoredUser().token}`
             }
         };
+
         if (subType === "my posts") {
             const params = QueryString.stringify({ limit: 10 })
             setPostsArray([])
@@ -72,26 +75,29 @@ export default function Timeline({ subType }) {
         return loading ? <></> : <LoaderPosition><Loader type="TailSpin" color="#00BFFF" height={80} width={80} /></LoaderPosition>
     }
 
+
     return (
         <>
             <ContextPost.Provider value={{ postsArray, setPostsArray }}>
                 <Topbar />
-                <MainContainer style={{ height:"5000px ", overflowY: "auto"}} >
+                <MainContainer style={{ height: "5000px ", overflowY: "auto" }} >
                     <ContainerHeader>
-                        <h1>{`${subType}`}</h1>
+                        <h1>timeline</h1>
                     </ContainerHeader>
+
                     <InfiniteScroll pageStart={0}
                         loadMore={() => getMorePost({ limit: postsArray.length + 1 })}
                         hasMore={true || false}
                         loader={loadingPost()}
                         useWindow={false}
-                        
-                        >
+
+                    >
                         <ContainerPosts>
-                            <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} postTipo={postTipo}/>
+                            <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} postTipo={postTipo} />
                             <Hashtags />
                         </ContainerPosts>
                     </InfiniteScroll>
+
                 </MainContainer>
             </ContextPost.Provider>
         </>
