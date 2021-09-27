@@ -14,6 +14,7 @@ import QueryString from "qs";
 
 export default function Timeline({ subType }) {
     const { loggedUser } = useContext(LoggedUser);
+
     const [postsArray, setPostsArray] = useState([]);
     const [postsLoaded, setPostsLoaded] = useState(false);
     const [loading, setLoading] = useState(true)
@@ -21,9 +22,12 @@ export default function Timeline({ subType }) {
     const [hasPosts, setHasPosts] = useState(true || false)
 
     function updatePostsArray(response) {
-        if (response.data.posts.length < 1) {
+
+        setLoading(true)
+        if (!response.data.posts.length) {
             setPostTipo(false);
             setHasPosts(false)
+
             return;
         }
         setPostsArray(response.data.posts);
@@ -38,6 +42,7 @@ export default function Timeline({ subType }) {
                 Authorization: `Bearer ${getStoredUser().token}`
             }
         };
+
         if (subType === "my posts") {
             const params = QueryString.stringify({ limit: 10 })
             setPostsArray([])
@@ -46,6 +51,7 @@ export default function Timeline({ subType }) {
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
         if (subType === "timeline") {
+            console.log("ok")
             const params = QueryString.stringify({ limit: 10 })
             setPostsArray([])
             getAllPosts(requestConfig, params)
@@ -59,7 +65,7 @@ export default function Timeline({ subType }) {
             .then(updatePostsArray)
                 .catch(() => alert("Houve uma falha ao obter os posts, por favor atualize a página"));
         }
-    }, [loggedUser, subType,]);
+    }, [loggedUser, subType]);
     function getMorePost(params) {
         setLoading(true)
         const strParams = QueryString.stringify(params)
@@ -90,6 +96,7 @@ export default function Timeline({ subType }) {
         if(loading )  return <LoaderPosition><Loader type="TailSpin" color="#6d6d6d" height={60} width={60} />Loading more posts...</LoaderPosition>
     }
 
+
     return (
         <>
             <ContextPost.Provider value={{ postsArray, setPostsArray }}>
@@ -97,8 +104,9 @@ export default function Timeline({ subType }) {
 
 
                 <MainContainer style={{ height:"calc(max-content) ", overflowY: "auto"}} >
+
                     <ContainerHeader>
-                        <h1>{`${subType}`}</h1>
+                        <h1>timeline</h1>
                     </ContainerHeader>
 
                     <InfiniteScroll pageStart={0}
@@ -106,14 +114,12 @@ export default function Timeline({ subType }) {
                         hasMore={hasPosts}
                         loader={loadingPost()}
                         threshold={10}
-                        
                         >
                         <ContainerPosts>
-                            <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} postTipo={postTipo}/>
+                            <PostsList showList={postsLoaded} avatar={loggedUser.avatar} postsArray={postsArray} render={subType} postTipo={postTipo} />
                             <Hashtags />
                         </ContainerPosts>
                     </InfiniteScroll>
-
                 </MainContainer>
             </ContextPost.Provider>
         </>

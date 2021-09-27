@@ -73,6 +73,7 @@ function dislike(postId, config, body) {
     return promise;
 };
 
+
 function getUserPosts(configHeader, userID, params) {
     const USERPOSTS_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/users/`;
 
@@ -82,14 +83,21 @@ function getUserPosts(configHeader, userID, params) {
 
 
     return userPostsPromise;
+
 }
 
 function getAllPosts(configHeader, params) {
     const POSTS_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/?${params}`;
 
     const allPostsPromise = axios.get(POSTS_URL, configHeader);
-
     return allPostsPromise;
+}
+
+function getHashtagPosts(configHeader, hashtag) {
+    const HASHTAGPOSTS_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/hashtags/${hashtag}/posts`;
+    
+    const hashtagPostsPromise = axios.get(HASHTAGPOSTS_URL, configHeader);
+    return hashtagPostsPromise;
 }
 
 
@@ -98,7 +106,9 @@ function getMyLikes(config, params){
 }
 
 
-function mudarDescricaoPost(id, texto, config, setInputHabilitado, setEdit, setTexto, text, edit, setTextoSucesso){
+
+function mudarDescricaoPost(id, texto, config, setInputHabilitado, setEdit, edit, setTextoSucesso){
+
     const EDIT_URL = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${id}`;
     return axios.put(EDIT_URL, texto, config)
         .then(resp =>{
@@ -115,11 +125,10 @@ function mudarDescricaoPost(id, texto, config, setInputHabilitado, setEdit, setT
 function apagarPost(config, id){
     const DELETE_POST = `https://mock-api.bootcamp.respondeai.com.br/api/v3/linkr/posts/${id}`;
 
-     return axios.delete(DELETE_POST, config)
+    return axios.delete(DELETE_POST, config)
         
 
 }
-
 
 function storeUser(user) {
     const serialUser = JSON.stringify(user);
@@ -132,8 +141,7 @@ function getStoredUser() {
 }
 
 
+export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, getHashtagPosts, apagarPost, mudarDescricaoPost}
 
-
-export { signUp, login, getHashtag, mandarPost, getUserPosts, getAllPosts, giveLike, dislike, storeUser, getStoredUser, getMyLikes, apagarPost, mudarDescricaoPost}
 
 

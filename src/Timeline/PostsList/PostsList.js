@@ -1,8 +1,7 @@
-import NewPost from "../NewPost/NewPost.js";
+import NewPost from "./NewPost/NewPost.js";
+import SinglePost from "./SinglePost.js";
 
 import { AllPostsList, Posts, StillLoading } from "./PostsList_style.js"
-
-import SinglePost from "./SinglePost.js";
 
 
 export default function PostsList({ showList, avatar, postsArray, render, postTipo}) {
@@ -17,6 +16,20 @@ export default function PostsList({ showList, avatar, postsArray, render, postTi
 
     }
     else {
+        if (render === "timeline") {
+            return (
+                <>
+                    <AllPostsList>
+                        <NewPost avatar={avatar} />
+                        <Posts postsArray={postsArray}>
+                            {postsArray.map((post) =>
+                                <SinglePost post={post} key={post.repostCount===0? post.id:post.repostId} />)
+                            }
+                        </Posts>
+                    </AllPostsList>
+                </>
+            );
+        }
         if (render === "my posts") {
 
             return (
@@ -39,11 +52,25 @@ export default function PostsList({ showList, avatar, postsArray, render, postTi
                 </>
             );
         }
-        if (render === "timeline") {
+        if (render === "userID posts") {
+            return (
+                <>
+                    <AllPostsList>
+                        <Posts postsArray={postsArray}>
+                            {postsArray.map((post) =>
+                                <SinglePost post={post} key={post.repostCount===0? post.id:post.repostId} />)
+                            }
+                        </Posts>
+                    </AllPostsList>
+                </>
+            );
+        }
+        if (render === "hashtag posts") {
             return (
                 <>
                     
                     <AllPostsList>
+
                         
                             <NewPost avatar={avatar} />
                             <Posts postsArray={postsArray}>
@@ -53,6 +80,7 @@ export default function PostsList({ showList, avatar, postsArray, render, postTi
                                 }
                             </Posts>
                         
+
                     </AllPostsList>
                 </>
             );
@@ -66,7 +94,7 @@ export default function PostsList({ showList, avatar, postsArray, render, postTi
                             <Posts postsArray={postsArray}>
                                 {
                                 postsArray.map((post) =>
-                                    <SinglePost post={post} key={post.id} />)
+                                    <SinglePost post={post} key={post.repostCount===0? post.id:post.repostId} />)
                                 }
                             </Posts>
                         </AllPostsList> :
