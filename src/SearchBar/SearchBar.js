@@ -23,25 +23,24 @@ export default function SearchBar() {
             .catch(err => console.error())
     }
 
-    function showUsers() {
-
+    function showUsers(value, searchedUsers) {
         if (!value.length) {
-            console.log(value)
-            return value
+
+            return
         }
         if (searchedUsers.length === 0 && value.length >= 3) {
             return <UsersNames>User not found</UsersNames>
         } else {
-            return searchedUsers.map(user => 
-                                                <UsersNames>
-<Link to={`/user/${user.id}`}>
-                                                    <img src={user.avatar} alt="avatar" />
-                                                    {user.username}
-                                                    </Link>
-                                                </UsersNames>)
-                                           
+            return searchedUsers.map(user =>
+                <UsersNames>
+                    <Link to={`/user/${user.id}`}>
+                        <img src={user.avatar} alt="avatar" />
+                        {user.username}
+                    </Link>
+                </UsersNames>)
         }
     }
+
 
     return (
         <SearchDiv>
@@ -54,7 +53,7 @@ export default function SearchBar() {
                 onChange={(e) => search(e)}
                 placeholder="   Search for people and friends"
             />
-            {showUsers()}
+            {showUsers(value, searchedUsers)}
         </SearchDiv>
     );
 }
@@ -65,6 +64,10 @@ const SearchDiv = styled.div`
     align-items: center;
     position: fixed;
     top: 15px;
+    @media(max-width: 640px){
+        top:100px ;
+
+    }
 
 `
 const UsersNames = styled.p`

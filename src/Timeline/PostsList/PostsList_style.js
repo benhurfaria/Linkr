@@ -15,6 +15,10 @@ const Posts = styled.ul`
     font-weight: bold;
     color: #FFFFFF;
     }
+    @media(max-width:640px){
+        width: 100%;
+        margin: 0 auto;
+    }
 `;
 
 const StillLoading = styled.div`
