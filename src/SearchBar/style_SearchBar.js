@@ -1,30 +1,44 @@
 import styled from "styled-components";
 
-const Input = styled.input`
-    border-radius: 6px;
+const SearchDiv = styled.div`
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 35px;
-    border: none;
+    align-items: center;
+    position: fixed;
+    top: 15px;
+    @media(max-width: 640px){
+        top:100px ;
+
+    }
+
+`
+const UsersNames = styled.p`
+   
+    padding: 10px 15px 10px 5px;
+    background-color: #fafafa;
+    color: black;
     font-family: 'Lato', sans-serif;
     font-size: 18px;
-    ::placeholder{
-        font-family: 'Lato', sans-serif;
-        font-size: 18px;
-        color: #c6c6c6;
+    width: 25%;
+    height: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    img{
+        margin: 0 10px 0 5px;
+        width: 35px;
+        height: 35px;
+        border-radius: 100%;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+        display: flex;
+    align-items: center;
     }
 `
-const Form = styled.form`
-    width: 25%;
-    display: flex;
-    flex-direction: row;
-`
-const IMG = styled.img`
-    width: 20px;
-    height: 20px;
-    object-fit: cover;
-    margin-left: -33px;
-    margin-top: 7px;
-    opacity: 0.3;
-`
 
-export {Input, Form, IMG}
+
+export { UsersNames, SearchDiv}

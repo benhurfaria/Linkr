@@ -18,6 +18,10 @@ const Top = styled.div`
         letter-spacing: 0.05em;
         margin: 10px auto 8px 28px;
     }
+    a{
+        text-decoration: none;
+        color: #ffffff;
+    }
 `;
 
 const DropdownMenu = styled.div`
